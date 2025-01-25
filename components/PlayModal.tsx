@@ -1,8 +1,9 @@
+import BArrow from "@/components/ui/BArrow";
+import BButton from "@/components/ui/BButton";
+import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
-import BArrow from "./ui/BArrow";
-import BButton from "./ui/BButton";
 
 type Props = {
   onPlayPress: () => void;
@@ -14,6 +15,7 @@ type GameType = "NewRun" | "Continue" | "Challenges";
 
 export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Props) {
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
+  const [index, setIndex] = useState(0);
 
   return (
     <Modal transparent onRequestClose={onBackPress} animationType="slide" visible>
@@ -25,18 +27,30 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Pro
             <BArrow visible={gameType === "Challenges"} />
           </View>
           <View style={styles.gameSelection}>
-            <BButton style={styles.playButton} onPress={() => setGameType("NewRun")}>
+            <BButton style={styles.gameSelectButton} onPress={() => setGameType("NewRun")}>
               New Run
             </BButton>
             {canContinue && (
-              <BButton style={styles.playButton} onPress={() => setGameType("Continue")}>
+              <BButton style={styles.gameSelectButton} onPress={() => setGameType("Continue")}>
                 Continue
               </BButton>
             )}
-            <BButton style={styles.playButton} onPress={() => setGameType("Challenges")}>
+            <BButton style={styles.gameSelectButton} onPress={() => setGameType("Challenges")}>
               Challenges
             </BButton>
           </View>
+          <BHorizontalScroll
+            count={4}
+            index={index}
+            setIndex={setIndex}
+            style={{ marginBottom: 12 }}
+            showCounter
+          >
+            <View style={{ width: 100, height: 100 }} />
+          </BHorizontalScroll>
+          <BHorizontalScroll count={0} index={index} setIndex={setIndex}>
+            <View style={{ width: 100, height: 50 }} />
+          </BHorizontalScroll>
           <View style={styles.playRow}>
             <View style={{ flex: 2 }} />
             <BButton
@@ -86,11 +100,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-end",
     columnGap: 6,
-    paddingHorizontal: 30,
+    paddingHorizontal: 50,
     marginBottom: 12,
   },
   playRow: {
     flexDirection: "row",
+  },
+  gameSelectButton: {
+    padding: 2,
+    flex: 1,
   },
   playButton: {
     padding: 2,
@@ -104,6 +122,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "flex-end",
-    paddingHorizontal: 30,
+    paddingHorizontal: 50,
   },
 });

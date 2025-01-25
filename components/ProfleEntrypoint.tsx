@@ -1,6 +1,6 @@
+import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
 import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
-import BButton from "./ui/BButton";
 
 type Props = {
   onPress: () => void;
