@@ -3,7 +3,6 @@ import { Modal, StyleSheet, View } from "react-native";
 import BButton from "./BButton";
 
 type Props = {
-  visible: boolean;
   onSettingsPress: () => void;
   onStatsPress: () => void;
   onCustomizeDeckPress: () => void;
@@ -11,8 +10,7 @@ type Props = {
   onBackPress: () => void;
 };
 
-export default function CollectionModal({
-  visible,
+export default function OptionsModal({
   onBackPress,
   onCreditsPress,
   onCustomizeDeckPress,
@@ -20,7 +18,7 @@ export default function CollectionModal({
   onStatsPress,
 }: Props) {
   return (
-    <Modal transparent onRequestClose={onBackPress} animationType="slide" visible={visible}>
+    <Modal transparent onRequestClose={onBackPress} animationType="slide" visible>
       <View style={styles.modalContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.optionsContainer}>
@@ -66,9 +64,10 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     rowGap: 4,
     width: 250,
+    boxShadow: `0px 3px 0px 0px ${Colors.modalShadowColor}`,
   },
   optionsContainer: {
-    rowGap: 4,
+    rowGap: 6,
     paddingHorizontal: 30,
   },
   options: {

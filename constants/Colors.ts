@@ -1,5 +1,7 @@
 export const Colors = {
   mainMenuBackground: "rgb(59, 81, 85)",
+  defaultShadowColor: "rgb(31,46,50)",
+  modalShadowColor: "rgb(118,116,132)",
   modalBorderColor: "rgb(172,193,195)",
   secondaryButtonBackground: "rgb(111, 131, 134)",
   defaultButtonBackground: "rgb(254, 76, 64)",

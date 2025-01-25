@@ -1,5 +1,6 @@
 import { Colors } from "@/constants/Colors";
 import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import BButton from "./BButton";
 
 type Props = {
   onPress: () => void;
@@ -12,19 +13,14 @@ export default function ProfileEntrypoint({ style, onPress }: Props) {
       <Text selectable={false} style={styles.outerText}>
         Profile
       </Text>
-      <Pressable
+      <BButton
+        defaultColor={Colors.secondaryButtonBackground}
+        pressedColor={Colors.mainMenuBackground}
         onPress={onPress}
-        style={({ pressed }) => [
-          styles.innerContainer,
-          {
-            backgroundColor: pressed ? Colors.mainMenuBackground : Colors.secondaryButtonBackground,
-          },
-        ]}
+        style={styles.innerContainer}
       >
-        <Text selectable={false} style={styles.innerText}>
-          P1
-        </Text>
-      </Pressable>
+        P1
+      </BButton>
     </View>
   );
 }
@@ -39,6 +35,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     alignSelf: "center",
+    boxShadow: `0px 5px 0px 0px ${Colors.defaultShadowColor}`,
   },
   outerText: {
     marginBottom: 2,

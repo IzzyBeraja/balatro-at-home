@@ -1,11 +1,14 @@
 import MainNav from "@/components/MainNav";
 import OptionsModal from "@/components/OptionsModal";
+import PlayModal from "@/components/PlayModal";
 import ProfileEntrypoint from "@/components/ProfleEntrypoint";
+import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
+  const [playVisible, setPlayVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
 
   const handleShowCollectionModal = () => {
@@ -17,7 +20,17 @@ export default function HomeScreen() {
   };
 
   const handlePlayPress = () => {
-    console.log("Play pressed");
+    setPlayVisible(true);
+    setModalVisible(true);
+  };
+
+  const handleGameStart = () => {
+    console.log("Starting Game!");
+  };
+
+  const handlePlayExit = () => {
+    setPlayVisible(false);
+    setModalVisible(false);
   };
 
   const handleOptionsPress = () => {
@@ -42,14 +55,18 @@ export default function HomeScreen() {
         />
         <ProfileEntrypoint onPress={handleProfilePress} />
       </View>
-      <OptionsModal
-        onSettingsPress={handleOptionsPress}
-        onStatsPress={handleOptionsPress}
-        onCustomizeDeckPress={handleOptionsPress}
-        onCreditsPress={handleOptionsPress}
-        onBackPress={handleOptionsExit}
-        visible={optionsVisible}
-      />
+      {playVisible && (
+        <PlayModal canContinue={true} onBackPress={handlePlayExit} onPlayPress={handleGameStart} />
+      )}
+      {optionsVisible && (
+        <OptionsModal
+          onSettingsPress={handleOptionsPress}
+          onStatsPress={handleOptionsPress}
+          onCustomizeDeckPress={handleOptionsPress}
+          onCreditsPress={handleOptionsPress}
+          onBackPress={handleOptionsExit}
+        />
+      )}
       {modalVisible && <View style={styles.modalBackdrop} />}
     </View>
   );
@@ -58,7 +75,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     position: "relative",
-    backgroundColor: "black",
+    backgroundColor: "orange",
     height: "100%",
     width: "100%",
   },

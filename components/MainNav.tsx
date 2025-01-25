@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 10,
     gap: 8,
+    boxShadow: `0px 5px 0px 0px ${Colors.defaultShadowColor}`,
   },
   button: {
     flex: 1,
