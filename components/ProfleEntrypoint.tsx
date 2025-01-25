@@ -17,9 +17,7 @@ export default function ProfileEntrypoint({ style, onPress }: Props) {
         style={({ pressed }) => [
           styles.innerContainer,
           {
-            backgroundColor: pressed
-              ? Colors.mainMenuNavBackground
-              : Colors.secondaryButtonBackground,
+            backgroundColor: pressed ? Colors.mainMenuBackground : Colors.secondaryButtonBackground,
           },
         ]}
       >
@@ -33,7 +31,7 @@ export default function ProfileEntrypoint({ style, onPress }: Props) {
 
 const styles = StyleSheet.create({
   outerContainer: {
-    backgroundColor: Colors.mainMenuNavBackground,
+    backgroundColor: Colors.mainMenuBackground,
     padding: 8,
     paddingTop: 4,
     width: 100,

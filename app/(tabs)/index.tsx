@@ -1,8 +1,17 @@
 import MainNav from "@/components/MainNav";
+import OptionsModal from "@/components/OptionsModal";
 import ProfileEntrypoint from "@/components/ProfleEntrypoint";
+import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [optionsVisible, setOptionsVisible] = useState(false);
+
+  const handleShowCollectionModal = () => {
+    console.log("Collections pressed");
+  };
+
   const handleProfilePress = () => {
     console.log("Profile pressed");
   };
@@ -12,11 +21,13 @@ export default function HomeScreen() {
   };
 
   const handleOptionsPress = () => {
-    console.log("Options pressed");
+    setOptionsVisible(true);
+    setModalVisible(true);
   };
 
-  const handleCollectionPress = () => {
-    console.log("Collection pressed");
+  const handleOptionsExit = () => {
+    setOptionsVisible(false);
+    setModalVisible(false);
   };
 
   return (
@@ -26,10 +37,20 @@ export default function HomeScreen() {
         <MainNav
           onPlayPress={handlePlayPress}
           onOptionsPress={handleOptionsPress}
-          onCollectionPress={handleCollectionPress}
+          onCollectionPress={handleShowCollectionModal}
+          collectionVisible={modalVisible}
         />
         <ProfileEntrypoint onPress={handleProfilePress} />
       </View>
+      <OptionsModal
+        onSettingsPress={handleOptionsPress}
+        onStatsPress={handleOptionsPress}
+        onCustomizeDeckPress={handleOptionsPress}
+        onCreditsPress={handleOptionsPress}
+        onBackPress={handleOptionsExit}
+        visible={optionsVisible}
+      />
+      {modalVisible && <View style={styles.modalBackdrop} />}
     </View>
   );
 }
@@ -48,5 +69,9 @@ const styles = StyleSheet.create({
     bottom: 30,
     left: 60,
     right: 60,
+  },
+  modalBackdrop: {
+    backgroundColor: "rgba(100, 100, 100, 0.5)",
+    flex: 1,
   },
 });

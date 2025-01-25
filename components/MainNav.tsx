@@ -1,62 +1,45 @@
+import BButton from "@/components/BButton";
 import { Colors } from "@/constants/Colors";
-import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type Props = {
   onPlayPress: () => void;
   onOptionsPress: () => void;
   onCollectionPress: () => void;
+  collectionVisible: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
 export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress, style }: Props) {
   return (
     <View style={[styles.outerContainer, style]}>
-      <Pressable
+      <BButton
         onPress={onPlayPress}
-        style={({ pressed }) => [
-          styles.buttonBase,
-          {
-            backgroundColor: pressed
-              ? Colors.playButtonPressedBackground
-              : Colors.playButtonBackground,
-          },
-        ]}
+        style={styles.button}
+        textStyle={styles.playButtonText}
+        defaultColor={Colors.blueButtonBackground}
+        pressedColor={Colors.blue2ButtonBackground}
       >
-        <Text selectable={false} style={[styles.text, styles.playButtonText]}>
-          PLAY
-        </Text>
-      </Pressable>
-      <Pressable
+        PLAY
+      </BButton>
+      <BButton
         onPress={onOptionsPress}
-        style={({ pressed }) => [
-          styles.buttonBase,
-          styles.optionsButton,
-          {
-            backgroundColor: pressed
-              ? Colors.optionsButtonPressedBackground
-              : Colors.optionsButtonBackground,
-          },
-        ]}
+        textStyle={styles.optionsButtonText}
+        defaultColor={Colors.yellowButtonBackground}
+        pressedColor={Colors.yellow2ButtonBackground}
+        style={styles.optionsButton}
       >
-        <Text selectable={false} style={[styles.text, styles.optionsButtonText]}>
-          OPTIONS
-        </Text>
-      </Pressable>
-      <Pressable
+        OPTIONS
+      </BButton>
+      <BButton
         onPress={onCollectionPress}
-        style={({ pressed }) => [
-          styles.buttonBase,
-          {
-            backgroundColor: pressed
-              ? Colors.collectionButtonPressedBackground
-              : Colors.collectionButtonBackground,
-          },
-        ]}
+        style={styles.button}
+        textStyle={styles.collectionButtonText}
+        defaultColor={Colors.greenButtonBackground}
+        pressedColor={Colors.green2ButtonBackground}
       >
-        <Text selectable={false} style={[styles.text, styles.collectionButtonText]}>
-          COLLECTION
-        </Text>
-      </Pressable>
+        COLLECTION
+      </BButton>
     </View>
   );
 }
@@ -64,7 +47,7 @@ export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress
 const styles = StyleSheet.create({
   outerContainer: {
     flexDirection: "row",
-    backgroundColor: Colors.mainMenuNavBackground,
+    backgroundColor: Colors.mainMenuBackground,
     padding: 6,
     width: 400,
     justifyContent: "center",
@@ -72,20 +55,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     gap: 8,
   },
-  buttonBase: {
+  button: {
     flex: 1,
     height: "100%",
-    padding: 12,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
   },
   optionsButton: {
     flex: 0.7,
     height: "80%",
-  },
-  text: {
-    color: "white",
   },
   playButtonText: {
     fontSize: 28,
