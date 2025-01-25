@@ -1,8 +1,8 @@
 import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
-import BArrow from "./BArrow";
-import BButton from "./BButton";
+import BArrow from "./ui/BArrow";
+import BButton from "./ui/BButton";
 
 type Props = {
   onPlayPress: () => void;

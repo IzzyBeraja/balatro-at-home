@@ -1,6 +1,6 @@
 import { Colors } from "@/constants/Colors";
 import { Modal, StyleSheet, View } from "react-native";
-import BButton from "./BButton";
+import BButton from "./ui/BButton";
 
 type Props = {
   onSettingsPress: () => void;

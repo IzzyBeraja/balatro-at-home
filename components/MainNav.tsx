@@ -1,4 +1,4 @@
-import BButton from "@/components/BButton";
+import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
