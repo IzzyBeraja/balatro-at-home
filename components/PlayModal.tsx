@@ -2,20 +2,27 @@ import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
+import { Deck } from "@/constants/Decks";
+import { Stake } from "@/constants/Stakes";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
+import DeckDisplay from "./DeckDisplay";
 
 type Props = {
   onPlayPress: () => void;
   onBackPress: () => void;
   canContinue: boolean;
+  decks: Deck[];
+  stakes: Stake[];
 };
 
 type GameType = "NewRun" | "Continue" | "Challenges";
 
-export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Props) {
+export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks }: Props) {
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
-  const [index, setIndex] = useState(0);
+  const [deckIndex, setDeckIndex] = useState(0);
+  const [stackIndex, setStackIndex] = useState(0);
+  const { image, name, description, unlocked } = decks[deckIndex];
 
   return (
     <Modal transparent onRequestClose={onBackPress} animationType="slide" visible>
@@ -40,15 +47,15 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Pro
             </BButton>
           </View>
           <BHorizontalScroll
-            count={4}
-            index={index}
-            setIndex={setIndex}
+            count={decks.length}
+            index={deckIndex}
+            setIndex={setDeckIndex}
             style={{ marginBottom: 12 }}
             showCounter
           >
-            <View style={{ width: 100, height: 100 }} />
+            <DeckDisplay name={name} description={description} image={image} unlocked={unlocked} />
           </BHorizontalScroll>
-          <BHorizontalScroll count={0} index={index} setIndex={setIndex}>
+          <BHorizontalScroll count={0} index={deckIndex} setIndex={setDeckIndex}>
             <View style={{ width: 100, height: 50 }} />
           </BHorizontalScroll>
           <View style={styles.playRow}>

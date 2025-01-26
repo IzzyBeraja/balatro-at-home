@@ -2,7 +2,8 @@ import MainNav from "@/components/MainNav";
 import OptionsModal from "@/components/OptionsModal";
 import PlayModal from "@/components/PlayModal";
 import ProfileEntrypoint from "@/components/ProfleEntrypoint";
-import { Colors } from "@/constants/Colors";
+import { decks } from "@/constants/Decks";
+import { stakes } from "@/constants/Stakes";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
@@ -56,7 +57,13 @@ export default function HomeScreen() {
         <ProfileEntrypoint onPress={handleProfilePress} />
       </View>
       {playVisible && (
-        <PlayModal canContinue={true} onBackPress={handlePlayExit} onPlayPress={handleGameStart} />
+        <PlayModal
+          decks={decks}
+          stakes={stakes}
+          canContinue={true}
+          onBackPress={handlePlayExit}
+          onPlayPress={handleGameStart}
+        />
       )}
       {optionsVisible && (
         <OptionsModal

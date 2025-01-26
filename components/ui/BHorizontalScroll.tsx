@@ -28,19 +28,19 @@ export default function BHorizontalScroll({
         disabled={count === 0}
         textStyle={styles.chevron}
         style={styles.button}
-        onPress={handleRight}
+        onPress={handleLeft}
       >
         {"\u2039"}
       </BButton>
-      <View style={styles.children}>
-        {children}
+      <View style={styles.childrenWithCounter}>
+        <View style={styles.children}>{children}</View>
         {showCounter && <BCounter count={count} index={index} />}
       </View>
       <BButton
         disabled={count === 0}
         textStyle={styles.chevron}
         style={styles.button}
-        onPress={handleLeft}
+        onPress={handleRight}
       >
         {"\u203A"}
       </BButton>
@@ -52,9 +52,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     paddingHorizontal: 16,
+    columnGap: 4,
   },
   children: {
+    width: "100%",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  childrenWithCounter: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    rowGap: 6,
   },
   chevron: {
     fontSize: 24,
