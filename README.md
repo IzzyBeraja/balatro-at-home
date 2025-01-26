@@ -1,50 +1,48 @@
-# Welcome to your Expo app 👋
+# Bataro at home
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Introduction
 
-## Get started
+Just a fun little project to see how performant React Native is using a game like Balatro. I'm basically copying what they have here and have no intentions of ever selling this.
 
-1. Install dependencies
+## How the cards get counted
 
-   ```bash
-   npm install
-   ```
+Basically I have a function that is essentially a move generator. Each time that I run the function, it generates the next event that occurs. Once it returns `null` then the hand is over. With an example:
 
-2. Start the app
+Let's say that I have two tens on the board.
+The move generator will return an object like this:
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```javascript
+{
+  cardIndex: 0,
+  cardValue: 10,
+  cardSuit: 'hearts',
+  cardEffect: 'holo',
+  cardEffectActivated: false,
+  cardSeal: 'red',
+  cardSealActivated: false,
+}
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+The next time I call the function, I will pass the object that was last returned from the function, it should then return the next card that affects the score. This can also be a joker. I will still need to figure out how to ensure that I properly keep track of what the next move is going to be given the previous. It's not entirely obvious what the order of moves is from the current object passed. I could also have an object that states everything about the current card and the current jokers like so:
 
-## Learn more
+```javascript
+{
+  cardIndex: 0,
+  cardValue: 10,
+  cardSuit: 'hearts',
+  cardEffect: 'holo',
+  cardEffectActivated: false,
+  cardSeal: 'red',
+  cardSealActivated: false,
+  jokerIndex: 0,
+  jokerEffect: 'holo',
+  jokerID: 20,
+  jokerEffectActivated: false,
+  jokerIndex: 1,
+  jokerEffect: 'none',
+  jokerID: 21,
+  jokerEffectActivated: false,
+}
+```
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Will still need to figure out how to keep track of those jokers with multiple activations like chad, or baron. Those might need some additional metadata to properly work. Since the generator returns the current move, I can then update react state with the current operation. This will allow me to display card value above, animate the cards, and then update score. Need to think on this a bit more.

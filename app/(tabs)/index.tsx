@@ -82,7 +82,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   mainContainer: {
     position: "relative",
-    backgroundColor: "orange",
+    backgroundColor: "rgba(255, 99, 71, 0.5)",
     height: "100%",
     width: "100%",
   },
