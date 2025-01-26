@@ -3,7 +3,7 @@ import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
 import { Deck } from "@/constants/Decks";
-import { Stake } from "@/constants/Stakes";
+import { Stake, stakes } from "@/constants/Stakes";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 import DeckDisplay from "./DeckDisplay";
@@ -21,8 +21,11 @@ type GameType = "NewRun" | "Continue" | "Challenges";
 export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks }: Props) {
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
   const [deckIndex, setDeckIndex] = useState(0);
-  const [stackIndex, setStackIndex] = useState(0);
+  const [stakeIndex, setStakeIndex] = useState(0);
   const { image, name, description, unlocked } = decks[deckIndex];
+
+  // TODO: When user selects next deck, make sure stakeIndex is within bounds of the new deck
+  const handleDeckChange = (index: number) => {};
 
   return (
     <Modal transparent onRequestClose={onBackPress} animationType="slide" visible>
@@ -53,9 +56,21 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
             style={{ marginBottom: 12 }}
             showCounter
           >
-            <DeckDisplay name={name} description={description} image={image} unlocked={unlocked} />
+            <DeckDisplay
+              name={name}
+              description={description}
+              image={image}
+              unlocked={unlocked}
+              numStakeUnlocked={decks[deckIndex].stakeUnlocked}
+              stakeIndex={stakeIndex}
+              stakes={stakes}
+            />
           </BHorizontalScroll>
-          <BHorizontalScroll count={0} index={deckIndex} setIndex={setDeckIndex}>
+          <BHorizontalScroll
+            count={Math.min(decks[deckIndex].stakeUnlocked + 1, stakes.length)}
+            index={stakeIndex}
+            setIndex={setStakeIndex}
+          >
             <View style={{ width: 100, height: 50 }} />
           </BHorizontalScroll>
           <View style={styles.playRow}>

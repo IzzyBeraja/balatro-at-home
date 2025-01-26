@@ -25,7 +25,7 @@ export default function BHorizontalScroll({
   return (
     <View style={[styles.container, style]}>
       <BButton
-        disabled={count === 0}
+        disabled={count <= 1}
         textStyle={styles.chevron}
         style={styles.button}
         onPress={handleLeft}
@@ -37,7 +37,7 @@ export default function BHorizontalScroll({
         {showCounter && <BCounter count={count} index={index} />}
       </View>
       <BButton
-        disabled={count === 0}
+        disabled={count <= 1}
         textStyle={styles.chevron}
         style={styles.button}
         onPress={handleRight}
