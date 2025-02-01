@@ -49,15 +49,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: Colors.mainMenuBackground,
     padding: 6,
-    width: 400,
+    paddingBottom: 8,
+    width: 340,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
     gap: 8,
-    boxShadow: `0px 5px 0px 0px ${Colors.defaultShadowColor}`,
+    boxShadow: `0px 5px 0px -1px ${Colors.defaultShadowColor}`,
   },
   button: {
     flex: 1,
+    paddingVertical: 8,
     height: "100%",
   },
   optionsButton: {
@@ -65,12 +67,15 @@ const styles = StyleSheet.create({
     height: "80%",
   },
   playButtonText: {
-    fontSize: 28,
+    fontSize: 24,
+    fontWeight: "bold",
   },
   optionsButtonText: {
-    fontSize: 16,
+    fontSize: 12,
+    fontWeight: "bold",
   },
   collectionButtonText: {
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });

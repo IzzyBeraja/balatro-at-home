@@ -19,8 +19,8 @@ export default function BHorizontalScroll({
   children,
   style,
 }: Props) {
-  const handleRight = () => setIndex(index === count - 1 ? 0 : index + 1);
-  const handleLeft = () => setIndex(index === 0 ? count - 1 : index - 1);
+  const handleRight = () => setIndex(index >= count - 1 ? 0 : index + 1);
+  const handleLeft = () => setIndex(index <= 0 ? count - 1 : index - 1);
 
   return (
     <View style={[styles.container, style]}>
@@ -66,9 +66,11 @@ const styles = StyleSheet.create({
     rowGap: 6,
   },
   chevron: {
-    fontSize: 24,
+    fontSize: 20,
+    fontWeight: "bold",
   },
   button: {
+    paddingTop: 2, // to center the chevron
     width: 40,
   },
 });

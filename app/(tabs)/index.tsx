@@ -1,7 +1,7 @@
 import MainNav from "@/components/MainNav";
 import OptionsModal from "@/components/OptionsModal";
 import PlayModal from "@/components/PlayModal";
-import ProfileEntrypoint from "@/components/ProfleEntrypoint";
+import ProfileNav from "@/components/ProfleNav";
 import { decks } from "@/constants/Decks";
 import { stakes } from "@/constants/Stakes";
 import { useState } from "react";
@@ -47,14 +47,14 @@ export default function HomeScreen() {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.bottomNav}>
-        <ProfileEntrypoint onPress={handleProfilePress} />
+        <ProfileNav onPress={handleProfilePress} />
         <MainNav
           onPlayPress={handlePlayPress}
           onOptionsPress={handleOptionsPress}
           onCollectionPress={handleShowCollectionModal}
           collectionVisible={modalVisible}
         />
-        <ProfileEntrypoint onPress={handleProfilePress} />
+        <ProfileNav onPress={handleProfilePress} />
       </View>
       {playVisible && (
         <PlayModal
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     bottom: 30,
-    left: 60,
-    right: 60,
+    left: 90,
+    right: 90,
   },
   modalBackdrop: {
     backgroundColor: "rgba(100, 100, 100, 0.5)",

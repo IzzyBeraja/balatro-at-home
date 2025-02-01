@@ -2,7 +2,7 @@ import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
-import { Deck } from "@/constants/Decks";
+import { DeckType } from "@/constants/Decks";
 import { Stake, stakes } from "@/constants/Stakes";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
@@ -12,7 +12,7 @@ type Props = {
   onPlayPress: () => void;
   onBackPress: () => void;
   canContinue: boolean;
-  decks: Deck[];
+  decks: DeckType[];
   stakes: Stake[];
 };
 
@@ -22,7 +22,6 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
   const [deckIndex, setDeckIndex] = useState(0);
   const [stakeIndex, setStakeIndex] = useState(0);
-  const { image, name, description, unlocked } = decks[deckIndex];
 
   // TODO: When user selects next deck, make sure stakeIndex is within bounds of the new deck
   const handleDeckChange = (index: number) => {};
@@ -56,18 +55,10 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
             style={{ marginBottom: 12 }}
             showCounter
           >
-            <DeckDisplay
-              name={name}
-              description={description}
-              image={image}
-              unlocked={unlocked}
-              numStakeUnlocked={decks[deckIndex].stakeUnlocked}
-              stakeIndex={stakeIndex}
-              stakes={stakes}
-            />
+            <DeckDisplay deck={decks[deckIndex]} stakeIndex={stakeIndex} stakes={stakes} />
           </BHorizontalScroll>
           <BHorizontalScroll
-            count={Math.min(decks[deckIndex].stakeUnlocked + 1, stakes.length)}
+            count={Math.min(decks[deckIndex].stakeCompleted + 1, stakes.length)}
             index={stakeIndex}
             setIndex={setStakeIndex}
           >
@@ -114,7 +105,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.modalBorderColor,
     borderWidth: 2,
     rowGap: 4,
-    width: 400,
+    width: 360,
     boxShadow: `0px 3px 0px 0px ${Colors.modalShadowColor}`,
   },
   gameSelection: {

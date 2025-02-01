@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     rowGap: 6,
-    padding: 6,
+    padding: 3,
     borderRadius: 6,
     backgroundColor: Colors.mainMenuBackground,
   },
@@ -40,5 +40,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+    fontWeight: "bold",
   },
 });

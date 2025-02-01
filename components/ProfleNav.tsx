@@ -7,7 +7,7 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-export default function ProfileEntrypoint({ style, onPress }: Props) {
+export default function ProfileNav({ style, onPress }: Props) {
   return (
     <View style={[styles.outerContainer, style]}>
       <Text selectable={false} style={styles.outerText}>
@@ -18,6 +18,7 @@ export default function ProfileEntrypoint({ style, onPress }: Props) {
         pressedColor={Colors.mainMenuBackground}
         onPress={onPress}
         style={styles.innerContainer}
+        textStyle={styles.innerText}
       >
         P1
       </BButton>
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.mainMenuBackground,
     padding: 8,
     paddingTop: 4,
-    width: 100,
+    width: 80,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
@@ -40,14 +41,16 @@ const styles = StyleSheet.create({
   outerText: {
     marginBottom: 2,
     color: "white",
+    fontSize: 12,
   },
   innerContainer: {
-    padding: 6,
+    padding: 4,
     alignSelf: "stretch",
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 6,
   },
   innerText: {
     color: "white",
+    fontSize: 12,
   },
 });
