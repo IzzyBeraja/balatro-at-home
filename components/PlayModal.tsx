@@ -1,3 +1,5 @@
+import DeckDisplay from "@/components/DeckDisplay";
+import StakeDisplay from "@/components/StakeDisplay";
 import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
@@ -6,8 +8,6 @@ import { DeckType } from "@/constants/Decks";
 import { Stake, stakes } from "@/constants/Stakes";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
-import DeckDisplay from "./DeckDisplay";
-import StakeDisplay from "./StakeDisplay";
 
 type Props = {
   onPlayPress: () => void;

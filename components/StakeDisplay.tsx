@@ -1,7 +1,7 @@
+import StakeDescription from "@/components/StakeDescription";
 import { Colors } from "@/constants/Colors";
 import { Stake } from "@/constants/Stakes";
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
-import StakeDescription from "./StakeDescription";
 
 type Props = {
   stake: Stake;

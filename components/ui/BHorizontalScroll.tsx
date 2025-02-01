@@ -1,6 +1,6 @@
 import BButton from "@/components/ui/BButton";
+import BCounter from "@/components/ui/BCounter";
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
-import BCounter from "./BCounter";
 
 type Props = {
   count: number;
