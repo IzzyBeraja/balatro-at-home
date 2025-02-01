@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    rowGap: 6,
+    rowGap: 3,
   },
   chevron: {
     fontSize: 20,

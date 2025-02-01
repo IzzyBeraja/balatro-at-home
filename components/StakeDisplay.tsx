@@ -1,0 +1,38 @@
+import { Colors } from "@/constants/Colors";
+import { Stake } from "@/constants/Stakes";
+import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import StakeDescription from "./StakeDescription";
+
+type Props = {
+  stake: Stake;
+  style?: StyleProp<ViewStyle>;
+};
+
+export default function StakeDisplay({ stake, style }: Props) {
+  const { name, description, image, color } = stake;
+  return (
+    <View style={[styles.container, style]}>
+      <View style={[styles.stake, { backgroundColor: color }]} />
+      <StakeDescription name={name} description={description} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    columnGap: 6,
+    backgroundColor: Colors.defaultShadowColor,
+    padding: 6,
+    borderRadius: 6,
+  },
+  stake: {
+    width: 28,
+    height: 28,
+    backgroundColor: "red",
+    borderRadius: "100%",
+  },
+});

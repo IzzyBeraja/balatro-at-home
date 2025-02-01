@@ -7,6 +7,7 @@ import { Stake, stakes } from "@/constants/Stakes";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 import DeckDisplay from "./DeckDisplay";
+import StakeDisplay from "./StakeDisplay";
 
 type Props = {
   onPlayPress: () => void;
@@ -52,7 +53,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
             count={decks.length}
             index={deckIndex}
             setIndex={setDeckIndex}
-            style={{ marginBottom: 12 }}
+            style={{ marginBottom: 6 }}
             showCounter
           >
             <DeckDisplay deck={decks[deckIndex]} stakeIndex={stakeIndex} stakes={stakes} />
@@ -61,8 +62,10 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
             count={Math.min(decks[deckIndex].stakeCompleted + 1, stakes.length)}
             index={stakeIndex}
             setIndex={setStakeIndex}
+            showCounter
+            style={{ marginBottom: 6 }}
           >
-            <View style={{ width: 100, height: 50 }} />
+            <StakeDisplay stake={stakes[stakeIndex]} />
           </BHorizontalScroll>
           <View style={styles.playRow}>
             <View style={{ flex: 2 }} />
