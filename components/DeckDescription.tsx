@@ -21,7 +21,6 @@ export default function DeckDescription({
 const styles = StyleSheet.create({
   outerContainer: {
     flex: 1,
-    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     rowGap: 6,

@@ -50,7 +50,6 @@ const CompletedItem = ({ stakeColor, is_selected }: CompletedItemProps) => (
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
     flexDirection: "column-reverse",
     justifyContent: "space-evenly",
     alignItems: "center",

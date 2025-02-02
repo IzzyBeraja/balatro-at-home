@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     borderRadius: "100%",
   },
   stakeTextContainer: {
-    marginLeft: -14,
-    marginRight: -12,
+    marginLeft: -16,
+    marginRight: -14,
   },
   stakeText: {
     color: Colors.mainMenuBackground,
     fontSize: 12,
     fontWeight: "bold",
-    transform: [{ rotateZ: "-90deg" }],
+    transform: [{ rotateZ: "270deg" }],
   },
 });

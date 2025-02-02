@@ -18,7 +18,13 @@ export default function OptionsModal({
   onStatsPress,
 }: Props) {
   return (
-    <Modal transparent onRequestClose={onBackPress} animationType="slide" visible>
+    <Modal
+      transparent
+      onRequestClose={onBackPress}
+      animationType="slide"
+      visible
+      supportedOrientations={["landscape"]}
+    >
       <View style={styles.modalContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.optionsContainer}>

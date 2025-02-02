@@ -6,13 +6,17 @@ import { decks } from "@/constants/Decks";
 import { stakes } from "@/constants/Stakes";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
   const [modalVisible, setModalVisible] = useState(false);
   const [playVisible, setPlayVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
+
+  const { width, height } = Dimensions.get("window");
 
   const handleShowCollectionModal = () => {
     console.log("Collections pressed");
@@ -48,46 +52,46 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <View style={styles.bottomNav}>
-        <ProfileNav onPress={handleProfilePress} />
-        <MainNav
-          onPlayPress={handlePlayPress}
-          onOptionsPress={handleOptionsPress}
-          onCollectionPress={handleShowCollectionModal}
-          collectionVisible={modalVisible}
-        />
-        <ProfileNav onPress={handleProfilePress} />
+    <View style={{ width, height, marginLeft: -insets.left }}>
+      <View style={styles.mainContainer}>
+        <View style={styles.bottomNav}>
+          <ProfileNav onPress={handleProfilePress} />
+          <MainNav
+            onPlayPress={handlePlayPress}
+            onOptionsPress={handleOptionsPress}
+            onCollectionPress={handleShowCollectionModal}
+            collectionVisible={modalVisible}
+          />
+          <ProfileNav onPress={handleProfilePress} />
+        </View>
+        {playVisible && (
+          <PlayModal
+            decks={decks}
+            stakes={stakes}
+            canContinue={true}
+            onBackPress={handlePlayExit}
+            onPlayPress={handleGameStart}
+          />
+        )}
+        {optionsVisible && (
+          <OptionsModal
+            onSettingsPress={handleOptionsPress}
+            onStatsPress={handleOptionsPress}
+            onCustomizeDeckPress={handleOptionsPress}
+            onCreditsPress={handleOptionsPress}
+            onBackPress={handleOptionsExit}
+          />
+        )}
+        {modalVisible && <View style={styles.modalBackdrop} />}
       </View>
-      {playVisible && (
-        <PlayModal
-          decks={decks}
-          stakes={stakes}
-          canContinue={true}
-          onBackPress={handlePlayExit}
-          onPlayPress={handleGameStart}
-        />
-      )}
-      {optionsVisible && (
-        <OptionsModal
-          onSettingsPress={handleOptionsPress}
-          onStatsPress={handleOptionsPress}
-          onCustomizeDeckPress={handleOptionsPress}
-          onCreditsPress={handleOptionsPress}
-          onBackPress={handleOptionsExit}
-        />
-      )}
-      {modalVisible && <View style={styles.modalBackdrop} />}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   mainContainer: {
-    position: "relative",
-    backgroundColor: "rgba(255, 99, 71, 0.5)",
-    height: "100%",
-    width: "100%",
+    flex: 1,
+    backgroundColor: "rgb(255, 99, 71)",
   },
   bottomNav: {
     position: "absolute",

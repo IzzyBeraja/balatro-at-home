@@ -24,11 +24,19 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
   const [deckIndex, setDeckIndex] = useState(0);
   const [stakeIndex, setStakeIndex] = useState(0);
 
-  // TODO: When user selects next deck, make sure stakeIndex is within bounds of the new deck
-  const handleDeckChange = (index: number) => {};
+  const handleDeckChange = (index: number) => {
+    setDeckIndex(index);
+    setStakeIndex(Math.min(stakeIndex, decks[index].stakeCompleted));
+  };
 
   return (
-    <Modal transparent onRequestClose={onBackPress} animationType="slide" visible>
+    <Modal
+      transparent
+      onRequestClose={onBackPress}
+      animationType="slide"
+      visible
+      supportedOrientations={["landscape"]}
+    >
       <View style={styles.modalContainer}>
         <View style={styles.contentContainer}>
           <View style={styles.gameSelectionArrow}>
@@ -52,7 +60,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
           <BHorizontalScroll
             count={decks.length}
             index={deckIndex}
-            setIndex={setDeckIndex}
+            setIndex={handleDeckChange}
             style={{ marginBottom: 6 }}
             showCounter
           >
