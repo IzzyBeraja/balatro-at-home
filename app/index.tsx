@@ -4,10 +4,12 @@ import PlayModal from "@/components/PlayModal";
 import ProfileNav from "@/components/ProfleNav";
 import { decks } from "@/constants/Decks";
 import { stakes } from "@/constants/Stakes";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
+  const router = useRouter();
   const [modalVisible, setModalVisible] = useState(false);
   const [playVisible, setPlayVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
@@ -27,6 +29,7 @@ export default function HomeScreen() {
 
   const handleGameStart = () => {
     console.log("Starting Game!");
+    router.push("/play?seed=XPQ34XV&stake=5&deck=2");
   };
 
   const handlePlayExit = () => {
