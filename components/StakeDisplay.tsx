@@ -1,7 +1,7 @@
 import StakeDescription from "@/components/StakeDescription";
 import { Colors } from "@/constants/Colors";
 import { Stake } from "@/constants/Stakes";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 
 type Props = {
   stake: Stake;
@@ -12,6 +12,9 @@ export default function StakeDisplay({ stake, style }: Props) {
   const { name, description, image, color } = stake;
   return (
     <View style={[styles.container, style]}>
+      <View style={styles.stakeTextContainer}>
+        <Text style={styles.stakeText}>Stake</Text>
+      </View>
       <View style={[styles.stake, { backgroundColor: color }]} />
       <StakeDescription name={name} description={description} />
     </View>
@@ -34,5 +37,15 @@ const styles = StyleSheet.create({
     height: 28,
     backgroundColor: "red",
     borderRadius: "100%",
+  },
+  stakeTextContainer: {
+    marginLeft: -14,
+    marginRight: -12,
+  },
+  stakeText: {
+    color: Colors.mainMenuBackground,
+    fontSize: 12,
+    fontWeight: "bold",
+    transform: [{ rotateZ: "-90deg" }],
   },
 });

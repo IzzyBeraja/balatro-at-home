@@ -2,6 +2,9 @@ import { Colors } from "@/constants/Colors";
 import type { Stake } from "@/constants/Stakes";
 import { StyleSheet, View } from "react-native";
 
+const blockWidth = 17;
+const blockHeight = 9;
+
 type Props = {
   selected: number;
   numCompleted: number;
@@ -9,38 +12,41 @@ type Props = {
 };
 
 export default function DeckCounter({ selected, numCompleted, stakes }: Props) {
-  const dotItem = () => (
-    <View style={styles.block}>
-      <View style={styles.dot} />
-    </View>
-  );
-
-  const unlockedItem = (is_selected: boolean) => (
-    <View style={[styles.block, is_selected && styles.selected]}>
-      <View style={[styles.blockCenter, !is_selected && styles.unlocked]} />
-    </View>
-  );
-
-  const completedItem = (i: number, is_selected: boolean) => (
-    <View style={[styles.block, styles.completed, is_selected && styles.selected]}>
-      <View style={[styles.blockCenter, styles.completed, { backgroundColor: stakes[i].color }]} />
-    </View>
-  );
-
   return (
     <View style={styles.container}>
       {Array.from({ length: stakes.length }).map((_, i) => {
         const is_selected = i === selected;
-        if (i < numCompleted) return completedItem(i, is_selected);
-        if (i === numCompleted) return unlockedItem(is_selected);
-        return dotItem();
+        if (i < numCompleted)
+          return <CompletedItem key={i} stakeColor={stakes[i].color} is_selected={is_selected} />;
+        if (i === numCompleted) return <UnlockedItem key={i} is_selected={is_selected} />;
+        return <DotItem key={i} />;
       })}
     </View>
   );
 }
 
-const blockWidth = 17;
-const blockHeight = 9;
+const DotItem = () => (
+  <View style={styles.block}>
+    <View style={styles.dot} />
+  </View>
+);
+
+const UnlockedItem = ({ is_selected }: { is_selected: boolean }) => (
+  <View style={[styles.block, is_selected && styles.selected]}>
+    <View style={[styles.blockCenter, !is_selected && styles.unlocked]} />
+  </View>
+);
+
+type CompletedItemProps = {
+  stakeColor: string;
+  is_selected: boolean;
+};
+
+const CompletedItem = ({ stakeColor, is_selected }: CompletedItemProps) => (
+  <View style={[styles.block, styles.completed, is_selected && styles.selected]}>
+    <View style={[styles.blockCenter, styles.completed, { backgroundColor: stakeColor }]} />
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {

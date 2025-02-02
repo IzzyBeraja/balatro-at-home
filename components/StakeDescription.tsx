@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 6,
+    paddingTop: 0,
+    padding: 2,
     backgroundColor: Colors.mainMenuBackground,
   },
   descriptionContainer: {
