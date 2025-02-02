@@ -4,6 +4,7 @@ import PlayModal from "@/components/PlayModal";
 import ProfileNav from "@/components/ProfleNav";
 import { decks } from "@/constants/Decks";
 import { stakes } from "@/constants/Stakes";
+import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";
@@ -17,6 +18,11 @@ export default function HomeScreen() {
   const [optionsVisible, setOptionsVisible] = useState(false);
 
   const { width, height } = Dimensions.get("window");
+
+  const [loaded, error] = useFonts({
+    Balatro: require("@/assets/fonts/balatro.otf"),
+    SpaceMono: require("@/assets/fonts/SpaceMono-Regular.ttf"),
+  });
 
   const handleShowCollectionModal = () => {
     console.log("Collections pressed");
