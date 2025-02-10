@@ -6,19 +6,19 @@ export function genSeed() {
     .toUpperCase();
 }
 
-interface Range {
+export interface NumRange {
   min: number;
   max: number;
 }
 
-export function* randomGenerator(seed: string): Generator<number, number, Range> {
+export function* randomGenerator(seed: string): Generator<number, number, NumRange> {
   const multiplier = 1664525;
   const increment = 1013904223;
   const modulus = 2 ** 32;
 
   let state = parseInt(seed, seedBase) % modulus;
   // Returns 0 on first call, then waits for range when next is called again
-  let range: Range = yield 0;
+  let range: NumRange = yield 0;
 
   while (true) {
     state = (multiplier * state + increment) % modulus;

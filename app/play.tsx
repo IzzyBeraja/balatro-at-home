@@ -1,5 +1,7 @@
+import { decks } from "@/constants/Decks";
+import { shuffleDeck } from "@/game/deck";
+import { genSeed } from "@/game/random";
 import { useRandom } from "@/hooks/useRandom";
-import { genSeed } from "@/utils/random";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Button, Dimensions, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -13,6 +15,8 @@ export default function PlayScreen() {
   } = useLocalSearchParams<"/play", { seed?: string; stake?: string; deck?: string }>();
   const router = useRouter();
   const random = useRandom(seedParam);
+  const deck = decks[parseInt(deckParam, 10)];
+  const shuffledDeck = shuffleDeck(random, deck.cards);
 
   const { width, height } = Dimensions.get("window");
 
@@ -22,11 +26,15 @@ export default function PlayScreen() {
         <Text style={{ fontFamily: "Balatro" }}>GAME!</Text>
         <Text>{seedParam}</Text>
         <Text>{stakeParam}</Text>
-        <Text>{deckParam}</Text>
-        <Text>{`Next number: ${random.next({ min: 0, max: 10 }).value}`}</Text>
-        <Text>{`Next number: ${random.next({ min: 0, max: 10 }).value}`}</Text>
-        <Text>{`Next number: ${random.next({ min: 0, max: 10 }).value}`}</Text>
-        <Text>{`Next number: ${random.next({ min: 0, max: 10 }).value}`}</Text>
+        <Text>{deck.name}</Text>
+        <Text>
+          {deck.cards.map(({ rank: value, suit }) => `${value}${suit[0].toUpperCase()}`).join(" ")}
+        </Text>
+        <Text>
+          {shuffledDeck
+            .map(({ rank: value, suit }) => `${value}${suit[0].toUpperCase()}`)
+            .join(" ")}
+        </Text>
         <Button title="Back" onPress={() => router.back()} />
       </View>
     </View>

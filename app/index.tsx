@@ -4,7 +4,7 @@ import PlayModal from "@/components/PlayModal";
 import ProfileNav from "@/components/ProfleNav";
 import { decks } from "@/constants/Decks";
 import { stakes } from "@/constants/Stakes";
-import { genSeed } from "@/utils/random";
+import { genSeed } from "@/game/random";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import { useState } from "react";
