@@ -4,6 +4,7 @@ import PlayModal from "@/components/PlayModal";
 import ProfileNav from "@/components/ProfleNav";
 import { decks } from "@/constants/Decks";
 import { stakes } from "@/constants/Stakes";
+import { genSeed } from "@/utils/random";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -37,9 +38,9 @@ export default function HomeScreen() {
     setModalVisible(true);
   };
 
-  const handleGameStart = () => {
-    console.log("Starting Game!");
-    router.push("/play?seed=XPQ34XV&stake=5&deck=2");
+  const handleGameStart = (deck: number, stake: number, seed?: number) => {
+    const runSeed = seed || genSeed();
+    router.push(`/play?seed=${runSeed}&stake=${stake}&deck=${deck}`);
   };
 
   const handlePlayExit = () => {

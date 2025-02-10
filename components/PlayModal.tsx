@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 
 type Props = {
-  onPlayPress: () => void;
+  onPlayPress: (deck: number, stake: number) => void;
   onBackPress: () => void;
   canContinue: boolean;
   decks: DeckType[];
@@ -82,7 +82,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
               textStyle={styles.playText}
               defaultColor={Colors.blueButtonBackground}
               pressedColor={Colors.blue2ButtonBackground}
-              onPress={onPlayPress}
+              onPress={() => onPlayPress(deckIndex, stakeIndex)}
             >
               PLAY
             </BButton>
