@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     boxShadow: "none",
   },
   text: {
-    fontFamily: "Balatro",
     color: "white",
   },
   disabledText: {

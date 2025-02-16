@@ -23,7 +23,7 @@ export default function PlayScreen() {
   return (
     <View style={{ width, height, marginLeft: -insets.left }}>
       <View style={styles.mainContainer}>
-        <Text style={{ fontFamily: "Balatro" }}>GAME!</Text>
+        <Text>GAME!</Text>
         <Text>{seedParam}</Text>
         <Text>{stakeParam}</Text>
         <Text>{deck.name}</Text>

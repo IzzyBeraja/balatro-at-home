@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     borderRadius: "100%",
   },
   stakeTextContainer: {
-    marginLeft: -16,
-    marginRight: -14,
+    marginLeft: -16, // Rotation does not affect layout
+    marginRight: -14, // Rotation does not affect layout
+    transform: [{ rotateZ: "270deg" }], // Must rotate container, not text
   },
   stakeText: {
     color: Colors.mainMenuBackground,
     fontSize: 12,
     fontWeight: "bold",
-    transform: [{ rotateZ: "270deg" }],
   },
 });
