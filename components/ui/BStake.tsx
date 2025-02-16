@@ -1,12 +1,12 @@
-import { StakeID } from "@/constants/Stakes";
-import { StyleSheet, View } from "react-native";
+import { TStakeID } from "@/constants/Stakes";
+import { StyleSheet, View, ViewProps } from "react-native";
 
-interface Props {
-  stake: StakeID;
+interface Props extends ViewProps {
+  stake: TStakeID;
 }
 
-export default function BStake({ stake }: Props) {
-  return <View style={styles.stake} />;
+export default function BStake({ stake, style, ...rest }: Props) {
+  return <View style={[styles.stake, style]} {...rest} />;
 }
 
 const styles = StyleSheet.create({

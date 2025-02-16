@@ -1,16 +1,16 @@
 import StakeChip from "@/components/Stake/StakeChip";
 import { Colors } from "@/constants/Colors";
-import { StakeID } from "@/constants/Stakes";
-import { StyleSheet, Text, View } from "react-native";
+import { TStakeID } from "@/constants/Stakes";
+import { StyleSheet, Text, View, ViewProps } from "react-native";
 
-interface Props {
+interface Props extends ViewProps {
   roundScore: number;
-  stake: StakeID;
+  stake: TStakeID;
 }
 
-export default function RoundScore({ roundScore, stake }: Props) {
+export default function RoundScore({ roundScore, stake, style, ...rest }: Props) {
   return (
-    <View style={styles.mainContainer}>
+    <View style={[styles.mainContainer, style]} {...rest}>
       <View>
         <Text style={styles.text}>Round</Text>
         <Text style={styles.text}>score</Text>

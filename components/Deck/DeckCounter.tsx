@@ -1,18 +1,18 @@
 import { Colors } from "@/constants/Colors";
 import { stakeIds, stakes } from "@/constants/Stakes";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
 const blockWidth = 17;
 const blockHeight = 9;
 
-type Props = {
+interface Props extends ViewProps {
   selected: number;
   numCompleted: number;
-};
+}
 
-export default function DeckCounter({ selected, numCompleted }: Props) {
+export default function DeckCounter({ selected, numCompleted, style, ...rest }: Props) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]} {...rest}>
       {Array.from({ length: stakeIds.length }).map((_, i) => {
         const is_selected = i === selected;
         if (i < numCompleted)

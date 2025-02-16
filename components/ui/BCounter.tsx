@@ -1,13 +1,13 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
-type Props = {
+interface Props extends ViewProps {
   count: number;
   index: number;
-};
+}
 
-export default function BCounter({ count, index }: Props) {
+export default function BCounter({ count, index, style, ...rest }: Props) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]} {...rest}>
       {Array.from({ length: count }).map((_, i) => (
         <View key={i} style={i === index ? styles.selected : styles.dot} />
       ))}

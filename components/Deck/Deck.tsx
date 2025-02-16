@@ -1,11 +1,11 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
-type Props = {
+interface Props extends ViewProps {
   deckImage: string;
-};
+}
 
-export default function Deck({ deckImage }: Props) {
-  return <View style={styles.deck} />;
+export default function Deck({ deckImage, style, ...rest }: Props) {
+  return <View style={[styles.deck, style]} {...rest} />;
 }
 
 const styles = StyleSheet.create({

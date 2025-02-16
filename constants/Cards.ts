@@ -1,7 +1,7 @@
 export const card_suits = ["hearts", "diamonds", "clubs", "spades"] as const;
 export const card_values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"] as const;
 
-export type CardType = {
+export type TCard = {
   suit: (typeof card_suits)[number];
   rank: (typeof card_values)[number];
   chips: number;
@@ -61,4 +61,4 @@ export const all_cards = [
   { suit: "spades", chips: 10, rank: "Q", image: "queen_of_spades" },
   { suit: "spades", chips: 10, rank: "K", image: "king_of_spades" },
   { suit: "spades", chips: 11, rank: "A", image: "ace_of_spades" },
-] satisfies CardType[];
+] satisfies TCard[];

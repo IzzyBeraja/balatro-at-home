@@ -1,13 +1,16 @@
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
-type Props = {
+interface Props extends ViewProps {
   visible: boolean;
-};
+}
 
-export default function BArrow({ visible }: Props) {
+export default function BArrow({ visible, style, ...rest }: Props) {
   return (
-    <View style={[styles.arrow, visible && { borderTopColor: Colors.defaultButtonBackground }]} />
+    <View
+      style={[styles.arrow, visible && { borderTopColor: Colors.defaultButtonBackground }, style]}
+      {...rest}
+    />
   );
 }
 

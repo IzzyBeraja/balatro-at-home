@@ -1,6 +1,7 @@
 import {
   ColorValue,
   Pressable,
+  PressableProps,
   StyleProp,
   StyleSheet,
   Text,
@@ -10,7 +11,7 @@ import {
 
 import { Colors } from "@/constants/Colors";
 
-type Props = {
+interface Props extends PressableProps {
   onPress: () => void;
   children: string;
   textStyle?: StyleProp<TextStyle>;
@@ -19,7 +20,7 @@ type Props = {
   selected?: boolean;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 export default function BButton({
   style,

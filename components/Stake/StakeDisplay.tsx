@@ -1,18 +1,17 @@
 import StakeChip from "@/components/Stake/StakeChip";
 import StakeDescription from "@/components/Stake/StakeDescription";
 import { Colors } from "@/constants/Colors";
-import { StakeID, stakes } from "@/constants/Stakes";
-import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { TStakeID, stakes } from "@/constants/Stakes";
+import { StyleProp, StyleSheet, Text, View, ViewProps, ViewStyle } from "react-native";
 
-type Props = {
-  stakeID: StakeID;
-  style?: StyleProp<ViewStyle>;
-};
+interface Props extends ViewProps {
+  stakeID: TStakeID;
+}
 
-export default function StakeDisplay({ stakeID, style }: Props) {
+export default function StakeDisplay({ stakeID, style, ...rest }: Props) {
   const { id, name, description, image, color } = stakes[stakeID];
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style]} {...rest}>
       <View style={styles.stakeTextContainer}>
         <Text style={styles.stakeText}>Stake</Text>
       </View>

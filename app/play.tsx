@@ -1,7 +1,7 @@
 import Scoreboard, { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
 import { Colors } from "@/constants/Colors";
-import { DeckID, decks } from "@/constants/Decks";
-import { StakeID, stakes } from "@/constants/Stakes";
+import { TDeckID, decks } from "@/constants/Decks";
+import { TStakeID, stakes } from "@/constants/Stakes";
 import { shuffleDeck } from "@/game/deck";
 import { genSeed } from "@/game/random";
 import { useRandom } from "@/hooks/useRandom";
@@ -16,7 +16,7 @@ export default function PlayScreen() {
     seed: seedParam = genSeed(),
     stake: stakeParam = "white",
     deck: deckParam = "red",
-  } = useLocalSearchParams<"/play", { seed?: string; stake?: StakeID; deck?: DeckID }>();
+  } = useLocalSearchParams<"/play", { seed?: string; stake?: TStakeID; deck?: TDeckID }>();
   const router = useRouter();
   const random = useRandom(seedParam);
   const stake = stakes[stakeParam];

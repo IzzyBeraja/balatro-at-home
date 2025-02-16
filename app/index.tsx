@@ -2,8 +2,8 @@ import MainNav from "@/components/MainNav";
 import OptionsModal from "@/components/OptionsModal";
 import PlayModal from "@/components/PlayModal";
 import ProfileNav from "@/components/ProfleNav";
-import { DeckID } from "@/constants/Decks";
-import { StakeID } from "@/constants/Stakes";
+import { TDeckID } from "@/constants/Decks";
+import { TStakeID } from "@/constants/Stakes";
 import { genSeed } from "@/game/random";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -32,7 +32,7 @@ export default function HomeScreen() {
     setModalVisible(true);
   };
 
-  const handleGameStart = (deck: DeckID, stake: StakeID, seed?: number) => {
+  const handleGameStart = (deck: TDeckID, stake: TStakeID, seed?: number) => {
     const runSeed = seed || genSeed();
     router.push(`/play?seed=${runSeed}&stake=${stake}&deck=${deck}`);
   };

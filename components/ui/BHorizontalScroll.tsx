@@ -1,15 +1,14 @@
 import BButton from "@/components/ui/BButton";
 import BCounter from "@/components/ui/BCounter";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { StyleProp, StyleSheet, View, ViewProps, ViewStyle } from "react-native";
 
-type Props = {
+interface Props extends ViewProps {
   count: number;
   showCounter?: boolean;
   setIndex: (index: number) => void;
   index: number;
   children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
-};
+}
 
 export default function BHorizontalScroll({
   count,

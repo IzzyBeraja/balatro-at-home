@@ -2,13 +2,13 @@ import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
-type Props = {
+interface Props {
   onPlayPress: () => void;
   onOptionsPress: () => void;
   onCollectionPress: () => void;
   collectionVisible: boolean;
   style?: StyleProp<ViewStyle>;
-};
+}
 
 export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress, style }: Props) {
   return (

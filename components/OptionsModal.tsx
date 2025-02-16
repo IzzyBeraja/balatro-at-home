@@ -1,14 +1,14 @@
 import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
-import { Modal, StyleSheet, View } from "react-native";
+import { Modal, ModalProps, StyleSheet, View } from "react-native";
 
-type Props = {
+interface Props extends ModalProps {
   onSettingsPress: () => void;
   onStatsPress: () => void;
   onCustomizeDeckPress: () => void;
   onCreditsPress: () => void;
   onBackPress: () => void;
-};
+}
 
 export default function OptionsModal({
   onBackPress,
@@ -16,6 +16,7 @@ export default function OptionsModal({
   onCustomizeDeckPress,
   onSettingsPress,
   onStatsPress,
+  ...rest
 }: Props) {
   return (
     <Modal
@@ -24,6 +25,7 @@ export default function OptionsModal({
       animationType="slide"
       visible
       supportedOrientations={["landscape"]}
+      {...rest}
     >
       <View style={styles.modalContainer}>
         <View style={styles.contentContainer}>

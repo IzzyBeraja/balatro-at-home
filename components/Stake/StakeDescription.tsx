@@ -1,17 +1,19 @@
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ViewProps } from "react-native";
 
-type Props = {
+interface Props extends ViewProps {
   name: string;
   description: React.ReactNode;
-};
+}
 
 export default function StakeDescription({
   name = "Deck Name",
   description = <Text>Deck Description</Text>,
+  style,
+  ...rest
 }: Props) {
   return (
-    <View style={styles.outerContainer}>
+    <View style={[styles.outerContainer, style]} {...rest}>
       <Text style={styles.text}>{name}</Text>
       <View style={styles.descriptionContainer}>{description}</View>
     </View>

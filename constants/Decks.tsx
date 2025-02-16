@@ -1,13 +1,13 @@
-import { CardType, all_cards } from "@/constants/Cards";
+import { TCard, all_cards } from "@/constants/Cards";
 import React from "react";
 import { Text } from "react-native";
 
 export const deckIds = ["red", "blue", "yellow", "green", "black", "abandoned"] as const;
 
-export type DeckID = (typeof deckIds)[number];
+export type TDeckID = (typeof deckIds)[number];
 
-export type Deck = {
-  id: DeckID;
+export type TDeck = {
+  id: TDeckID;
   name: string;
   image: string;
   discards: number;
@@ -17,7 +17,7 @@ export type Deck = {
   jokerSlots: number;
   consumableSlots: number;
   description: React.ReactNode;
-  cards: CardType[];
+  cards: TCard[];
   /** @deprecated get stake info from user data */
   stakeCompleted: number;
   /** @deprecated get unlocked info from user data */
@@ -38,7 +38,7 @@ const defaultDeck = {
   cards: all_cards,
   stakeCompleted: 8,
   unlocked: true,
-} as const satisfies Deck;
+} as const satisfies TDeck;
 
 export const decks = {
   red: {
@@ -91,4 +91,4 @@ export const decks = {
     ),
     description: <Text>+1 consumable slot every round</Text>,
   },
-} as const satisfies { [key in DeckID]: { id: key } & Deck };
+} as const satisfies { [key in TDeckID]: { id: key } & TDeck };

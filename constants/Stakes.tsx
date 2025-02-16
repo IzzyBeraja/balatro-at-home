@@ -11,10 +11,10 @@ export const stakeIds = [
   "gold",
 ] as const;
 
-export type StakeID = (typeof stakeIds)[number];
+export type TStakeID = (typeof stakeIds)[number];
 
-export type Stake = {
-  id: StakeID;
+export type TStake = {
+  id: TStakeID;
   name: string;
   description: React.ReactNode;
   image: string;
@@ -78,4 +78,4 @@ export const stakes = {
     image: "goldStake",
     color: "gold",
   },
-} as const satisfies { [key in StakeID]: { id: key } & Stake };
+} as const satisfies { [key in TStakeID]: { id: key } & TStake };

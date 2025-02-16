@@ -1,8 +1,8 @@
-import { StakeID } from "@/constants/Stakes";
+import { TStakeID } from "@/constants/Stakes";
 import { StyleSheet, View, ViewProps } from "react-native";
 
 interface Props extends ViewProps {
-  stake: StakeID;
+  stake: TStakeID;
   size?: number;
 }
 

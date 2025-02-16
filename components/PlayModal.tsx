@@ -4,20 +4,20 @@ import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
-import { DeckID, deckIds, decks } from "@/constants/Decks";
-import { StakeID, stakeIds } from "@/constants/Stakes";
+import { TDeckID, deckIds, decks } from "@/constants/Decks";
+import { TStakeID, stakeIds } from "@/constants/Stakes";
 import { useState } from "react";
-import { Modal, StyleSheet, View } from "react-native";
+import { Modal, ModalProps, StyleSheet, View } from "react-native";
 
-type Props = {
-  onPlayPress: (deck: DeckID, stake: StakeID) => void;
+interface Props extends ModalProps {
+  onPlayPress: (deck: TDeckID, stake: TStakeID) => void;
   onBackPress: () => void;
   canContinue: boolean;
-};
+}
 
 type GameType = "NewRun" | "Continue" | "Challenges";
 
-export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Props) {
+export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...rest }: Props) {
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
   const [deckIndex, setDeckIndex] = useState(0);
   const [stakeIndex, setStakeIndex] = useState(0);
@@ -34,6 +34,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Pro
       animationType="slide"
       visible
       supportedOrientations={["landscape"]}
+      {...rest}
     >
       <View style={styles.modalContainer}>
         <View style={styles.contentContainer}>

@@ -1,15 +1,14 @@
 import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
-import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import { Pressable, StyleProp, StyleSheet, Text, View, ViewProps, ViewStyle } from "react-native";
 
-type Props = {
+interface Props extends ViewProps {
   onPress: () => void;
-  style?: StyleProp<ViewStyle>;
-};
+}
 
-export default function ProfileNav({ style, onPress }: Props) {
+export default function ProfileNav({ style, onPress, ...rest }: Props) {
   return (
-    <View style={[styles.outerContainer, style]}>
+    <View style={[styles.outerContainer, style]} {...rest}>
       <Text selectable={false} style={styles.outerText}>
         Profile
       </Text>
