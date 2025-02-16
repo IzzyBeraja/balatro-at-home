@@ -15,7 +15,7 @@ export default function StakeDisplay({ stakeID, style, ...rest }: Props) {
       <View style={styles.stakeTextContainer}>
         <Text style={styles.stakeText}>Stake</Text>
       </View>
-      <StakeChip stake={id} style={{ backgroundColor: color }} />
+      <StakeChip stakeId={id} style={{ backgroundColor: color }} />
       <StakeDescription name={name} description={description} />
     </View>
   );

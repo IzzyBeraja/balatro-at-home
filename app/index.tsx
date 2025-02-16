@@ -32,9 +32,9 @@ export default function HomeScreen() {
     setModalVisible(true);
   };
 
-  const handleGameStart = (deck: TDeckID, stake: TStakeID, seed?: number) => {
+  const handleGameStart = (deckId: TDeckID, stakeId: TStakeID, seed?: number) => {
     const runSeed = seed || genSeed();
-    router.push(`/play?seed=${runSeed}&stake=${stake}&deck=${deck}`);
+    router.push(`/play?seed=${runSeed}&stake=${stakeId}&deck=${deckId}`);
   };
 
   const handlePlayExit = () => {

@@ -2,10 +2,10 @@ import { TStakeID } from "@/constants/Stakes";
 import { StyleSheet, View, ViewProps } from "react-native";
 
 interface Props extends ViewProps {
-  stake: TStakeID;
+  stakeId: TStakeID;
 }
 
-export default function BStake({ stake, style, ...rest }: Props) {
+export default function BStake({ stakeId, style, ...rest }: Props) {
   return <View style={[styles.stake, style]} {...rest} />;
 }
 

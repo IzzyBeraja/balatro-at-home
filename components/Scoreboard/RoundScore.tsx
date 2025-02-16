@@ -5,10 +5,10 @@ import { StyleSheet, Text, View, ViewProps } from "react-native";
 
 interface Props extends ViewProps {
   roundScore: number;
-  stake: TStakeID;
+  stakeId: TStakeID;
 }
 
-export default function RoundScore({ roundScore, stake, style, ...rest }: Props) {
+export default function RoundScore({ roundScore, stakeId, style, ...rest }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
       <View>
@@ -16,7 +16,7 @@ export default function RoundScore({ roundScore, stake, style, ...rest }: Props)
         <Text style={styles.text}>score</Text>
       </View>
       <View style={styles.scoreContainer}>
-        <StakeChip stake={stake} />
+        <StakeChip stakeId={stakeId} />
         <Text style={styles.text}>{roundScore}</Text>
       </View>
     </View>

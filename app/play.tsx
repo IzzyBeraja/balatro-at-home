@@ -38,7 +38,7 @@ export default function PlayScreen() {
 
   return (
     <View style={[{ width, height, marginLeft: -insets.left }, styles.screen]}>
-      <Scoreboard stage="blind" stake={stake} score={score} style={{ width: 180, flex: 1 }} />
+      <Scoreboard stage="blind" stakeId={stake.id} score={score} style={{ width: 180, flex: 1 }} />
     </View>
   );
 }

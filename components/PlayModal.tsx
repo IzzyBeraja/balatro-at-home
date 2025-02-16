@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Modal, ModalProps, StyleSheet, View } from "react-native";
 
 interface Props extends ModalProps {
-  onPlayPress: (deck: TDeckID, stake: TStakeID) => void;
+  onPlayPress: (deckId: TDeckID, stakeId: TStakeID) => void;
   onBackPress: () => void;
   canContinue: boolean;
 }
