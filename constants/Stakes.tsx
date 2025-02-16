@@ -8,61 +8,65 @@ export type Stake = {
   color: string;
 };
 
-export const stakes = [
-  {
-    id: "white-stake",
+export type StakeID = (typeof stake_array)[number]["id"];
+
+export const stakes = {
+  white: {
+    id: "white",
     name: "White Stake",
     description: <Text>Base Difficulty</Text>,
     image: "whiteStake",
     color: "white",
   },
-  {
-    id: "red-stake",
+  red: {
+    id: "red",
     name: "Red Stake",
     description: <Text>Small Blind</Text>,
     image: "redStake",
     color: "red",
   },
-  {
-    id: "green-stake",
+  green: {
+    id: "green",
     name: "Green Stake",
     description: <Text>Ante scales faster</Text>,
     image: "greenStake",
     color: "green",
   },
-  {
-    id: "black-stake",
+  black: {
+    id: "black",
     name: "Black Stake",
     description: <Text>Eternal jokers</Text>,
     image: "blackStake",
     color: "black",
   },
-  {
-    id: "blue-stake",
-    name: "White Stake",
+  blue: {
+    id: "blue",
+    name: "Blue Stake",
     description: <Text>Base Difficulty</Text>,
     image: "whiteStake",
-    color: "white",
+    color: "blue",
   },
-  {
-    id: "yellow-stake",
-    name: "Red Stake",
-    description: <Text>Small Blind</Text>,
-    image: "redStake",
-    color: "red",
-  },
-  {
-    id: "purple-stake",
-    name: "Green Stake",
+  purple: {
+    id: "purple",
+    name: "Purple Stake",
     description: <Text>Ante scales faster</Text>,
     image: "greenStake",
-    color: "green",
+    color: "purple",
   },
-  {
-    id: "orange-stake",
-    name: "Black Stake",
+  orange: {
+    id: "orange",
+    name: "Orange Stake",
     description: <Text>Eternal jokers</Text>,
     image: "blackStake",
-    color: "black",
+    color: "orange",
   },
-];
+  gold: {
+    id: "gold",
+    name: "Gold Stake",
+    description: <Text>Small Blind</Text>,
+    image: "goldStake",
+    color: "gold",
+  },
+} as const satisfies Record<string, Stake>;
+
+export const stake_array = Object.values(stakes);

@@ -14,4 +14,5 @@ export const Colors = {
   green2ButtonBackground: "rgb(31,74,56)",
   playBackground: "rgb(66,123,98)",
   scoreboard: "rgb(43,53,55)",
+  scoreboardAccent: "rgb(20,31,34)",
 };

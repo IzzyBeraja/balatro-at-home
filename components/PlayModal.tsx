@@ -4,29 +4,27 @@ import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
-import { DeckType } from "@/constants/Decks";
-import { Stake, stakes } from "@/constants/Stakes";
+import { DeckID, deck_array } from "@/constants/Decks";
+import { StakeID, stake_array } from "@/constants/Stakes";
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 
 type Props = {
-  onPlayPress: (deck: number, stake: number) => void;
+  onPlayPress: (deck: DeckID, stake: StakeID) => void;
   onBackPress: () => void;
   canContinue: boolean;
-  decks: DeckType[];
-  stakes: Stake[];
 };
 
 type GameType = "NewRun" | "Continue" | "Challenges";
 
-export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks }: Props) {
+export default function PlayModal({ onPlayPress, onBackPress, canContinue }: Props) {
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
   const [deckIndex, setDeckIndex] = useState(0);
   const [stakeIndex, setStakeIndex] = useState(0);
 
   const handleDeckChange = (index: number) => {
     setDeckIndex(index);
-    setStakeIndex(Math.min(stakeIndex, decks[index].stakeCompleted));
+    setStakeIndex(Math.min(stakeIndex, deck_array[index].stakeCompleted));
   };
 
   return (
@@ -58,22 +56,26 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
             </BButton>
           </View>
           <BHorizontalScroll
-            count={decks.length}
+            count={deck_array.length}
             index={deckIndex}
             setIndex={handleDeckChange}
             style={{ marginBottom: 6 }}
             showCounter
           >
-            <DeckDisplay deck={decks[deckIndex]} stakeIndex={stakeIndex} stakes={stakes} />
+            <DeckDisplay
+              deck={deck_array[deckIndex]}
+              stakeIndex={stakeIndex}
+              stakes={stake_array}
+            />
           </BHorizontalScroll>
           <BHorizontalScroll
-            count={Math.min(decks[deckIndex].stakeCompleted + 1, stakes.length)}
+            count={Math.min(deck_array[deckIndex].stakeCompleted + 1, stake_array.length)}
             index={stakeIndex}
             setIndex={setStakeIndex}
             showCounter
             style={{ marginBottom: 6 }}
           >
-            <StakeDisplay stake={stakes[stakeIndex]} />
+            <StakeDisplay stake={stake_array[stakeIndex]} />
           </BHorizontalScroll>
           <View style={styles.playRow}>
             <View style={{ flex: 2 }} />
@@ -82,7 +84,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, decks
               textStyle={styles.playText}
               defaultColor={Colors.blueButtonBackground}
               pressedColor={Colors.blue2ButtonBackground}
-              onPress={() => onPlayPress(deckIndex, stakeIndex)}
+              onPress={() => onPlayPress(deck_array[deckIndex].id, stake_array[stakeIndex].id)}
             >
               PLAY
             </BButton>

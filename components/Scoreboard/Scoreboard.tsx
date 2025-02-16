@@ -1,5 +1,7 @@
 import { Colors } from "@/constants/Colors";
+import { Stake } from "@/constants/Stakes";
 import { StyleSheet, Text, View, ViewProps } from "react-native";
+import RoundScore from "./RoundScore";
 
 export type ScoreboardDetails = {
   chips: number;
@@ -14,11 +16,12 @@ export type ScoreboardDetails = {
 
 interface Props extends ViewProps {
   stage: "blind";
-  details: ScoreboardDetails;
+  score: ScoreboardDetails;
+  stake: Stake;
 }
 
-export default function Scoreboard({ details, stage, style, ...rest }: Props) {
-  const { chips, mult, hands, discards, money, ante, round, roundScore } = details;
+export default function Scoreboard({ score, stage, stake, style, ...rest }: Props) {
+  const { chips, mult, hands, discards, money, ante, round, roundScore } = score;
 
   return (
     <View style={[styles.scoreboard, style]} {...rest}>
@@ -26,7 +29,7 @@ export default function Scoreboard({ details, stage, style, ...rest }: Props) {
         <Text style={styles.text}>Choose your</Text>
         <Text style={styles.text}>next Blind</Text>
       </View>
-      <View></View>
+      <RoundScore roundScore={roundScore} stake={0} />
     </View>
   );
 }

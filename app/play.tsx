@@ -1,6 +1,7 @@
 import Scoreboard, { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
 import { Colors } from "@/constants/Colors";
-import { decks } from "@/constants/Decks";
+import { DeckID, decks } from "@/constants/Decks";
+import { StakeID, stakes } from "@/constants/Stakes";
 import { shuffleDeck } from "@/game/deck";
 import { genSeed } from "@/game/random";
 import { useRandom } from "@/hooks/useRandom";
@@ -13,15 +14,16 @@ export default function PlayScreen() {
   const insets = useSafeAreaInsets();
   const {
     seed: seedParam = genSeed(),
-    stake: stakeParam = "0",
-    deck: deckParam = "0",
-  } = useLocalSearchParams<"/play", { seed?: string; stake?: string; deck?: string }>();
+    stake: stakeParam = "white",
+    deck: deckParam = "red",
+  } = useLocalSearchParams<"/play", { seed?: string; stake?: StakeID; deck?: DeckID }>();
   const router = useRouter();
   const random = useRandom(seedParam);
-  const deck = decks[parseInt(deckParam, 10)];
+  const stake = stakes[stakeParam];
+  const deck = decks[deckParam];
   const shuffledDeck = shuffleDeck(random, deck.cards);
 
-  const [scoreboardDetails, setScoreboardDetails] = useState<ScoreboardDetails>({
+  const [score, setScore] = useState<ScoreboardDetails>({
     chips: 0,
     mult: 0,
     hands: deck.hands,
@@ -36,7 +38,7 @@ export default function PlayScreen() {
 
   return (
     <View style={[{ width, height, marginLeft: -insets.left }, styles.screen]}>
-      <Scoreboard stage="blind" details={scoreboardDetails} style={{ width: 180, flex: 1 }} />
+      <Scoreboard stage="blind" stake={stake} score={score} style={{ width: 180, flex: 1 }} />
     </View>
   );
 }
