@@ -1,6 +1,6 @@
-import Deck from "@/components/Deck";
-import DeckCounter from "@/components/DeckCounter";
-import DeckDescription from "@/components/DeckDescription";
+import Deck from "@/components/Deck/Deck";
+import DeckCounter from "@/components/Deck/DeckCounter";
+import DeckDescription from "@/components/Deck/DeckDescription";
 import { Colors } from "@/constants/Colors";
 import { DeckType } from "@/constants/Decks";
 import { Stake } from "@/constants/Stakes";

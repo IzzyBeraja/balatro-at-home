@@ -1,5 +1,5 @@
-import DeckDisplay from "@/components/DeckDisplay";
-import StakeDisplay from "@/components/StakeDisplay";
+import DeckDisplay from "@/components/Deck/DeckDisplay";
+import StakeDisplay from "@/components/Stake/StakeDisplay";
 import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";

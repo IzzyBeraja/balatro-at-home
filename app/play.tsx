@@ -1,8 +1,11 @@
+import Scoreboard, { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
+import { Colors } from "@/constants/Colors";
 import { decks } from "@/constants/Decks";
 import { shuffleDeck } from "@/game/deck";
 import { genSeed } from "@/game/random";
 import { useRandom } from "@/hooks/useRandom";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useState } from "react";
 import { Button, Dimensions, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -18,33 +21,33 @@ export default function PlayScreen() {
   const deck = decks[parseInt(deckParam, 10)];
   const shuffledDeck = shuffleDeck(random, deck.cards);
 
+  const [scoreboardDetails, setScoreboardDetails] = useState<ScoreboardDetails>({
+    chips: 0,
+    mult: 0,
+    hands: deck.hands,
+    discards: deck.discards,
+    money: deck.startingMoney,
+    ante: 1,
+    round: 0,
+    roundScore: 0,
+  });
+
   const { width, height } = Dimensions.get("window");
 
   return (
-    <View style={{ width, height, marginLeft: -insets.left }}>
-      <View style={styles.mainContainer}>
-        <Text>GAME!</Text>
-        <Text>{seedParam}</Text>
-        <Text>{stakeParam}</Text>
-        <Text>{deck.name}</Text>
-        <Text>
-          {deck.cards.map(({ rank: value, suit }) => `${value}${suit[0].toUpperCase()}`).join(" ")}
-        </Text>
-        <Text>
-          {shuffledDeck
-            .map(({ rank: value, suit }) => `${value}${suit[0].toUpperCase()}`)
-            .join(" ")}
-        </Text>
-        <Button title="Back" onPress={() => router.back()} />
-      </View>
+    <View style={[{ width, height, marginLeft: -insets.left }, styles.screen]}>
+      <Scoreboard stage="blind" details={scoreboardDetails} style={{ width: 180, flex: 1 }} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: Colors.playBackground,
+    paddingHorizontal: 80,
+  },
   mainContainer: {
     flex: 1,
-    backgroundColor: "rgb(255, 99, 71)",
     justifyContent: "center",
     alignItems: "center",
   },

@@ -1,4 +1,4 @@
-import StakeDescription from "@/components/StakeDescription";
+import StakeDescription from "@/components/Stake/StakeDescription";
 import { Colors } from "@/constants/Colors";
 import { Stake } from "@/constants/Stakes";
 import { StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
