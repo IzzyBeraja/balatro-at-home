@@ -1,9 +1,11 @@
+import StakeChip from "@/components/Stake/StakeChip";
 import { Colors } from "@/constants/Colors";
+import { StakeID } from "@/constants/Stakes";
 import { StyleSheet, Text, View } from "react-native";
 
 interface Props {
   roundScore: number;
-  stake: number;
+  stake: StakeID;
 }
 
 export default function RoundScore({ roundScore, stake }: Props) {
@@ -14,6 +16,7 @@ export default function RoundScore({ roundScore, stake }: Props) {
         <Text style={styles.text}>score</Text>
       </View>
       <View style={styles.scoreContainer}>
+        <StakeChip stake={stake} />
         <Text style={styles.text}>{roundScore}</Text>
       </View>
     </View>
@@ -37,6 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.scoreboard,
+    gap: 4,
   },
   text: {
     color: "white",

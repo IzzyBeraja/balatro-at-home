@@ -2,24 +2,22 @@ import DeckOfCards from "@/components/Deck/Deck";
 import DeckCounter from "@/components/Deck/DeckCounter";
 import DeckDescription from "@/components/Deck/DeckDescription";
 import { Colors } from "@/constants/Colors";
-import { Deck } from "@/constants/Decks";
-import { Stake } from "@/constants/Stakes";
+import { DeckID, decks } from "@/constants/Decks";
 import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type Props = {
-  deck: Deck;
+  deckID: DeckID;
   stakeIndex: number;
-  stakes: Stake[];
   style?: StyleProp<ViewStyle>;
 };
 
-export default function DeckDisplay({ deck, stakeIndex, stakes, style }: Props) {
-  const { name, description, image, unlocked, stakeCompleted } = deck;
+export default function DeckDisplay({ deckID, stakeIndex, style }: Props) {
+  const { name, description, image, unlocked, stakeCompleted } = decks[deckID];
   return (
     <View style={[styles.container, style]}>
       <DeckOfCards deckImage={unlocked ? image : "locked"} />
       <DeckDescription name={name} description={description} />
-      <DeckCounter selected={stakeIndex} numCompleted={stakeCompleted} stakes={stakes} />
+      <DeckCounter selected={stakeIndex} numCompleted={stakeCompleted} />
     </View>
   );
 }

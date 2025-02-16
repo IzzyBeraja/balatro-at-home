@@ -1,5 +1,5 @@
 import { Colors } from "@/constants/Colors";
-import type { Stake } from "@/constants/Stakes";
+import { stakeIds, stakes } from "@/constants/Stakes";
 import { StyleSheet, View } from "react-native";
 
 const blockWidth = 17;
@@ -8,16 +8,21 @@ const blockHeight = 9;
 type Props = {
   selected: number;
   numCompleted: number;
-  stakes: Stake[];
 };
 
-export default function DeckCounter({ selected, numCompleted, stakes }: Props) {
+export default function DeckCounter({ selected, numCompleted }: Props) {
   return (
     <View style={styles.container}>
-      {Array.from({ length: stakes.length }).map((_, i) => {
+      {Array.from({ length: stakeIds.length }).map((_, i) => {
         const is_selected = i === selected;
         if (i < numCompleted)
-          return <CompletedItem key={i} stakeColor={stakes[i].color} is_selected={is_selected} />;
+          return (
+            <CompletedItem
+              key={i}
+              stakeColor={stakes[stakeIds[i]].color}
+              is_selected={is_selected}
+            />
+          );
         if (i === numCompleted) return <UnlockedItem key={i} is_selected={is_selected} />;
         return <DotItem key={i} />;
       })}

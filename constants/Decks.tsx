@@ -2,8 +2,12 @@ import { CardType, all_cards } from "@/constants/Cards";
 import React from "react";
 import { Text } from "react-native";
 
+export const deckIds = ["red", "blue", "yellow", "green", "black", "abandoned"] as const;
+
+export type DeckID = (typeof deckIds)[number];
+
 export type Deck = {
-  id: string;
+  id: DeckID;
   name: string;
   image: string;
   discards: number;
@@ -21,7 +25,7 @@ export type Deck = {
 };
 
 const defaultDeck = {
-  id: "default",
+  id: "red",
   name: "Default Deck",
   image: "deck1",
   discards: 3,
@@ -35,8 +39,6 @@ const defaultDeck = {
   stakeCompleted: 8,
   unlocked: true,
 } as const satisfies Deck;
-
-export type DeckID = (typeof deck_array)[number]["id"];
 
 export const decks = {
   red: {
@@ -89,6 +91,4 @@ export const decks = {
     ),
     description: <Text>+1 consumable slot every round</Text>,
   },
-} as const satisfies Record<string, Deck>;
-
-export const deck_array = Object.values(decks);
+} as const satisfies { [key in DeckID]: { id: key } & Deck };

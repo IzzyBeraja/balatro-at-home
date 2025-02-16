@@ -1,14 +1,25 @@
 import { Text } from "react-native";
 
+export const stakeIds = [
+  "white",
+  "red",
+  "green",
+  "black",
+  "blue",
+  "purple",
+  "orange",
+  "gold",
+] as const;
+
+export type StakeID = (typeof stakeIds)[number];
+
 export type Stake = {
-  id: string;
+  id: StakeID;
   name: string;
   description: React.ReactNode;
   image: string;
   color: string;
 };
-
-export type StakeID = (typeof stake_array)[number]["id"];
 
 export const stakes = {
   white: {
@@ -67,6 +78,4 @@ export const stakes = {
     image: "goldStake",
     color: "gold",
   },
-} as const satisfies Record<string, Stake>;
-
-export const stake_array = Object.values(stakes);
+} as const satisfies { [key in StakeID]: { id: key } & Stake };
