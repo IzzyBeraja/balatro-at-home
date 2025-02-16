@@ -1,7 +1,10 @@
 import { randomGenerator } from "@/game/random";
+import { useMemo } from "react";
 
 export function useRandom(seed: string) {
-  const random = randomGenerator(seed);
-  random.next();
-  return random;
+  return useMemo(() => {
+    const rng = randomGenerator(seed);
+    rng.next();
+    return rng;
+  }, [seed]);
 }

@@ -7,7 +7,7 @@ import { genSeed } from "@/game/random";
 import { useRandom } from "@/hooks/useRandom";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
-import { Button, Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function PlayScreen() {
