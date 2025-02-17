@@ -23,6 +23,7 @@ export default function PlayScreen() {
   const deck = decks[deckParam];
   const shuffledDeck = shuffleDeck(random, deck.cards);
 
+  const handType = "Royal Flush";
   const [score, setScore] = useState<ScoreboardDetails>({
     chips: 0,
     mult: 0,
@@ -38,7 +39,13 @@ export default function PlayScreen() {
 
   return (
     <View style={[{ width, height, marginLeft: -insets.left }, styles.screen]}>
-      <Scoreboard stage="blind" stakeId={stake.id} score={score} style={{ width: 180, flex: 1 }} />
+      <Scoreboard
+        handType={handType}
+        stage="blind"
+        stakeId={stake.id}
+        score={score}
+        style={{ width: 240, flex: 1 }}
+      />
     </View>
   );
 }

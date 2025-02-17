@@ -11,12 +11,11 @@ interface Props extends ViewProps {
 export default function RoundScore({ roundScore, stakeId, style, ...rest }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
-      <View>
-        <Text style={styles.text}>Round</Text>
-        <Text style={styles.text}>score</Text>
+      <View style={{ marginHorizontal: 8 }}>
+        <Text style={styles.text}>{"Round\nscore"}</Text>
       </View>
       <View style={styles.scoreContainer}>
-        <StakeChip stakeId={stakeId} />
+        <StakeChip size={18} stakeId={stakeId} />
         <Text style={styles.text}>{roundScore}</Text>
       </View>
     </View>
@@ -43,6 +42,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   text: {
+    textAlign: "center",
     color: "white",
   },
 });
