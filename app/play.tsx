@@ -2,6 +2,7 @@ import type { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
 import type { TDeckID } from "@/constants/Decks";
 import type { TStakeID } from "@/constants/Stakes";
 
+import TopSelection from "@/components/CardSelection/TopSelection";
 import Scoreboard from "@/components/Scoreboard/Scoreboard";
 import { Colors } from "@/constants/Colors";
 import { decks } from "@/constants/Decks";
@@ -49,8 +50,11 @@ export default function PlayScreen() {
         score={score}
         stage="blind"
         stakeId={stake.id}
-        style={{ flex: 1, width: 240 }}
+        style={{ width: 240 }}
       />
+      <View style={{ flex: 1, height: 128, paddingTop: 12 }}>
+        <TopSelection consumables={["steel"]} jokers={["first"]} maxConsumables={2} maxJokers={5} />
+      </View>
     </View>
   );
 }
@@ -63,6 +67,8 @@ const styles = StyleSheet.create({
   },
   screen: {
     backgroundColor: Colors.green2,
+    flexDirection: "row",
+    gap: 12,
     paddingHorizontal: 80,
   },
 });
