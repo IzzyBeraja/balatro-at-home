@@ -17,21 +17,21 @@ export default function BCounter({ count, index, style, ...rest }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
     gap: 2,
+    justifyContent: "center",
   },
   dot: {
-    width: 4,
-    height: 4,
-    borderRadius: 4,
     backgroundColor: "black",
+    borderRadius: 4,
+    height: 4,
+    width: 4,
   },
   selected: {
-    width: 5,
-    height: 5,
-    borderRadius: 4,
     backgroundColor: "white",
+    borderRadius: 4,
+    height: 5,
+    width: 5,
   },
 });

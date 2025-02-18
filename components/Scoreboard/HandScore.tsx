@@ -28,33 +28,33 @@ export default function HandScore({ chips, mult, handType, style, ...rest }: Pro
 }
 
 const styles = StyleSheet.create({
+  chipsContainer: {
+    alignItems: "flex-end",
+    backgroundColor: Colors.blue,
+  },
   mainContainer: {
     backgroundColor: Colors.scoreboardAccent,
     borderRadius: 12,
     padding: 4,
   },
-  scoreLayout: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 4,
+  multContainer: {
+    alignItems: "flex-start",
+    backgroundColor: Colors.red,
   },
   scoreContainer: {
-    flex: 1,
-    borderRadius: 10,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "red",
-    padding: 6,
+    borderRadius: 10,
+    flex: 1,
     gap: 4,
+    justifyContent: "center",
+    padding: 6,
   },
-  chipsContainer: {
-    backgroundColor: Colors.blue,
-    alignItems: "flex-end",
-  },
-  multContainer: {
-    backgroundColor: Colors.red,
-    alignItems: "flex-start",
+  scoreLayout: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 4,
+    justifyContent: "center",
   },
   text: {
     textAlign: "center",

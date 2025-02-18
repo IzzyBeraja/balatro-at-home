@@ -25,22 +25,22 @@ export default function RoundScore({ roundScore, stakeId, style, ...rest }: Prop
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.scoreboardAccent,
     borderRadius: 12,
+    flexDirection: "row",
+    justifyContent: "center",
     padding: 6,
   },
   scoreContainer: {
-    flex: 1,
-    height: "100%",
-    flexDirection: "row",
-    borderRadius: 10,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: Colors.scoreboard,
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: "row",
     gap: 4,
+    height: "100%",
+    justifyContent: "center",
   },
   text: {
     textAlign: "center",

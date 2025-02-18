@@ -48,28 +48,28 @@ export default function BHorizontalScroll({
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    paddingHorizontal: 16,
-    columnGap: 4,
-  },
-  children: {
-    width: "100%",
-    justifyContent: "center",
-    flexDirection: "row",
-  },
-  childrenWithCounter: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    rowGap: 3,
+  button: {
+    paddingTop: 2, // to center the chevron
+    width: 40,
   },
   chevron: {
     fontSize: 20,
     fontWeight: "bold",
   },
-  button: {
-    paddingTop: 2, // to center the chevron
-    width: 40,
+  children: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "100%",
+  },
+  childrenWithCounter: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+    rowGap: 3,
+  },
+  container: {
+    columnGap: 4,
+    flexDirection: "row",
+    paddingHorizontal: 16,
   },
 });

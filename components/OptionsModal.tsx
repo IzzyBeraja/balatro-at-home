@@ -43,7 +43,7 @@ export default function OptionsModal({
               Credits
             </BButton>
           </View>
-          <BButton style={{ marginTop: 4, backgroundColor: Colors.yellow }} onPress={onBackPress}>
+          <BButton style={{ backgroundColor: Colors.yellow, marginTop: 4 }} onPress={onBackPress}>
             Back
           </BButton>
         </View>
@@ -53,27 +53,27 @@ export default function OptionsModal({
 }
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   contentContainer: {
     backgroundColor: Colors.mainMenuBackground,
+    borderColor: Colors.modalBorderColor,
+    borderRadius: 10,
+    borderWidth: 2,
+    boxShadow: `0px 3px 0px 0px ${Colors.modalShadowColor}`,
     padding: 6,
     paddingTop: 8,
-    borderRadius: 10,
-    borderColor: Colors.modalBorderColor,
-    borderWidth: 2,
     rowGap: 4,
     width: 250,
-    boxShadow: `0px 3px 0px 0px ${Colors.modalShadowColor}`,
   },
-  optionsContainer: {
-    rowGap: 6,
-    paddingHorizontal: 30,
+  modalContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
   },
   options: {
     width: "100%",
+  },
+  optionsContainer: {
+    paddingHorizontal: 30,
+    rowGap: 6,
   },
 });

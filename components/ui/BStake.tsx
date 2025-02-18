@@ -11,9 +11,9 @@ export default function BStake({ stakeId, style, ...rest }: Props) {
 
 const styles = StyleSheet.create({
   stake: {
-    width: 28,
-    height: 28,
     backgroundColor: "red",
     borderRadius: "100%",
+    height: 28,
+    width: 28,
   },
 });

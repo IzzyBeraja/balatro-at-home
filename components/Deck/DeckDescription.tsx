@@ -22,22 +22,22 @@ export default function DeckDescription({
 }
 
 const styles = StyleSheet.create({
-  outerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    rowGap: 6,
-    padding: 3,
-    borderRadius: 6,
-    backgroundColor: Colors.mainMenuBackground,
-  },
   descriptionContainer: {
-    flex: 1,
-    width: "100%",
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    paddingHorizontal: 12,
     borderRadius: 6,
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 12,
+    width: "100%",
+  },
+  outerContainer: {
+    alignItems: "center",
+    backgroundColor: Colors.mainMenuBackground,
+    borderRadius: 6,
+    flex: 1,
+    justifyContent: "center",
+    padding: 3,
+    rowGap: 6,
   },
 });

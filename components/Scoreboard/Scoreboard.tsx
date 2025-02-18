@@ -40,7 +40,7 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
           <BButton style={{ flex: 1 }} onPress={() => {}}>
             {"Run\nInfo"}
           </BButton>
-          <BButton style={{ flex: 1, backgroundColor: Colors.yellow }} onPress={() => {}}>
+          <BButton style={{ backgroundColor: Colors.yellow, flex: 1 }} onPress={() => {}}>
             Options
           </BButton>
         </View>
@@ -71,17 +71,17 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
 }
 
 const styles = StyleSheet.create({
+  infoBox: {
+    flex: 1,
+  },
   scoreboard: {
     backgroundColor: Colors.scoreboard,
     gap: 4,
     paddingBottom: 32,
     paddingHorizontal: 8,
   },
-  infoBox: {
-    flex: 1,
-  },
   text: {
-    textAlign: "center",
     color: "white",
+    textAlign: "center",
   },
 });

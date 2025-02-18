@@ -13,11 +13,11 @@ export default function BArrow({ visible, style, ...rest }: Props) {
 
 const styles = StyleSheet.create({
   arrow: {
-    borderStartWidth: 6,
-    borderStartColor: "transparent",
-    borderTopWidth: 10,
-    borderTopColor: "transparent",
-    borderEndWidth: 6,
     borderEndColor: "transparent",
+    borderEndWidth: 6,
+    borderStartColor: "transparent",
+    borderStartWidth: 6,
+    borderTopColor: "transparent",
+    borderTopWidth: 10,
   },
 });

@@ -39,44 +39,44 @@ export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress
 }
 
 const styles = StyleSheet.create({
-  outerContainer: {
-    flexDirection: "row",
-    backgroundColor: Colors.mainMenuBackground,
-    padding: 6,
-    paddingBottom: 8,
-    width: 340,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
-    gap: 8,
-    boxShadow: `0px 5px 0px -1px ${Colors.defaultShadowColor}`,
-  },
   button: {
     flex: 1,
-    paddingVertical: 8,
     height: "100%",
-  },
-  playButton: {
-    backgroundColor: Colors.blue,
-  },
-  playButtonText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  optionsButton: {
-    flex: 0.7,
-    height: "80%",
-    backgroundColor: Colors.yellow,
-  },
-  optionsButtonText: {
-    fontSize: 12,
-    fontWeight: "bold",
+    paddingVertical: 8,
   },
   collectionButton: {
     backgroundColor: Colors.green,
   },
   collectionButtonText: {
     fontSize: 16,
+    fontWeight: "bold",
+  },
+  optionsButton: {
+    backgroundColor: Colors.yellow,
+    flex: 0.7,
+    height: "80%",
+  },
+  optionsButtonText: {
+    fontSize: 12,
+    fontWeight: "bold",
+  },
+  outerContainer: {
+    alignItems: "center",
+    backgroundColor: Colors.mainMenuBackground,
+    borderRadius: 10,
+    boxShadow: `0px 5px 0px -1px ${Colors.defaultShadowColor}`,
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "center",
+    padding: 6,
+    paddingBottom: 8,
+    width: 340,
+  },
+  playButton: {
+    backgroundColor: Colors.blue,
+  },
+  playButtonText: {
+    fontSize: 24,
     fontWeight: "bold",
   },
 });

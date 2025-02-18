@@ -47,26 +47,26 @@ export default function BButton({ style, children, onPress, disabled = false, te
 
 const styles = StyleSheet.create({
   buttonBase: {
-    position: "relative",
-    overflow: "hidden",
-    justifyContent: "center",
     alignItems: "center",
-    padding: 4,
-    borderRadius: 6,
     backgroundColor: Colors.red,
+    borderRadius: 6,
     boxShadow: `1px 4px 0px -1px ${Colors.defaultShadowColor}`,
+    justifyContent: "center",
+    overflow: "hidden",
+    padding: 4,
+    position: "relative",
+  },
+  dimmer: {
+    backgroundColor: "rgba(0,0,0,0.35)",
   },
   disabled: {
     backgroundColor: Colors.defaultShadowColor,
     boxShadow: "none",
   },
-  dimmer: {
-    backgroundColor: "rgba(0,0,0,0.35)",
+  disabledText: {
+    color: Colors.mainMenuBackground,
   },
   text: {
     color: "white",
-  },
-  disabledText: {
-    color: Colors.mainMenuBackground,
   },
 });

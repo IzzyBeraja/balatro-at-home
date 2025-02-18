@@ -23,13 +23,13 @@ export default function DeckDisplay({ deckID, stakeIndex, style, ...rest }: Prop
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: Colors.defaultShadowColor,
+    borderRadius: 6,
+    columnGap: 6,
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-    columnGap: 6,
-    backgroundColor: Colors.defaultShadowColor,
     padding: 6,
-    borderRadius: 6,
   },
 });

@@ -11,8 +11,8 @@ export default function Deck({ deckImage, style, ...rest }: Props) {
 const styles = StyleSheet.create({
   deck: {
     backgroundColor: "white",
+    borderRadius: 4,
     height: 90,
     width: 60,
-    borderRadius: 4,
   },
 });

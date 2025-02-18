@@ -17,22 +17,22 @@ export default function BInfoBox({ title, children, style, ...rest }: Props) {
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    backgroundColor: Colors.scoreboardAccent,
-    justifyContent: "center",
+  contentContainer: {
     alignItems: "center",
+    backgroundColor: Colors.scoreboard,
+    borderRadius: 4,
+    justifyContent: "center",
+    padding: 4,
+    width: "100%",
+  },
+  mainContainer: {
+    alignItems: "center",
+    backgroundColor: Colors.scoreboardAccent,
     borderRadius: 10,
+    justifyContent: "center",
     padding: 4,
   },
   title: {
     color: "white",
-  },
-  contentContainer: {
-    backgroundColor: Colors.scoreboard,
-    borderRadius: 4,
-    padding: 4,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

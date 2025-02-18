@@ -7,13 +7,13 @@ interface Props extends ViewProps {
 }
 
 export default function StakeChip({ stakeId, size = 32, style, ...rest }: Props) {
-  return <View style={[styles.chip, { width: size, backgroundColor: stakeId }, style]} {...rest} />;
+  return <View style={[styles.chip, { backgroundColor: stakeId, width: size }, style]} {...rest} />;
 }
 
 const styles = StyleSheet.create({
   chip: {
+    aspectRatio: 1,
     backgroundColor: "red",
     borderRadius: "100%",
-    aspectRatio: 1,
   },
 });

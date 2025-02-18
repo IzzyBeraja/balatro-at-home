@@ -5,7 +5,7 @@ export function shuffleDeck(rng: Generator<number, number, NumRange>, cards: TCa
   const shuffledDeck = [...cards];
 
   shuffledDeck.forEach((_, i) => {
-    const j = rng.next({ min: i, max: shuffleDeck.length }).value;
+    const j = rng.next({ max: shuffleDeck.length, min: i }).value;
     [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
   });
 

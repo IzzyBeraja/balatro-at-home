@@ -25,12 +25,12 @@ export default function PlayScreen() {
 
   const handType = "Royal Flush";
   const [score, setScore] = useState<ScoreboardDetails>({
-    chips: 0,
-    mult: 0,
-    hands: deck.hands,
-    discards: deck.discards,
-    money: deck.startingMoney,
     ante: 1,
+    chips: 0,
+    discards: deck.discards,
+    hands: deck.hands,
+    money: deck.startingMoney,
+    mult: 0,
     round: 0,
     roundScore: 0,
   });
@@ -38,26 +38,26 @@ export default function PlayScreen() {
   const { width, height } = Dimensions.get("window");
 
   return (
-    <View style={[{ width, height, marginLeft: -insets.left }, styles.screen]}>
+    <View style={[{ height, marginLeft: -insets.left, width }, styles.screen]}>
       <Scoreboard
         handType={handType}
         stage="blind"
         stakeId={stake.id}
         score={score}
-        style={{ width: 240, flex: 1 }}
+        style={{ flex: 1, width: 240 }}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
   screen: {
     backgroundColor: Colors.green2,
     paddingHorizontal: 80,
-  },
-  mainContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

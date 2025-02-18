@@ -53,7 +53,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={{ width, height, marginLeft: -insets.left }}>
+    <View style={{ height, marginLeft: -insets.left, width }}>
       <View style={styles.mainContainer}>
         <View style={styles.bottomNav}>
           <ProfileNav onPress={handleProfilePress} />
@@ -88,17 +88,17 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: "rgb(255, 99, 71)",
-  },
   bottomNav: {
-    position: "absolute",
+    bottom: 30,
     flexDirection: "row",
     justifyContent: "space-between",
-    bottom: 30,
     left: 90,
+    position: "absolute",
     right: 90,
+  },
+  mainContainer: {
+    backgroundColor: "rgb(255, 99, 71)",
+    flex: 1,
   },
   modalBackdrop: {
     backgroundColor: "rgba(100, 100, 100, 0.5)",

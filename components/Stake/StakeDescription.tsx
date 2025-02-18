@@ -22,23 +22,23 @@ export default function StakeDescription({
 }
 
 const styles = StyleSheet.create({
-  outerContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 6,
-    paddingTop: 0,
-    padding: 2,
-    backgroundColor: Colors.mainMenuBackground,
-  },
   descriptionContainer: {
-    flex: 1,
-    width: "100%",
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    paddingHorizontal: 12,
     borderRadius: 6,
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 12,
+    width: "100%",
+  },
+  outerContainer: {
+    alignItems: "center",
+    backgroundColor: Colors.mainMenuBackground,
+    borderRadius: 6,
+    flex: 1,
+    justifyContent: "center",
+    padding: 2,
+    paddingTop: 0,
   },
   text: {
     color: "white",

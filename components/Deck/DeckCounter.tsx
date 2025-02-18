@@ -54,42 +54,42 @@ const CompletedItem = ({ stakeColor, is_selected }: CompletedItemProps) => (
 );
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "column-reverse",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    rowGap: 3,
-  },
   block: {
-    width: blockWidth,
-    height: blockHeight,
-    borderWidth: 1,
-    borderColor: "transparent",
-    justifyContent: "center",
     alignItems: "center",
+    borderColor: "transparent",
     borderRadius: 2,
+    borderWidth: 1,
+    height: blockHeight,
+    justifyContent: "center",
+    width: blockWidth,
   },
   blockCenter: {
-    borderWidth: 1,
-    borderColor: Colors.mainMenuBackground,
-    width: "100%",
-    height: "100%",
     backgroundColor: Colors.mainMenuBackground,
-  },
-  unlocked: {
-    width: blockWidth - 5,
-    height: blockHeight - 3,
+    borderColor: Colors.mainMenuBackground,
+    borderWidth: 1,
+    height: "100%",
+    width: "100%",
   },
   completed: {
     borderColor: Colors.mainMenuBackground,
   },
+  container: {
+    alignItems: "center",
+    flexDirection: "column-reverse",
+    justifyContent: "space-evenly",
+    rowGap: 3,
+  },
   dot: {
-    width: 4,
-    height: 4,
-    borderRadius: 4,
     backgroundColor: Colors.mainMenuBackground,
+    borderRadius: 4,
+    height: 4,
+    width: 4,
   },
   selected: {
     borderColor: "white",
+  },
+  unlocked: {
+    height: blockHeight - 3,
+    width: blockWidth - 5,
   },
 });

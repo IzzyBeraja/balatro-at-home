@@ -85,7 +85,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
             </BButton>
             <View style={{ flex: 2 }} />
           </View>
-          <BButton style={{ marginTop: 4, backgroundColor: Colors.yellow }} onPress={onBackPress}>
+          <BButton style={{ backgroundColor: Colors.yellow, marginTop: 4 }} onPress={onBackPress}>
             Back
           </BButton>
         </View>
@@ -95,50 +95,50 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
 }
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   contentContainer: {
     backgroundColor: Colors.mainMenuBackground,
+    borderColor: Colors.modalBorderColor,
+    borderRadius: 10,
+    borderWidth: 2,
+    boxShadow: `0px 3px 0px 0px ${Colors.modalShadowColor}`,
     padding: 6,
     paddingTop: 2,
-    borderRadius: 10,
-    borderColor: Colors.modalBorderColor,
-    borderWidth: 2,
     rowGap: 4,
     width: 360,
-    boxShadow: `0px 3px 0px 0px ${Colors.modalShadowColor}`,
+  },
+  gameSelectButton: {
+    flex: 1,
+    padding: 2,
   },
   gameSelection: {
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "flex-end",
     columnGap: 6,
-    paddingHorizontal: 50,
+    flexDirection: "row",
+    justifyContent: "center",
     marginBottom: 12,
+    paddingHorizontal: 50,
+  },
+  gameSelectionArrow: {
+    alignItems: "flex-end",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingHorizontal: 50,
+  },
+  modalContainer: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+  playButton: {
+    backgroundColor: Colors.blue,
+    flex: 3,
+    padding: 2,
   },
   playRow: {
     flexDirection: "row",
   },
-  gameSelectButton: {
-    padding: 2,
-    flex: 1,
-  },
-  playButton: {
-    padding: 2,
-    flex: 3,
-    backgroundColor: Colors.blue,
-  },
   playText: {
     fontSize: 20,
     fontWeight: "bold",
-  },
-  gameSelectionArrow: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "flex-end",
-    paddingHorizontal: 50,
   },
 });

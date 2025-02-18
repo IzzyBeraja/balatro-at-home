@@ -24,24 +24,24 @@ export default function StakeDisplay({ stakeID, style, ...rest }: Props) {
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
+    backgroundColor: Colors.defaultShadowColor,
+    borderRadius: 6,
+    columnGap: 6,
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
-    columnGap: 6,
-    backgroundColor: Colors.defaultShadowColor,
     padding: 6,
-    borderRadius: 6,
   },
 
-  stakeTextContainer: {
-    marginLeft: -16, // Rotation does not affect layout
-    marginRight: -14, // Rotation does not affect layout
-    transform: [{ rotateZ: "270deg" }], // Must rotate container, not text
-  },
   stakeText: {
     color: Colors.mainMenuBackground,
     fontSize: 12,
     fontWeight: "bold",
+  },
+  stakeTextContainer: {
+    marginLeft: -16, // Rotation does not affect layout
+    marginRight: -14, // Rotation does not affect layout
+    transform: [{ rotateZ: "270deg" }], // Must rotate container, not text
   },
 });
