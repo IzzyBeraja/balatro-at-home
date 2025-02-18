@@ -1,8 +1,9 @@
 import { Colors } from "@/constants/Colors";
 import { TStakeID } from "@/constants/Stakes";
-import { StyleSheet, Text, View, ViewProps } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 import BButton from "../ui/BButton";
 import BInfoBox from "../ui/BInfoBox";
+import BText from "../ui/BText";
 import HandScore from "./HandScore";
 import RoundScore from "./RoundScore";
 
@@ -30,7 +31,7 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
   return (
     <View style={[styles.scoreboard, style]} {...rest}>
       <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text style={styles.text}>{"Choose your\nnext blind"}</Text>
+        <BText style={styles.text}>{"Choose your\nnext blind"}</BText>
       </View>
       <RoundScore roundScore={roundScore} stakeId={stakeId} />
       <HandScore handType={handType} chips={chips} mult={mult} />
@@ -46,21 +47,21 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
         <View style={{ flex: 2, gap: 6 }}>
           <View style={{ flexDirection: "row", gap: 6 }}>
             <BInfoBox title="Hands" style={styles.infoBox}>
-              <Text style={styles.text}>{hands}</Text>
+              <BText style={styles.text}>{hands}</BText>
             </BInfoBox>
             <BInfoBox title="Discards" style={styles.infoBox}>
-              <Text style={styles.text}>{discards}</Text>
+              <BText style={styles.text}>{discards}</BText>
             </BInfoBox>
           </View>
           <BInfoBox>
-            <Text style={styles.text}>{money}</Text>
+            <BText style={styles.text}>{money}</BText>
           </BInfoBox>
           <View style={{ flexDirection: "row", gap: 6 }}>
             <BInfoBox title="Ante" style={styles.infoBox}>
-              <Text style={styles.text}>{ante}</Text>
+              <BText style={styles.text}>{ante}</BText>
             </BInfoBox>
             <BInfoBox title="Round" style={styles.infoBox}>
-              <Text style={styles.text}>{round}</Text>
+              <BText style={styles.text}>{round}</BText>
             </BInfoBox>
           </View>
         </View>

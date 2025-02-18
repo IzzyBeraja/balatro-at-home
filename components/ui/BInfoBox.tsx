@@ -1,5 +1,6 @@
+import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, Text, View, ViewProps } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
 interface Props extends ViewProps {
   title?: string;
@@ -9,7 +10,7 @@ interface Props extends ViewProps {
 export default function BInfoBox({ title, children, style, ...rest }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
-      {title != null && <Text style={styles.title}>{title}</Text>}
+      {title != null && <BText style={styles.title}>{title}</BText>}
       <View style={styles.contentContainer}>{children}</View>
     </View>
   );

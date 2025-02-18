@@ -1,15 +1,14 @@
 import {
-  ColorValue,
   Pressable,
   PressableProps,
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   View,
   ViewStyle,
 } from "react-native";
 
+import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
 
 interface Props extends PressableProps {
@@ -37,12 +36,9 @@ export default function BButton({ style, children, onPress, disabled = false, te
       {({ pressed }) => (
         <>
           {pressed && <View style={[StyleSheet.absoluteFill, styles.dimmer]} />}
-          <Text
-            selectable={false}
-            style={[styles.text, disabled && styles.disabledText, textStyle]}
-          >
+          <BText style={[styles.text, disabled && styles.disabledText, textStyle]}>
             {children}
-          </Text>
+          </BText>
         </>
       )}
     </Pressable>

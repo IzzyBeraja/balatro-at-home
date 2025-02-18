@@ -1,6 +1,7 @@
+import BText from "@/components/ui/BText";
 import { TCard, all_cards } from "@/constants/Cards";
+import { Colors } from "@/constants/Colors";
 import React from "react";
-import { Text } from "react-native";
 
 export const deckIds = ["red", "blue", "yellow", "green", "black", "abandoned"] as const;
 
@@ -34,7 +35,7 @@ const defaultDeck = {
   gainsInterest: true,
   jokerSlots: 1,
   consumableSlots: 1,
-  description: <Text>The default deck</Text>,
+  description: <BText color={Colors.black}>The default deck</BText>,
   cards: all_cards,
   stakeCompleted: 8,
   unlocked: true,
@@ -47,7 +48,7 @@ export const decks = {
     name: "Red Deck",
     image: "red_deck",
     discards: defaultDeck.discards + 1,
-    description: <Text>+1 discard every round</Text>,
+    description: <BText color={Colors.black}>+1 discard every round</BText>,
   },
   blue: {
     ...defaultDeck,
@@ -55,7 +56,7 @@ export const decks = {
     name: "Blue Deck",
     image: "blue_deck",
     hands: defaultDeck.hands + 1,
-    description: <Text>+1 hand every round</Text>,
+    description: <BText color={Colors.black}>+1 hand every round</BText>,
   },
   yellow: {
     ...defaultDeck,
@@ -63,7 +64,7 @@ export const decks = {
     name: "Yellow Deck",
     image: "yellow_deck",
     startingMoney: defaultDeck.startingMoney + 10,
-    description: <Text>Start with extra $10</Text>,
+    description: <BText color={Colors.black}>Start with extra $10</BText>,
   },
   green: {
     ...defaultDeck,
@@ -79,7 +80,7 @@ export const decks = {
     image: "black_deck",
     jokerSlots: defaultDeck.jokerSlots + 1,
     hands: defaultDeck.hands - 1,
-    description: <Text>+1 joker slot -1 hand every round</Text>,
+    description: <BText color={Colors.black}>+1 joker slot -1 hand every round</BText>,
   },
   abandoned: {
     ...defaultDeck,
@@ -89,6 +90,6 @@ export const decks = {
     cards: defaultDeck.cards.filter(
       (card) => card.rank !== "J" && card.rank !== "Q" && card.rank !== "K"
     ),
-    description: <Text>+1 consumable slot every round</Text>,
+    description: <BText color={Colors.black}>+1 consumable slot every round</BText>,
   },
 } as const satisfies { [key in TDeckID]: { id: key } & TDeck };

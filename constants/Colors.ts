@@ -4,6 +4,7 @@ export const Colors = {
   modalShadowColor: "rgb(118,116,132)",
   modalBorderColor: "rgb(172,193,195)",
   secondaryButtonBackground: "rgb(111,131,134)",
+  black: "rgb(0,0,0)",
   red: "rgb(254,76,64)",
   blue: "rgb(0,147,254)",
   yellow: "rgb(253,153,0)",
@@ -11,4 +12,6 @@ export const Colors = {
   green2: "rgb(66,123,98)",
   scoreboard: "rgb(43,53,55)",
   scoreboardAccent: "rgb(20,31,34)",
-};
+} as const;
+
+export type TColors = (typeof Colors)[keyof typeof Colors];

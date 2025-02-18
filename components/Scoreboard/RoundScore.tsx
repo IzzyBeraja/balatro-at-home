@@ -1,7 +1,8 @@
 import StakeChip from "@/components/Stake/StakeChip";
 import { Colors } from "@/constants/Colors";
 import { TStakeID } from "@/constants/Stakes";
-import { StyleSheet, Text, View, ViewProps } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
+import BText from "../ui/BText";
 
 interface Props extends ViewProps {
   roundScore: number;
@@ -12,11 +13,11 @@ export default function RoundScore({ roundScore, stakeId, style, ...rest }: Prop
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
       <View style={{ marginHorizontal: 8 }}>
-        <Text style={styles.text}>{"Round\nscore"}</Text>
+        <BText style={styles.text}>{"Round\nscore"}</BText>
       </View>
       <View style={styles.scoreContainer}>
         <StakeChip size={18} stakeId={stakeId} />
-        <Text style={styles.text}>{roundScore}</Text>
+        <BText style={styles.text}>{roundScore}</BText>
       </View>
     </View>
   );
@@ -43,6 +44,5 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    color: "white",
   },
 });

@@ -1,5 +1,6 @@
+import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, Text, View, ViewProps } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
 interface Props extends ViewProps {
   name: string;
@@ -8,13 +9,13 @@ interface Props extends ViewProps {
 
 export default function StakeDescription({
   name = "Deck Name",
-  description = <Text>Deck Description</Text>,
+  description = <BText>Deck Description</BText>,
   style,
   ...rest
 }: Props) {
   return (
     <View style={[styles.outerContainer, style]} {...rest}>
-      <Text style={styles.text}>{name}</Text>
+      <BText style={styles.text}>{name}</BText>
       <View style={styles.descriptionContainer}>{description}</View>
     </View>
   );

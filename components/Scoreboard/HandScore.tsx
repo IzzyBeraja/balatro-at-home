@@ -1,5 +1,6 @@
+import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, Text, View, ViewProps } from "react-native";
+import { StyleSheet, View, ViewProps } from "react-native";
 
 interface Props extends ViewProps {
   handType: string;
@@ -10,14 +11,16 @@ interface Props extends ViewProps {
 export default function HandScore({ chips, mult, handType, style, ...rest }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
-      <Text style={styles.text}>{handType}</Text>
+      <BText style={styles.text}>{handType}</BText>
       <View style={styles.scoreLayout}>
         <View style={[styles.scoreContainer, styles.chipsContainer]}>
-          <Text style={styles.text}>{chips}</Text>
+          <BText style={styles.text}>{chips}</BText>
         </View>
-        <Text style={{ color: "red", fontSize: 24, fontWeight: "bold" }}>{"X"}</Text>
+        <BText size="large" bold color={Colors.red}>
+          {"X"}
+        </BText>
         <View style={[styles.scoreContainer, styles.multContainer]}>
-          <Text style={styles.text}>{mult}</Text>
+          <BText style={styles.text}>{mult}</BText>
         </View>
       </View>
     </View>
@@ -55,6 +58,5 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: "center",
-    color: "white",
   },
 });

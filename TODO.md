@@ -18,7 +18,7 @@
 
 ## BE
 
-- [ ] Create BText component for handling text
+- [x] Create BText component for handling text
 - [ ] Re-add Balatro font with proper spacing
 - [x] Update BButton to handle pressed colors automatically
 - [ ] Add lint rules such as alphabetically ordered objects, import rules, etc.
