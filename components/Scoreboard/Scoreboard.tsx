@@ -39,30 +39,25 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
           <BButton style={{ flex: 1 }} onPress={() => {}}>
             {"Run\nInfo"}
           </BButton>
-          <BButton
-            defaultColor={Colors.yellowButtonBackground}
-            pressedColor={Colors.yellow2ButtonBackground}
-            style={{ flex: 1 }}
-            onPress={() => {}}
-          >
+          <BButton style={{ flex: 1, backgroundColor: Colors.yellow }} onPress={() => {}}>
             Options
           </BButton>
         </View>
         <View style={{ flex: 2, gap: 6 }}>
           <View style={{ flexDirection: "row", gap: 6 }}>
             <BInfoBox title="Hands" style={styles.infoBox}>
-              <Text style={styles.text}>{round}</Text>
+              <Text style={styles.text}>{hands}</Text>
             </BInfoBox>
             <BInfoBox title="Discards" style={styles.infoBox}>
-              <Text style={styles.text}>{round}</Text>
+              <Text style={styles.text}>{discards}</Text>
             </BInfoBox>
           </View>
           <BInfoBox>
-            <Text style={styles.text}>{round}</Text>
+            <Text style={styles.text}>{money}</Text>
           </BInfoBox>
           <View style={{ flexDirection: "row", gap: 6 }}>
             <BInfoBox title="Ante" style={styles.infoBox}>
-              <Text style={styles.text}>{round}</Text>
+              <Text style={styles.text}>{ante}</Text>
             </BInfoBox>
             <BInfoBox title="Round" style={styles.infoBox}>
               <Text style={styles.text}>{round}</Text>

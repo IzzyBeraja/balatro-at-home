@@ -12,13 +12,7 @@ export default function ProfileNav({ style, onPress, ...rest }: Props) {
       <Text selectable={false} style={styles.outerText}>
         Profile
       </Text>
-      <BButton
-        defaultColor={Colors.secondaryButtonBackground}
-        pressedColor={Colors.mainMenuBackground}
-        onPress={onPress}
-        style={styles.innerContainer}
-        textStyle={styles.innerText}
-      >
+      <BButton onPress={onPress} style={styles.innerContainer} textStyle={styles.innerText}>
         P1
       </BButton>
     </View>
@@ -47,6 +41,7 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     alignItems: "center",
     borderRadius: 6,
+    backgroundColor: Colors.secondaryButtonBackground,
   },
   innerText: {
     color: "white",

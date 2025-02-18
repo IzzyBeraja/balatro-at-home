@@ -46,11 +46,11 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   chipsContainer: {
-    backgroundColor: Colors.blueButtonBackground,
+    backgroundColor: Colors.blue,
     alignItems: "flex-end",
   },
   multContainer: {
-    backgroundColor: Colors.defaultButtonBackground,
+    backgroundColor: Colors.red,
     alignItems: "flex-start",
   },
   text: {

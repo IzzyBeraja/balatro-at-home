@@ -43,12 +43,7 @@ export default function OptionsModal({
               Credits
             </BButton>
           </View>
-          <BButton
-            style={{ marginTop: 4 }}
-            defaultColor={Colors.yellowButtonBackground}
-            pressedColor={Colors.yellow2ButtonBackground}
-            onPress={onBackPress}
-          >
+          <BButton style={{ marginTop: 4, backgroundColor: Colors.yellow }} onPress={onBackPress}>
             Back
           </BButton>
         </View>

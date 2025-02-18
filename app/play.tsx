@@ -52,7 +52,7 @@ export default function PlayScreen() {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: Colors.playBackground,
+    backgroundColor: Colors.green2,
     paddingHorizontal: 80,
   },
   mainContainer: {

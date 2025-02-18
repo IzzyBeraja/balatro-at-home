@@ -7,10 +7,7 @@ interface Props extends ViewProps {
 
 export default function BArrow({ visible, style, ...rest }: Props) {
   return (
-    <View
-      style={[styles.arrow, visible && { borderTopColor: Colors.defaultButtonBackground }, style]}
-      {...rest}
-    />
+    <View style={[styles.arrow, visible && { borderTopColor: Colors.red }, style]} {...rest} />
   );
 }
 

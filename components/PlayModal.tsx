@@ -79,20 +79,13 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
             <BButton
               style={styles.playButton}
               textStyle={styles.playText}
-              defaultColor={Colors.blueButtonBackground}
-              pressedColor={Colors.blue2ButtonBackground}
               onPress={() => onPlayPress(deckIds[deckIndex], stakeIds[stakeIndex])}
             >
               PLAY
             </BButton>
             <View style={{ flex: 2 }} />
           </View>
-          <BButton
-            style={{ marginTop: 4 }}
-            defaultColor={Colors.yellowButtonBackground}
-            pressedColor={Colors.yellow2ButtonBackground}
-            onPress={onBackPress}
-          >
+          <BButton style={{ marginTop: 4, backgroundColor: Colors.yellow }} onPress={onBackPress}>
             Back
           </BButton>
         </View>
@@ -136,6 +129,7 @@ const styles = StyleSheet.create({
   playButton: {
     padding: 2,
     flex: 3,
+    backgroundColor: Colors.blue,
   },
   playText: {
     fontSize: 20,
