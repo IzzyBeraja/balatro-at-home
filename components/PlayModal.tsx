@@ -1,13 +1,18 @@
+import type { TDeckID} from "@/constants/Decks";
+import type { TStakeID} from "@/constants/Stakes";
+import type { ModalProps} from "react-native";
+
 import DeckDisplay from "@/components/Deck/DeckDisplay";
 import StakeDisplay from "@/components/Stake/StakeDisplay";
 import BArrow from "@/components/ui/BArrow";
 import BButton from "@/components/ui/BButton";
 import BHorizontalScroll from "@/components/ui/BHorizontalScroll";
 import { Colors } from "@/constants/Colors";
-import { TDeckID, deckIds, decks } from "@/constants/Decks";
-import { TStakeID, stakeIds } from "@/constants/Stakes";
+import { deckIds, decks } from "@/constants/Decks";
+import { stakeIds } from "@/constants/Stakes";
+
 import { useState } from "react";
-import { Modal, ModalProps, StyleSheet, View } from "react-native";
+import { Modal, StyleSheet, View } from "react-native";
 
 interface Props extends ModalProps {
   onPlayPress: (deckId: TDeckID, stakeId: TStakeID) => void;

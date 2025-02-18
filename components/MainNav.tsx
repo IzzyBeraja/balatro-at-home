@@ -1,6 +1,9 @@
+import type { StyleProp, ViewStyle } from "react-native";
+
 import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+
+import { StyleSheet, View } from "react-native";
 
 interface Props {
   onPlayPress: () => void;

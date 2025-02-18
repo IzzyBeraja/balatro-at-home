@@ -1,10 +1,12 @@
+import type { TDeckID } from "@/constants/Decks";
+import type { TStakeID } from "@/constants/Stakes";
+
 import MainNav from "@/components/MainNav";
 import OptionsModal from "@/components/OptionsModal";
 import PlayModal from "@/components/PlayModal";
 import ProfileNav from "@/components/ProfleNav";
-import { TDeckID } from "@/constants/Decks";
-import { TStakeID } from "@/constants/Stakes";
 import { genSeed } from "@/game/random";
+
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";

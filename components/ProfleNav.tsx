@@ -1,7 +1,10 @@
+import type { ViewProps } from "react-native";
+
 import BButton from "@/components/ui/BButton";
 import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
-import { StyleSheet, View, ViewProps } from "react-native";
+
+import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   onPress: () => void;

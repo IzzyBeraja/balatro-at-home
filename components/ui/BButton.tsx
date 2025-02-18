@@ -1,15 +1,17 @@
-import {
-  Pressable,
+import type {
   PressableProps,
   StyleProp,
-  StyleSheet,
   TextStyle,
-  View,
-  ViewStyle,
-} from "react-native";
+  ViewStyle} from "react-native";
 
 import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
+
+import {
+  Pressable,
+  StyleSheet,
+  View
+} from "react-native";
 
 interface Props extends PressableProps {
   onPress: () => void;

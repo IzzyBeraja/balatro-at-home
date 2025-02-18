@@ -1,4 +1,6 @@
-import { StyleSheet, View, ViewProps } from "react-native";
+import type { ViewProps } from "react-native";
+
+import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   deckImage: string;

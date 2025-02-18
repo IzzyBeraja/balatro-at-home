@@ -1,5 +1,7 @@
-import { TStakeID } from "@/constants/Stakes";
-import { StyleSheet, View, ViewProps } from "react-native";
+import type { TStakeID } from "@/constants/Stakes";
+import type { ViewProps } from "react-native";
+
+import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   stakeId: TStakeID;

@@ -1,11 +1,14 @@
+import type { TStakeID } from "@/constants/Stakes";
+import type { ViewProps } from "react-native";
+
+import HandScore from "@/components/Scoreboard/HandScore";
+import RoundScore from "@/components/Scoreboard/RoundScore";
+import BButton from "@/components/ui/BButton";
+import BInfoBox from "@/components/ui/BInfoBox";
+import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
-import { TStakeID } from "@/constants/Stakes";
-import { StyleSheet, View, ViewProps } from "react-native";
-import BButton from "../ui/BButton";
-import BInfoBox from "../ui/BInfoBox";
-import BText from "../ui/BText";
-import HandScore from "./HandScore";
-import RoundScore from "./RoundScore";
+
+import { StyleSheet, View } from "react-native";
 
 export type ScoreboardDetails = {
   chips: number;

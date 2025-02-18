@@ -1,6 +1,9 @@
+import type { ViewProps } from "react-native";
+
 import BButton from "@/components/ui/BButton";
 import BCounter from "@/components/ui/BCounter";
-import { StyleSheet, View, ViewProps } from "react-native";
+
+import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   count: number;

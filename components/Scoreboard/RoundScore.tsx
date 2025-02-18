@@ -1,8 +1,11 @@
+import type { TStakeID } from "@/constants/Stakes";
+import type { ViewProps } from "react-native";
+
 import StakeChip from "@/components/Stake/StakeChip";
+import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
-import { TStakeID } from "@/constants/Stakes";
-import { StyleSheet, View, ViewProps } from "react-native";
-import BText from "../ui/BText";
+
+import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   roundScore: number;

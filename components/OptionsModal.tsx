@@ -1,6 +1,9 @@
+import type { ModalProps} from "react-native";
+
 import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
-import { Modal, ModalProps, StyleSheet, View } from "react-native";
+
+import { Modal, StyleSheet, View } from "react-native";
 
 interface Props extends ModalProps {
   onSettingsPress: () => void;

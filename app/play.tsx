@@ -1,10 +1,15 @@
-import Scoreboard, { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
+import type { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
+import type { TDeckID} from "@/constants/Decks";
+import type { TStakeID} from "@/constants/Stakes";
+
+import Scoreboard from "@/components/Scoreboard/Scoreboard";
 import { Colors } from "@/constants/Colors";
-import { TDeckID, decks } from "@/constants/Decks";
-import { TStakeID, stakes } from "@/constants/Stakes";
+import { decks } from "@/constants/Decks";
+import { stakes } from "@/constants/Stakes";
 import { shuffleDeck } from "@/game/deck";
 import { genSeed } from "@/game/random";
 import { useRandom } from "@/hooks/useRandom";
+
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
 import { Dimensions, StyleSheet, View } from "react-native";

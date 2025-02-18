@@ -1,9 +1,14 @@
+import type { TDeckID} from "@/constants/Decks";
+import type { ViewProps } from "react-native";
+
 import DeckOfCards from "@/components/Deck/Deck";
 import DeckCounter from "@/components/Deck/DeckCounter";
 import DeckDescription from "@/components/Deck/DeckDescription";
 import { Colors } from "@/constants/Colors";
-import { TDeckID, decks } from "@/constants/Decks";
-import { StyleSheet, View, ViewProps } from "react-native";
+import { decks } from "@/constants/Decks";
+
+
+import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   deckID: TDeckID;

@@ -1,6 +1,9 @@
+import type { ViewProps } from "react-native";
+
 import { Colors } from "@/constants/Colors";
 import { stakeIds, stakes } from "@/constants/Stakes";
-import { StyleSheet, View, ViewProps } from "react-native";
+
+import { StyleSheet, View } from "react-native";
 
 const blockWidth = 17;
 const blockHeight = 9;

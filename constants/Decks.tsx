@@ -1,6 +1,9 @@
+import type { TCard} from "@/constants/Cards";
+
 import BText from "@/components/ui/BText";
-import { TCard, all_cards } from "@/constants/Cards";
+import { all_cards } from "@/constants/Cards";
 import { Colors } from "@/constants/Colors";
+
 import React from "react";
 
 export const deckIds = ["red", "blue", "yellow", "green", "black", "abandoned"] as const;

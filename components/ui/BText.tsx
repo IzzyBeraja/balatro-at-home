@@ -1,5 +1,7 @@
-import { TColors } from "@/constants/Colors";
-import { StyleSheet, Text, TextProps } from "react-native";
+import type { TColors } from "@/constants/Colors";
+import type { TextProps } from "react-native";
+
+import { StyleSheet, Text } from "react-native";
 
 type TextSize = "small" | "medium" | "large";
 
