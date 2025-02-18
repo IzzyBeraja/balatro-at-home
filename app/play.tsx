@@ -2,6 +2,7 @@ import type { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
 import type { TDeckID } from "@/constants/Decks";
 import type { TStakeID } from "@/constants/Stakes";
 
+import HandSelection from "@/components/CardSelection/HandSelection";
 import TopSelection from "@/components/CardSelection/TopSelection";
 import Scoreboard from "@/components/Scoreboard/Scoreboard";
 import { Colors } from "@/constants/Colors";
@@ -52,8 +53,22 @@ export default function PlayScreen() {
         stakeId={stake.id}
         style={{ width: 240 }}
       />
-      <View style={{ flex: 1, height: 128, paddingTop: 12 }}>
-        <TopSelection consumables={["steel"]} jokers={["first"]} maxConsumables={2} maxJokers={5} />
+      <View style={{ flex: 1, justifyContent: "space-between", paddingTop: 12 }}>
+        <TopSelection
+          consumables={["steel"]}
+          jokers={["first"]}
+          maxConsumables={2}
+          maxJokers={5}
+          style={{ height: 120 }}
+        />
+        <HandSelection
+          cardsLeft={34}
+          hand={[]}
+          isSelecting
+          maxHand={8}
+          style={{ height: 120 }}
+          totalCards={52}
+        />
       </View>
     </View>
   );

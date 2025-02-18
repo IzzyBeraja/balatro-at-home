@@ -45,10 +45,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   mainContainer: {
-    flex: 1,
     flexDirection: "row",
     gap: 8,
-    height: 128,
   },
   outerConsumableContainer: {
     flex: 1,
