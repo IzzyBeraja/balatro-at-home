@@ -1,6 +1,6 @@
 import type { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
-import type { TDeckID} from "@/constants/Decks";
-import type { TStakeID} from "@/constants/Stakes";
+import type { TDeckID } from "@/constants/Decks";
+import type { TStakeID } from "@/constants/Stakes";
 
 import Scoreboard from "@/components/Scoreboard/Scoreboard";
 import { Colors } from "@/constants/Colors";
@@ -46,9 +46,9 @@ export default function PlayScreen() {
     <View style={[{ height, marginLeft: -insets.left, width }, styles.screen]}>
       <Scoreboard
         handType={handType}
+        score={score}
         stage="blind"
         stakeId={stake.id}
-        score={score}
         style={{ flex: 1, width: 240 }}
       />
     </View>

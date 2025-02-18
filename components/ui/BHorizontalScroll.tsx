@@ -28,8 +28,8 @@ export default function BHorizontalScroll({
     <View style={[styles.container, style]}>
       <BButton
         disabled={count <= 1}
-        textStyle={styles.chevron}
         style={styles.button}
+        textStyle={styles.chevron}
         onPress={handleLeft}
       >
         {"\u2039"}
@@ -40,8 +40,8 @@ export default function BHorizontalScroll({
       </View>
       <BButton
         disabled={count <= 1}
-        textStyle={styles.chevron}
         style={styles.button}
+        textStyle={styles.chevron}
         onPress={handleRight}
       >
         {"\u203A"}

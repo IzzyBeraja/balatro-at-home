@@ -22,7 +22,7 @@ export default function StakeDisplay({ stakeID, style, ...rest }: Props) {
         <BText style={styles.stakeText}>Stake</BText>
       </View>
       <StakeChip stakeId={id} style={{ backgroundColor: color }} />
-      <StakeDescription name={name} description={description} />
+      <StakeDescription description={description} name={name} />
     </View>
   );
 }

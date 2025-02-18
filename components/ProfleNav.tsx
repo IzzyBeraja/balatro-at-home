@@ -14,7 +14,7 @@ export default function ProfileNav({ style, onPress, ...rest }: Props) {
   return (
     <View style={[styles.outerContainer, style]} {...rest}>
       <BText selectable={false}>Profile</BText>
-      <BButton onPress={onPress} style={styles.innerContainer}>
+      <BButton style={styles.innerContainer} onPress={onPress}>
         P1
       </BButton>
     </View>

@@ -3,7 +3,7 @@ module.exports = {
   extends: "expo",
   ignorePatterns: ["/dist/*"],
   parser: "@typescript-eslint/parser",
-  plugins: ["sort-keys-fix", "import"],
+  plugins: ["sort-keys-fix", "import", "react"],
   rules: {
     "@typescript-eslint/consistent-type-imports": [
       "error",
@@ -34,6 +34,17 @@ module.exports = {
       "error",
       {
         patterns: ["./*", "../*"],
+      },
+    ],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        callbacksLast: true,
+        ignoreCase: false,
+        noSortAlphabetically: false,
+        reservedFirst: true,
+        shorthandFirst: false,
+        shorthandLast: false,
       },
     ],
     // This rule will actually sort keys instead of the sort-keys rule which only checks if they are sorted

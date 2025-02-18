@@ -34,11 +34,11 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
 
   return (
     <Modal
-      transparent
-      onRequestClose={onBackPress}
       animationType="slide"
-      visible
       supportedOrientations={["landscape"]}
+      transparent
+      visible
+      onRequestClose={onBackPress}
       {...rest}
     >
       <View style={styles.modalContainer}>
@@ -65,8 +65,8 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
             count={deckIds.length}
             index={deckIndex}
             setIndex={handleDeckChange}
-            style={{ marginBottom: 6 }}
             showCounter
+            style={{ marginBottom: 6 }}
           >
             <DeckDisplay deckID={deckIds[deckIndex]} stakeIndex={stakeIndex} />
           </BHorizontalScroll>

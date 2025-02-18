@@ -1,4 +1,4 @@
-import type { ModalProps} from "react-native";
+import type { ModalProps } from "react-native";
 
 import BButton from "@/components/ui/BButton";
 import { Colors } from "@/constants/Colors";
@@ -23,11 +23,11 @@ export default function OptionsModal({
 }: Props) {
   return (
     <Modal
-      transparent
-      onRequestClose={onBackPress}
       animationType="slide"
-      visible
       supportedOrientations={["landscape"]}
+      transparent
+      visible
+      onRequestClose={onBackPress}
       {...rest}
     >
       <View style={styles.modalContainer}>

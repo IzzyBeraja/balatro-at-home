@@ -19,7 +19,7 @@ export default function HandScore({ chips, mult, handType, style, ...rest }: Pro
         <View style={[styles.scoreContainer, styles.chipsContainer]}>
           <BText style={styles.text}>{chips}</BText>
         </View>
-        <BText size="large" bold color={Colors.red}>
+        <BText bold color={Colors.red} size="large">
           {"X"}
         </BText>
         <View style={[styles.scoreContainer, styles.multContainer]}>

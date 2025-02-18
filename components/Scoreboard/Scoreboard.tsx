@@ -37,7 +37,7 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
         <BText style={styles.text}>{"Choose your\nnext blind"}</BText>
       </View>
       <RoundScore roundScore={roundScore} stakeId={stakeId} />
-      <HandScore handType={handType} chips={chips} mult={mult} />
+      <HandScore chips={chips} handType={handType} mult={mult} />
       <View style={{ flexDirection: "row", gap: 4 }}>
         <View style={{ flex: 1, gap: 8 }}>
           <BButton style={{ flex: 1 }} onPress={() => {}}>
@@ -49,10 +49,10 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
         </View>
         <View style={{ flex: 2, gap: 6 }}>
           <View style={{ flexDirection: "row", gap: 6 }}>
-            <BInfoBox title="Hands" style={styles.infoBox}>
+            <BInfoBox style={styles.infoBox} title="Hands">
               <BText style={styles.text}>{hands}</BText>
             </BInfoBox>
-            <BInfoBox title="Discards" style={styles.infoBox}>
+            <BInfoBox style={styles.infoBox} title="Discards">
               <BText style={styles.text}>{discards}</BText>
             </BInfoBox>
           </View>
@@ -60,10 +60,10 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
             <BText style={styles.text}>{money}</BText>
           </BInfoBox>
           <View style={{ flexDirection: "row", gap: 6 }}>
-            <BInfoBox title="Ante" style={styles.infoBox}>
+            <BInfoBox style={styles.infoBox} title="Ante">
               <BText style={styles.text}>{ante}</BText>
             </BInfoBox>
-            <BInfoBox title="Round" style={styles.infoBox}>
+            <BInfoBox style={styles.infoBox} title="Round">
               <BText style={styles.text}>{round}</BText>
             </BInfoBox>
           </View>

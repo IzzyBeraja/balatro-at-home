@@ -26,7 +26,6 @@ export default function BButton({ style, children, onPress, disabled = false, te
   return (
     <Pressable
       disabled={disabled}
-      onPress={onPress}
       style={({ pressed }) => [
         styles.buttonBase,
         pressed && { boxShadow: "none" },
@@ -34,6 +33,7 @@ export default function BButton({ style, children, onPress, disabled = false, te
         disabled && styles.disabled,
         style,
       ]}
+      onPress={onPress}
     >
       {({ pressed }) => (
         <>

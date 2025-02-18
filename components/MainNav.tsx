@@ -17,23 +17,23 @@ export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress
   return (
     <View style={[styles.outerContainer, style]}>
       <BButton
-        onPress={onPlayPress}
         style={[styles.button, styles.playButton]}
         textStyle={styles.playButtonText}
+        onPress={onPlayPress}
       >
         PLAY
       </BButton>
       <BButton
-        onPress={onOptionsPress}
-        textStyle={styles.optionsButtonText}
         style={styles.optionsButton}
+        textStyle={styles.optionsButtonText}
+        onPress={onOptionsPress}
       >
         OPTIONS
       </BButton>
       <BButton
-        onPress={onCollectionPress}
         style={[styles.button, styles.collectionButton]}
         textStyle={styles.collectionButtonText}
+        onPress={onCollectionPress}
       >
         COLLECTION
       </BButton>

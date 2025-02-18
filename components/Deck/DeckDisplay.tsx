@@ -20,8 +20,8 @@ export default function DeckDisplay({ deckID, stakeIndex, style, ...rest }: Prop
   return (
     <View style={[styles.container, style]} {...rest}>
       <DeckOfCards deckImage={unlocked ? image : "locked"} />
-      <DeckDescription name={name} description={description} />
-      <DeckCounter selected={stakeIndex} numCompleted={stakeCompleted} />
+      <DeckDescription description={description} name={name} />
+      <DeckCounter numCompleted={stakeCompleted} selected={stakeIndex} />
     </View>
   );
 }

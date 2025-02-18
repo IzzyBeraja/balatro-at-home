@@ -60,10 +60,10 @@ export default function HomeScreen() {
         <View style={styles.bottomNav}>
           <ProfileNav onPress={handleProfilePress} />
           <MainNav
-            onPlayPress={handlePlayPress}
-            onOptionsPress={handleOptionsPress}
-            onCollectionPress={handleShowCollectionModal}
             collectionVisible={modalVisible}
+            onCollectionPress={handleShowCollectionModal}
+            onOptionsPress={handleOptionsPress}
+            onPlayPress={handlePlayPress}
           />
           <ProfileNav onPress={handleProfilePress} />
         </View>
@@ -76,11 +76,11 @@ export default function HomeScreen() {
         )}
         {optionsVisible && (
           <OptionsModal
+            onBackPress={handleOptionsExit}
+            onCreditsPress={handleOptionsPress}
+            onCustomizeDeckPress={handleOptionsPress}
             onSettingsPress={handleOptionsPress}
             onStatsPress={handleOptionsPress}
-            onCustomizeDeckPress={handleOptionsPress}
-            onCreditsPress={handleOptionsPress}
-            onBackPress={handleOptionsExit}
           />
         )}
         {modalVisible && <View style={styles.modalBackdrop} />}

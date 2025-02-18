@@ -22,8 +22,8 @@ export default function DeckCounter({ selected, numCompleted, style, ...rest }: 
           return (
             <CompletedItem
               key={i}
-              stakeColor={stakes[stakeIds[i]].color}
               is_selected={is_selected}
+              stakeColor={stakes[stakeIds[i]].color}
             />
           );
         if (i === numCompleted) return <UnlockedItem key={i} is_selected={is_selected} />;
