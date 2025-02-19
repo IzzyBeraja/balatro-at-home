@@ -30,8 +30,6 @@ export default function PlayScreen() {
   const deck = decks[deckParam];
   const shuffledDeck = shuffleDeck(random, deck.cards);
 
-  console.log(shuffledDeck.map((cards) => `${cards.rank}${cards.suit[0]}`));
-
   const handType = "Royal Flush";
   const [score, setScore] = useState<ScoreboardDetails>({
     ante: 1,
