@@ -3,7 +3,7 @@ import type { TextProps, TextStyle } from "react-native";
 
 import { StyleSheet, Text } from "react-native";
 
-type TextSize = "small" | "medium" | "large";
+type TextSize = "xsmall" | "small" | "medium" | "large" | "xlarge";
 
 interface Props extends TextProps {
   color?: TColors;
@@ -15,12 +15,16 @@ interface Props extends TextProps {
 export default function BText({ bold, color, size, textAlign, style, ...rest }: Props) {
   const fontSizing = (textSize: TextSize) => {
     switch (textSize) {
+      case "xsmall":
+        return 10;
       case "small":
         return 12;
       case "medium":
         return 16;
       case "large":
         return 20;
+      case "xlarge":
+        return 24;
     }
   };
   return (
@@ -43,5 +47,6 @@ const styles = StyleSheet.create({
   defaults: {
     color: "white",
     fontSize: 12,
+    letterSpacing: -1,
   },
 });

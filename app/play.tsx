@@ -51,7 +51,7 @@ export default function PlayScreen() {
         score={score}
         stage="blind"
         stakeId={stake.id}
-        style={{ width: 240 }}
+        style={{ width: 180 }}
       />
       <View style={{ flex: 1, justifyContent: "space-between", paddingTop: 12 }}>
         <TopSelection

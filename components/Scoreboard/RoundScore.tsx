@@ -16,11 +16,18 @@ export default function RoundScore({ roundScore, stakeId, style, ...rest }: Prop
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
       <View style={{ marginHorizontal: 8 }}>
-        <BText style={styles.text}>{"Round\nscore"}</BText>
+        <BText bold style={{ lineHeight: 14 }} textAlign="center">
+          {"Round"}
+        </BText>
+        <BText bold style={{ fontSize: 14, lineHeight: 12 }} textAlign="center">
+          {"score"}
+        </BText>
       </View>
       <View style={styles.scoreContainer}>
-        <StakeChip size={18} stakeId={stakeId} />
-        <BText style={styles.text}>{roundScore}</BText>
+        <StakeChip size={16} stakeId={stakeId} />
+        <BText bold size="xlarge" textAlign="center">
+          {roundScore}
+        </BText>
       </View>
     </View>
   );
@@ -30,22 +37,19 @@ const styles = StyleSheet.create({
   mainContainer: {
     alignItems: "center",
     backgroundColor: Colors.scoreboardAccent,
-    borderRadius: 12,
+    borderRadius: 8,
     flexDirection: "row",
     justifyContent: "center",
-    padding: 6,
+    padding: 4,
   },
   scoreContainer: {
     alignItems: "center",
     backgroundColor: Colors.scoreboard,
-    borderRadius: 10,
+    borderRadius: 8,
     flex: 1,
     flexDirection: "row",
     gap: 4,
     height: "100%",
     justifyContent: "center",
-  },
-  text: {
-    textAlign: "center",
   },
 });

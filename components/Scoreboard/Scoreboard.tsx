@@ -50,21 +50,34 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
         <View style={{ flex: 2, gap: 6 }}>
           <View style={{ flexDirection: "row", gap: 6 }}>
             <BInfoBox style={styles.infoBox} title="Hands">
-              <BText style={styles.text}>{hands}</BText>
+              <BText bold color={Colors.blue} size="xlarge">
+                {hands}
+              </BText>
             </BInfoBox>
             <BInfoBox style={styles.infoBox} title="Discards">
-              <BText style={styles.text}>{discards}</BText>
+              <BText bold color={Colors.red} size="xlarge">
+                {discards}
+              </BText>
             </BInfoBox>
           </View>
           <BInfoBox>
-            <BText style={styles.text}>{money}</BText>
+            <BText bold color={Colors.yellow} size="xlarge">
+              {`$${money}`}
+            </BText>
           </BInfoBox>
           <View style={{ flexDirection: "row", gap: 6 }}>
             <BInfoBox style={styles.infoBox} title="Ante">
-              <BText style={styles.text}>{ante}</BText>
+              <View style={{ alignItems: "center", flexDirection: "row" }}>
+                <BText bold color={Colors.yellow} size="xlarge" textAlign="center">
+                  {ante}
+                </BText>
+                <BText size="xsmall">{" / 8"}</BText>
+              </View>
             </BInfoBox>
             <BInfoBox style={styles.infoBox} title="Round">
-              <BText style={styles.text}>{round}</BText>
+              <BText bold color={Colors.yellow} size="xlarge">
+                {round}
+              </BText>
             </BInfoBox>
           </View>
         </View>
@@ -79,9 +92,11 @@ const styles = StyleSheet.create({
   },
   scoreboard: {
     backgroundColor: Colors.scoreboard,
+    borderColor: Colors.defaultShadowColor,
+    borderWidth: 2,
     gap: 4,
-    paddingBottom: 32,
-    paddingHorizontal: 8,
+    paddingBottom: 24,
+    paddingHorizontal: 4,
   },
   text: {
     color: "white",

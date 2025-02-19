@@ -14,16 +14,22 @@ interface Props extends ViewProps {
 export default function HandScore({ chips, mult, handType, style, ...rest }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
-      <BText style={styles.text}>{handType}</BText>
+      <BText bold size="large" textAlign="center">
+        {handType}
+      </BText>
       <View style={styles.scoreLayout}>
         <View style={[styles.scoreContainer, styles.chipsContainer]}>
-          <BText style={styles.text}>{chips}</BText>
+          <BText bold size="xlarge" textAlign="center">
+            {chips}
+          </BText>
         </View>
-        <BText bold color={Colors.red} size="large">
+        <BText bold color={Colors.red} size="xlarge">
           {"X"}
         </BText>
         <View style={[styles.scoreContainer, styles.multContainer]}>
-          <BText style={styles.text}>{mult}</BText>
+          <BText bold size="xlarge" textAlign="center">
+            {mult}
+          </BText>
         </View>
       </View>
     </View>
@@ -37,8 +43,9 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     backgroundColor: Colors.scoreboardAccent,
-    borderRadius: 12,
-    padding: 4,
+    borderRadius: 8,
+    gap: 4,
+    padding: 6,
   },
   multContainer: {
     alignItems: "flex-start",
@@ -47,19 +54,16 @@ const styles = StyleSheet.create({
   scoreContainer: {
     alignItems: "center",
     backgroundColor: "red",
-    borderRadius: 10,
+    borderRadius: 6,
     flex: 1,
     gap: 4,
     justifyContent: "center",
-    padding: 6,
+    paddingHorizontal: 4,
   },
   scoreLayout: {
     alignItems: "center",
     flexDirection: "row",
     gap: 4,
     justifyContent: "center",
-  },
-  text: {
-    textAlign: "center",
   },
 });
