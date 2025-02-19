@@ -23,11 +23,11 @@ export default function TopSelection({
     <View style={[styles.mainContainer, style]} {...rest}>
       <View style={styles.outerJokerContainer}>
         <View style={[styles.innerContainer, styles.innerJokerContainer]} />
-        <BText>{`${jokers.length}/${maxJokers}`}</BText>
+        <BText size="xsmall">{`${jokers.length}/${maxJokers}`}</BText>
       </View>
       <View style={styles.outerConsumableContainer}>
         <View style={[styles.innerContainer, styles.innerConsumableContainer]} />
-        <BText textAlign="right">{`${consumables.length}/${maxConsumables}`}</BText>
+        <BText size="xsmall" textAlign="right">{`${consumables.length}/${maxConsumables}`}</BText>
       </View>
     </View>
   );
@@ -46,12 +46,12 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flexDirection: "row",
-    gap: 8,
+    gap: 24,
   },
   outerConsumableContainer: {
-    flex: 1,
+    flex: 5,
   },
   outerJokerContainer: {
-    flex: 2,
+    flex: 11,
   },
 });

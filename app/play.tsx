@@ -59,7 +59,7 @@ export default function PlayScreen() {
           jokers={["first"]}
           maxConsumables={2}
           maxJokers={5}
-          style={{ height: 120 }}
+          style={{ height: 100 }}
         />
         <HandSelection
           cardsLeft={34}
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: Colors.green2,
     flexDirection: "row",
-    gap: 12,
-    paddingHorizontal: 80,
+    gap: 20,
+    paddingLeft: 80,
+    paddingRight: 120,
   },
 });

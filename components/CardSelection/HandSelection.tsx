@@ -51,7 +51,7 @@ export default function HandSelection({
 
       <View style={styles.outerDeckContainer}>
         <View style={[styles.innerContainer, styles.innerDeckContainer]} />
-        <BText textAlign="right">{`${cardsLeft}/${totalCards}`}</BText>
+        <BText size="xsmall" textAlign="right">{`${cardsLeft}/${totalCards}`}</BText>
       </View>
     </View>
   );
@@ -73,7 +73,9 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   outerDeckContainer: {
-    flex: 1,
+    marginBottom: 20,
+    marginRight: 10,
+    width: 70,
   },
   outerHandContainer: {
     flex: 4,
