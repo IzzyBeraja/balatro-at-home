@@ -17,13 +17,15 @@ export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress
   return (
     <View style={[styles.outerContainer, style]}>
       <BButton
-        style={[styles.button, styles.playButton]}
+        color={Colors.blue}
+        style={styles.button}
         textStyle={styles.playButtonText}
         onPress={onPlayPress}
       >
         PLAY
       </BButton>
       <BButton
+        color={Colors.yellow}
         style={styles.optionsButton}
         textStyle={styles.optionsButtonText}
         onPress={onOptionsPress}
@@ -31,7 +33,8 @@ export default function MainNav({ onPlayPress, onOptionsPress, onCollectionPress
         OPTIONS
       </BButton>
       <BButton
-        style={[styles.button, styles.collectionButton]}
+        color={Colors.green}
+        style={styles.button}
         textStyle={styles.collectionButtonText}
         onPress={onCollectionPress}
       >
@@ -47,15 +50,11 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingVertical: 8,
   },
-  collectionButton: {
-    backgroundColor: Colors.green,
-  },
   collectionButtonText: {
     fontSize: 16,
     fontWeight: "bold",
   },
   optionsButton: {
-    backgroundColor: Colors.yellow,
     flex: 0.7,
     height: "80%",
   },
@@ -74,9 +73,6 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingBottom: 8,
     width: 340,
-  },
-  playButton: {
-    backgroundColor: Colors.blue,
   },
   playButtonText: {
     fontSize: 24,

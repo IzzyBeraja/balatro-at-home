@@ -43,7 +43,7 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
           <BButton style={{ flex: 1 }} onPress={() => {}}>
             {"Run\nInfo"}
           </BButton>
-          <BButton style={{ backgroundColor: Colors.yellow, flex: 1 }} onPress={() => {}}>
+          <BButton color={Colors.yellow} style={{ flex: 1 }} onPress={() => {}}>
             Options
           </BButton>
         </View>

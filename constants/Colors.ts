@@ -11,6 +11,7 @@ export const Colors = {
   scoreboard: "rgb(43,53,55)",
   scoreboardAccent: "rgb(20,31,34)",
   secondaryButtonBackground: "rgb(111,131,134)",
+  white: "rgb(255,255,255)",
   yellow: "rgb(253,153,0)",
 } as const;
 

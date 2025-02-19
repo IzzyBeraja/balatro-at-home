@@ -1,6 +1,6 @@
-import type { TDeckID} from "@/constants/Decks";
-import type { TStakeID} from "@/constants/Stakes";
-import type { ModalProps} from "react-native";
+import type { TDeckID } from "@/constants/Decks";
+import type { TStakeID } from "@/constants/Stakes";
+import type { ModalProps } from "react-native";
 
 import DeckDisplay from "@/components/Deck/DeckDisplay";
 import StakeDisplay from "@/components/Stake/StakeDisplay";
@@ -82,6 +82,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
           <View style={styles.playRow}>
             <View style={{ flex: 2 }} />
             <BButton
+              color={Colors.blue}
               style={styles.playButton}
               textStyle={styles.playText}
               onPress={() => onPlayPress(deckIds[deckIndex], stakeIds[stakeIndex])}
@@ -90,7 +91,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
             </BButton>
             <View style={{ flex: 2 }} />
           </View>
-          <BButton style={{ backgroundColor: Colors.yellow, marginTop: 4 }} onPress={onBackPress}>
+          <BButton color={Colors.yellow} style={{ marginTop: 4 }} onPress={onBackPress}>
             Back
           </BButton>
         </View>
@@ -135,7 +136,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   playButton: {
-    backgroundColor: Colors.blue,
     flex: 3,
     padding: 2,
   },

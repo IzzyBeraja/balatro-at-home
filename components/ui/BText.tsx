@@ -1,5 +1,6 @@
-import type { TColors } from "@/constants/Colors";
 import type { TextProps, TextStyle } from "react-native";
+
+import { Colors, type TColors } from "@/constants/Colors";
 
 import { StyleSheet, Text } from "react-native";
 
@@ -7,12 +8,19 @@ type TextSize = "xsmall" | "small" | "medium" | "large" | "xlarge";
 
 interface Props extends TextProps {
   color?: TColors;
-  bold?: true;
+  bold?: boolean;
   size?: TextSize;
   textAlign?: TextStyle["textAlign"];
 }
 
-export default function BText({ bold, color, size, textAlign, style, ...rest }: Props) {
+export default function BText({
+  bold = false,
+  color = Colors.white,
+  size = "small",
+  textAlign = "auto",
+  style,
+  ...rest
+}: Props) {
   const fontSizing = (textSize: TextSize) => {
     switch (textSize) {
       case "xsmall":
@@ -27,15 +35,14 @@ export default function BText({ bold, color, size, textAlign, style, ...rest }: 
         return 24;
     }
   };
+
   return (
     <Text
       selectable={false}
       style={[
         styles.defaults,
-        color && { color },
-        size && { fontSize: fontSizing(size) },
+        { color, fontSize: fontSizing(size), textAlign },
         bold && { fontWeight: "bold" },
-        textAlign && { textAlign },
         style,
       ]}
       {...rest}
@@ -45,8 +52,6 @@ export default function BText({ bold, color, size, textAlign, style, ...rest }: 
 
 const styles = StyleSheet.create({
   defaults: {
-    color: "white",
-    fontSize: 12,
     letterSpacing: -1,
   },
 });

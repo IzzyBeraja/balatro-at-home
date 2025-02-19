@@ -76,7 +76,7 @@ export default function PlayScreen() {
           hand={[]}
           isSelecting
           maxHand={8}
-          style={{ height: 120 }}
+          style={{ flex: 1 }}
           totalCards={52}
           onDiscard={handleDiscard}
           onPlayHand={handlePlayHand}

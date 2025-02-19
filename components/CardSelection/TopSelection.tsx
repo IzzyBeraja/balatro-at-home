@@ -1,6 +1,6 @@
 import type { ViewProps } from "react-native";
 
-import BText from "@/components/ui/BText";
+import BCardContainer from "@/components/ui/BCardContainer";
 
 import { StyleSheet, View } from "react-native";
 
@@ -21,37 +21,26 @@ export default function TopSelection({
 }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
-      <View style={styles.outerJokerContainer}>
-        <View style={[styles.innerContainer, styles.innerJokerContainer]} />
-        <BText size="xsmall">{`${jokers.length}/${maxJokers}`}</BText>
-      </View>
-      <View style={styles.outerConsumableContainer}>
-        <View style={[styles.innerContainer, styles.innerConsumableContainer]} />
-        <BText size="xsmall" textAlign="right">{`${consumables.length}/${maxConsumables}`}</BText>
-      </View>
+      <BCardContainer maxValue={maxJokers} style={styles.jokerContainer} value={jokers.length} />
+      <BCardContainer
+        maxValue={maxConsumables}
+        style={styles.consumableContainer}
+        textAlign="right"
+        value={consumables.length}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  innerConsumableContainer: {
-    flex: 1,
+  consumableContainer: {
+    flex: 5,
   },
-  innerContainer: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    borderRadius: 8,
-  },
-  innerJokerContainer: {
-    flex: 1,
+  jokerContainer: {
+    flex: 11,
   },
   mainContainer: {
     flexDirection: "row",
     gap: 24,
-  },
-  outerConsumableContainer: {
-    flex: 5,
-  },
-  outerJokerContainer: {
-    flex: 11,
   },
 });

@@ -2,6 +2,7 @@ import type { TCard } from "@/constants/Cards";
 import type { ViewProps } from "react-native";
 
 import BButton from "@/components/ui/BButton";
+import BCardContainer from "@/components/ui/BCardContainer";
 import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
 
@@ -30,58 +31,68 @@ export default function HandSelection({
 }: Props) {
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
-      <View style={styles.outerHandContainer}>
-        {isSelecting ? (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              gap: 8,
-              justifyContent: "center",
-            }}
-          >
-            <BButton onPress={onDiscard}>Discard</BButton>
-            <BButton style={{ backgroundColor: Colors.blue }} onPress={onPlayHand}>
+      <View style={styles.handContainer}>
+        <View
+          style={{
+            alignItems: "center",
+            backgroundColor: Colors.green,
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          <BText>Hand</BText>
+        </View>
+        <BCardContainer
+          maxValue={maxHand}
+          style={styles.cardContainer}
+          textAlign="center"
+          value={hand.length}
+        />
+        {isSelecting && (
+          <View style={styles.actionBar}>
+            <BButton style={{ padding: 16 }} onPress={onDiscard}>
+              Discard
+            </BButton>
+            <BButton color={Colors.blue} style={{ padding: 16 }} onPress={onPlayHand}>
               Play Hand
             </BButton>
           </View>
-        ) : (
-          <>
-            <View style={[styles.innerContainer, styles.innerHandContainer]} />
-            <BText textAlign="center">{`${hand.length}/${maxHand}`}</BText>
-          </>
         )}
       </View>
-
-      <View style={styles.outerDeckContainer}>
-        <View style={[styles.innerContainer, styles.innerDeckContainer]} />
-        <BText size="xsmall" textAlign="right">{`${cardsLeft}/${totalCards}`}</BText>
-      </View>
+      <BCardContainer
+        maxValue={totalCards}
+        style={styles.deckContainer}
+        textAlign="right"
+        value={cardsLeft}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  innerContainer: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)",
-    borderRadius: 8,
-  },
-  innerDeckContainer: {
-    flex: 1,
-  },
-  innerHandContainer: {
-    flex: 1,
-  },
-  mainContainer: {
+  actionBar: {
+    alignItems: "flex-end",
     flexDirection: "row",
     gap: 8,
+    justifyContent: "center",
   },
-  outerDeckContainer: {
+  cardContainer: {
+    height: 100,
+  },
+  deckContainer: {
+    height: 100,
     marginBottom: 20,
     marginRight: 10,
     width: 70,
   },
-  outerHandContainer: {
-    flex: 4,
+  handContainer: {
+    flex: 1,
+    gap: 8,
+    marginBottom: 20,
+  },
+  mainContainer: {
+    alignItems: "flex-end",
+    flexDirection: "row",
+    gap: 8,
   },
 });
