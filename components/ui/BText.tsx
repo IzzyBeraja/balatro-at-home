@@ -1,5 +1,5 @@
 import type { TColors } from "@/constants/Colors";
-import type { TextProps } from "react-native";
+import type { TextProps, TextStyle } from "react-native";
 
 import { StyleSheet, Text } from "react-native";
 
@@ -9,9 +9,10 @@ interface Props extends TextProps {
   color?: TColors;
   bold?: true;
   size?: TextSize;
+  textAlign?: TextStyle["textAlign"];
 }
 
-export default function BText({ bold, color, size, style, ...rest }: Props) {
+export default function BText({ bold, color, size, textAlign, style, ...rest }: Props) {
   const fontSizing = (textSize: TextSize) => {
     switch (textSize) {
       case "small":
@@ -30,6 +31,7 @@ export default function BText({ bold, color, size, style, ...rest }: Props) {
         color && { color },
         size && { fontSize: fontSizing(size) },
         bold && { fontWeight: "bold" },
+        textAlign && { textAlign },
         style,
       ]}
       {...rest}

@@ -27,7 +27,7 @@ export default function TopSelection({
       </View>
       <View style={styles.outerConsumableContainer}>
         <View style={[styles.innerContainer, styles.innerConsumableContainer]} />
-        <BText style={{ textAlign: "right" }}>{`${consumables.length}/${maxConsumables}`}</BText>
+        <BText textAlign="right">{`${consumables.length}/${maxConsumables}`}</BText>
       </View>
     </View>
   );

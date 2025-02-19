@@ -44,14 +44,14 @@ export default function HandSelection({
         ) : (
           <>
             <View style={[styles.innerContainer, styles.innerHandContainer]} />
-            <BText style={{ textAlign: "center" }}>{`${hand.length}/${maxHand}`}</BText>
+            <BText textAlign="center">{`${hand.length}/${maxHand}`}</BText>
           </>
         )}
       </View>
 
       <View style={styles.outerDeckContainer}>
         <View style={[styles.innerContainer, styles.innerDeckContainer]} />
-        <BText style={{ textAlign: "right" }}>{`${cardsLeft}/${totalCards}`}</BText>
+        <BText textAlign="right">{`${cardsLeft}/${totalCards}`}</BText>
       </View>
     </View>
   );
