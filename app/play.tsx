@@ -30,6 +30,8 @@ export default function PlayScreen() {
   const deck = decks[deckParam];
   const shuffledDeck = shuffleDeck(random, deck.cards);
 
+  console.log(shuffledDeck.map((cards) => `${cards.rank}${cards.suit[0]}`));
+
   const handType = "Royal Flush";
   const [score, setScore] = useState<ScoreboardDetails>({
     ante: 1,
@@ -41,6 +43,16 @@ export default function PlayScreen() {
     round: 0,
     roundScore: 0,
   });
+
+  const handleDiscard = () => {
+    setScore((prev) => ({
+      ...prev,
+      discards: prev.discards - 1,
+      roundScore: prev.round + 1,
+    }));
+  };
+
+  const handlePlayHand = () => {};
 
   const { width, height } = Dimensions.get("window");
 
@@ -68,6 +80,8 @@ export default function PlayScreen() {
           maxHand={8}
           style={{ height: 120 }}
           totalCards={52}
+          onDiscard={handleDiscard}
+          onPlayHand={handlePlayHand}
         />
       </View>
     </View>

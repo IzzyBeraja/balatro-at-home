@@ -1,11 +1,11 @@
 import type { TCard } from "@/constants/Cards";
-import type { NumRange } from "@/game/random";
+import type { TRandomGenerator } from "@/game/random";
 
-export function shuffleDeck(rng: Generator<number, number, NumRange>, cards: TCard[]) {
+export function shuffleDeck(rng: TRandomGenerator, cards: TCard[]) {
   const shuffledDeck = [...cards];
 
   shuffledDeck.forEach((_, i) => {
-    const j = rng.next({ max: shuffleDeck.length, min: i }).value;
+    const j = rng.next(i, shuffledDeck.length);
     [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
   });
 

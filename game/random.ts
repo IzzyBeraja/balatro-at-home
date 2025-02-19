@@ -6,24 +6,27 @@ export function genSeed() {
     .toUpperCase();
 }
 
-export interface NumRange {
-  min: number;
-  max: number;
+export interface TRandomGenerator {
+  next: (min: number, max: number) => number;
 }
 
-export function* randomGenerator(seed: string): Generator<number, number, NumRange> {
+export function randomGenerator(seed?: string): TRandomGenerator {
   const multiplier = 1664525;
   const increment = 1013904223;
   const modulus = 2 ** 32;
 
-  let state = parseInt(seed, seedBase) % modulus;
-  // Returns 0 on first call, then waits for range when next is called again
-  let range: NumRange = yield 0;
+  let state = parseInt(seed ?? genSeed(), seedBase) % modulus;
 
-  while (true) {
-    state = (multiplier * state + increment) % modulus;
-    const { min, max } = range;
-    const randomValue = Math.floor(min + (state / modulus) * (max - min));
-    range = yield randomValue;
+  function genSeed() {
+    return Math.floor(Math.random() * 2 ** seedBase)
+      .toString(seedBase)
+      .toUpperCase();
   }
+
+  function next(min: number, max: number): number {
+    state = (multiplier * state + increment) % modulus;
+    return Math.floor(min + (state / modulus) * (max - min));
+  }
+
+  return { next };
 }

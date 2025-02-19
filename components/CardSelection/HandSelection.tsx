@@ -13,6 +13,8 @@ interface Props extends ViewProps {
   cardsLeft: number;
   totalCards: number;
   maxHand: number;
+  onDiscard: () => void;
+  onPlayHand: () => void;
 }
 
 export default function HandSelection({
@@ -22,6 +24,8 @@ export default function HandSelection({
   cardsLeft,
   totalCards,
   style,
+  onDiscard,
+  onPlayHand,
   ...rest
 }: Props) {
   return (
@@ -36,8 +40,8 @@ export default function HandSelection({
               justifyContent: "center",
             }}
           >
-            <BButton onPress={() => {}}>Discard</BButton>
-            <BButton style={{ backgroundColor: Colors.blue }} onPress={() => {}}>
+            <BButton onPress={onDiscard}>Discard</BButton>
+            <BButton style={{ backgroundColor: Colors.blue }} onPress={onPlayHand}>
               Play Hand
             </BButton>
           </View>
