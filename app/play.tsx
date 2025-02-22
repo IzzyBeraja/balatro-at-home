@@ -42,6 +42,8 @@ export default function PlayScreen() {
     roundScore: 0,
   });
 
+  const { width, height } = Dimensions.get("window");
+
   const handleDiscard = () => {
     setScore((prev) => ({
       ...prev,
@@ -52,8 +54,6 @@ export default function PlayScreen() {
 
   const handlePlayHand = () => {};
 
-  const { width, height } = Dimensions.get("window");
-
   return (
     <View style={[{ height, marginLeft: -insets.left, width }, styles.screen]}>
       <Scoreboard
@@ -63,7 +63,7 @@ export default function PlayScreen() {
         stakeId={stake.id}
         style={{ width: 180 }}
       />
-      <View style={{ flex: 1, justifyContent: "space-between", paddingTop: 12 }}>
+      <View style={styles.playArea}>
         <TopSelection
           consumables={["steel"]}
           jokers={["first"]}
@@ -73,7 +73,7 @@ export default function PlayScreen() {
         />
         <HandSelection
           cardsLeft={34}
-          hand={[]}
+          hand={shuffledDeck.slice(0, 8)}
           isSelecting
           maxHand={8}
           style={{ flex: 1 }}
@@ -91,6 +91,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "center",
+  },
+  playArea: {
+    flex: 1,
+    justifyContent: "space-between",
+    paddingTop: 12,
   },
   screen: {
     backgroundColor: Colors.green2,
