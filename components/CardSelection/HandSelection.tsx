@@ -75,7 +75,6 @@ export default function HandSelection({
               key={index}
               card={card}
               isSelected={selected}
-              style={{ marginRight: -5 }}
               onClick={() => console.log("clicked")}
             />
           ))}
@@ -97,7 +96,7 @@ export default function HandSelection({
         textAlign="right"
         value={cardsLeft}
       >
-        <></>
+        <View />
       </BCardContainer>
     </View>
   );

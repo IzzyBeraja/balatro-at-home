@@ -1,10 +1,29 @@
 import type { TCard } from "@/constants/Cards";
 import type { ViewProps } from "react-native";
+import type { SpringConfig } from "react-native-reanimated/lib/typescript/animation/springUtils";
 
 import { Colors } from "@/constants/Colors";
 
 import { useRef, useState } from "react";
-import { Animated, PanResponder, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import Animated, {
+  ReduceMotion,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+} from "react-native-reanimated";
+
+const tooltipDisplayDelay = 300;
+
+const springiness: SpringConfig = {
+  damping: 35,
+  mass: 1,
+  reduceMotion: ReduceMotion.System,
+  restDisplacementThreshold: 0.25,
+  restSpeedThreshold: 10,
+  stiffness: 700,
+};
 
 interface Props extends ViewProps {
   card?: TCard;
@@ -13,42 +32,59 @@ interface Props extends ViewProps {
 }
 
 export default function BCard({ card, isSelected, onClick, style, ...rest }: Props) {
-  const pan = useRef(new Animated.ValueXY()).current;
-  const [isPanning, setPanning] = useState(false);
+  const translationX = useSharedValue(0);
+  const translationY = useSharedValue(0);
+  const panStart = useRef(Date.now());
+  const [showTooltip, setShowTooltip] = useState(false);
 
-  const panResponder = useRef(
-    PanResponder.create({
-      onMoveShouldSetPanResponder: () => true,
-      onPanResponderEnd: () => setPanning(false),
-      onPanResponderGrant: () => setPanning(true),
-      onPanResponderMove: (e, gestureState) => {
-        Animated.event([null, { dx: pan.x, dy: pan.y }], {
-          useNativeDriver: false,
-        })(e, gestureState);
-      },
-      onPanResponderRelease: (e) => {
-        Animated.spring(pan, {
-          friction: 20,
-          tension: 500,
-          toValue: { x: 0, y: 0 },
-          useNativeDriver: true,
-        }).start();
-      },
+  const tapGesture = Gesture.Tap()
+    .runOnJS(true)
+    .maxDuration(tooltipDisplayDelay)
+    .onStart(() => onClick());
+
+  const longPressGesture = Gesture.LongPress()
+    .minDuration(tooltipDisplayDelay)
+    .onStart(() => {
+      !showTooltip && setShowTooltip(true);
     })
-  ).current;
+    .runOnJS(true);
+
+  const panGesture = Gesture.Pan()
+    .minDistance(10)
+    .onStart(() => {
+      panStart.current = Date.now();
+    })
+    .onUpdate((e) => {
+      translationX.value = e.translationX;
+      translationY.value = e.translationY;
+      if (!showTooltip && Date.now() - panStart.current > tooltipDisplayDelay) {
+        setShowTooltip(true);
+      }
+    })
+    .onEnd(() => {
+      translationX.value = withSpring(0, springiness);
+      translationY.value = withSpring(0, springiness);
+      if (showTooltip) {
+        setShowTooltip(false);
+      }
+    })
+    .runOnJS(true);
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: translationX.value }, { translateY: translationY.value }],
+  }));
 
   return (
-    <Animated.View
-      style={[
-        styles.card,
-        { transform: [{ translateX: pan.x }, { translateY: pan.y }] },
-        isPanning && { backgroundColor: Colors.green },
-        style,
-      ]}
-      onTouchEndCapture={() => !isPanning && onClick()}
-      {...panResponder.panHandlers}
-      {...rest}
-    />
+    <GestureDetector gesture={Gesture.Race(tapGesture, longPressGesture, panGesture)}>
+      <Animated.View
+        style={[
+          styles.card,
+          animatedStyles,
+          showTooltip && { backgroundColor: Colors.green },
+          style,
+        ]}
+      />
+    </GestureDetector>
   );
 }
 

@@ -6,7 +6,7 @@ import BText from "@/components/ui/BText";
 
 import { StyleSheet, View } from "react-native";
 
-type BCardElement = ReactElement<React.ComponentType<typeof BCard>, typeof BCard>;
+type BCardElement = ReactElement<typeof BCard>;
 
 interface Props extends ViewProps {
   value: number;

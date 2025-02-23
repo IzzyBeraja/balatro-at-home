@@ -14,11 +14,9 @@ import { useRandom } from "@/hooks/useRandom";
 
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { StyleSheet, View } from "react-native";
 
 export default function PlayScreen() {
-  const insets = useSafeAreaInsets();
   const {
     seed: seedParam = genSeed(),
     stake: stakeParam = "white",
@@ -42,8 +40,6 @@ export default function PlayScreen() {
     roundScore: 0,
   });
 
-  const { width, height } = Dimensions.get("window");
-
   const handleDiscard = () => {
     setScore((prev) => ({
       ...prev,
@@ -55,7 +51,7 @@ export default function PlayScreen() {
   const handlePlayHand = () => {};
 
   return (
-    <View style={[{ height, marginLeft: -insets.left, width }, styles.screen]}>
+    <View style={styles.screen}>
       <Scoreboard
         handType={handType}
         score={score}
@@ -73,7 +69,7 @@ export default function PlayScreen() {
         />
         <HandSelection
           cardsLeft={34}
-          hand={shuffledDeck.slice(0, 8)}
+          hand={shuffledDeck.slice(0, 6)}
           isSelecting
           maxHand={8}
           style={{ flex: 1 }}
@@ -99,6 +95,7 @@ const styles = StyleSheet.create({
   },
   screen: {
     backgroundColor: Colors.green2,
+    flex: 1,
     flexDirection: "row",
     gap: 20,
     paddingLeft: 80,

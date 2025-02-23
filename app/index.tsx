@@ -9,17 +9,13 @@ import { genSeed } from "@/game/random";
 
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { StyleSheet, View } from "react-native";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
   const [modalVisible, setModalVisible] = useState(false);
   const [playVisible, setPlayVisible] = useState(false);
   const [optionsVisible, setOptionsVisible] = useState(false);
-
-  const { width, height } = Dimensions.get("window");
 
   const handleShowCollectionModal = () => {
     console.log("Collections pressed");
@@ -55,7 +51,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={{ height, marginLeft: -insets.left, width }}>
+    <View style={{ flex: 1 }}>
       <View style={styles.mainContainer}>
         <View style={styles.bottomNav}>
           <ProfileNav onPress={handleProfilePress} />
