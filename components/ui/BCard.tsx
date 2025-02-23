@@ -2,11 +2,10 @@ import type { TCard } from "@/constants/Cards";
 import type { ViewProps } from "react-native";
 import type { SpringConfig } from "react-native-reanimated/lib/typescript/animation/springUtils";
 
-import RedCard from "@/assets/cards/deck_assets";
 import { Colors } from "@/constants/Colors";
 
 import { useRef, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
   ReduceMotion,
@@ -38,6 +37,10 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
   const panStart = useRef(Date.now());
   const [showTooltip, setShowTooltip] = useState(false);
 
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: translationX.value }, { translateY: translationY.value }],
+  }));
+
   const tapGesture = Gesture.Tap()
     .maxDuration(tooltipDisplayDelay)
     .onStart(() => onClick())
@@ -51,32 +54,28 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
     .runOnJS(true);
 
   const panGesture = Gesture.Pan()
-    .minDistance(10)
     .onStart(() => {
       panStart.current = Date.now();
     })
     .onUpdate((e) => {
       translationX.value = e.translationX;
       translationY.value = e.translationY;
-      if (!showTooltip && Date.now() - panStart.current > tooltipDisplayDelay) {
+      if (!showTooltip && Date.now() - panStart.current >= tooltipDisplayDelay) {
         setShowTooltip(true);
       }
     })
     .onEnd(() => {
       translationX.value = withSpring(0, springiness);
       translationY.value = withSpring(0, springiness);
-      if (showTooltip) {
-        setShowTooltip(false);
-      }
+      showTooltip && setShowTooltip(false);
     })
     .runOnJS(true);
 
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: translationX.value }, { translateY: translationY.value }],
-  }));
+  const longPressAndPan = Gesture.Simultaneous(longPressGesture, panGesture);
+  const composedGesture = Gesture.Exclusive(tapGesture, longPressAndPan);
 
   return (
-    <GestureDetector gesture={Gesture.Race(tapGesture, longPressGesture, panGesture)}>
+    <GestureDetector gesture={composedGesture}>
       <Animated.View
         style={[
           styles.card,
@@ -86,7 +85,7 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
         ]}
         {...rest}
       >
-        <RedCard height={80} />
+        <Image source={card?.image} style={styles.card} />
       </Animated.View>
     </GestureDetector>
   );
@@ -94,7 +93,9 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
 
 const styles = StyleSheet.create({
   card: {
+    aspectRatio: 3 / 4,
     backgroundColor: "white",
     borderRadius: 4,
+    height: 80,
   },
 });

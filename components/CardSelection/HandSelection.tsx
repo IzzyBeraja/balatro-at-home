@@ -20,25 +20,6 @@ interface Props extends ViewProps {
   onPlayHand: () => void;
 }
 
-/**
- *
- * Question that's on my mind. I'm wondering something about animations.
- * I'm thinking about how I might animate a card being played. I know that
- * I can make the cards all absolutely positioned and do some fancy math to
- * figure out where they should go and how fast they should get there, but
- * I wanna do something clever that I'm not sure will entirely work.
- *
- * See, the thing about React, is that it uses keys to determine element uniqueness.
- * If I have an element that create and give it a key, that makes it unique. React
- * has some interesting behaviors with key'd elements. I'm wondering if I can "move"
- * an element between divs by removing it from one div and adding it to another but
- * using the same key. I think that React might figure that the element is simply in
- * a weird place and animate it to the new location using the animate api. By
- * doing this, we should be able to avoid having to absolutely position cards to
- * fan out or be spaced in the screen. I'll try that out and see if it works.
- *
- */
-
 export default function HandSelection({
   isSelecting,
   maxHand,
