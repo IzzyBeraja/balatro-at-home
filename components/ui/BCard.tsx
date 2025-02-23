@@ -2,6 +2,7 @@ import type { TCard } from "@/constants/Cards";
 import type { ViewProps } from "react-native";
 import type { SpringConfig } from "react-native-reanimated/lib/typescript/animation/springUtils";
 
+import RedCard from "@/assets/cards/deck_assets";
 import { Colors } from "@/constants/Colors";
 
 import { useRef, useState } from "react";
@@ -38,9 +39,9 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
   const [showTooltip, setShowTooltip] = useState(false);
 
   const tapGesture = Gesture.Tap()
-    .runOnJS(true)
     .maxDuration(tooltipDisplayDelay)
-    .onStart(() => onClick());
+    .onStart(() => onClick())
+    .runOnJS(true);
 
   const longPressGesture = Gesture.LongPress()
     .minDuration(tooltipDisplayDelay)
@@ -83,7 +84,10 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
           showTooltip && { backgroundColor: Colors.green },
           style,
         ]}
-      />
+        {...rest}
+      >
+        <RedCard height={80} />
+      </Animated.View>
     </GestureDetector>
   );
 }
@@ -91,10 +95,6 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "white",
-    borderColor: "black",
     borderRadius: 4,
-    borderWidth: 2,
-    height: 90,
-    width: 60,
   },
 });

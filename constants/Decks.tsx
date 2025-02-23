@@ -1,4 +1,4 @@
-import type { TCard} from "@/constants/Cards";
+import type { TCard } from "@/constants/Cards";
 
 import BText from "@/components/ui/BText";
 import { all_cards } from "@/constants/Cards";
