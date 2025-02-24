@@ -1,12 +1,11 @@
-import type { TStakeID} from "@/constants/Stakes";
+import type { TStakeID } from "@/constants/Stakes";
 import type { ViewProps } from "react-native";
 
-import StakeChip from "@/components/Stake/StakeChip";
 import StakeDescription from "@/components/Stake/StakeDescription";
+import BStake from "@/components/ui/BStake";
 import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
 import { stakes } from "@/constants/Stakes";
-
 
 import { StyleSheet, View } from "react-native";
 
@@ -21,7 +20,7 @@ export default function StakeDisplay({ stakeID, style, ...rest }: Props) {
       <View style={styles.stakeTextContainer}>
         <BText style={styles.stakeText}>Stake</BText>
       </View>
-      <StakeChip stakeId={id} style={{ backgroundColor: color }} />
+      <BStake stakeId={id} />
       <StakeDescription description={description} name={name} />
     </View>
   );
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
   },
   stakeTextContainer: {
     marginLeft: -16, // Rotation does not affect layout
-    marginRight: -14, // Rotation does not affect layout
+    marginRight: -10, // Rotation does not affect layout
     transform: [{ rotateZ: "270deg" }], // Must rotate container, not text
   },
 });

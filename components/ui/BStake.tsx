@@ -1,21 +1,20 @@
-import type { TStakeID } from "@/constants/Stakes";
-import type { ViewProps } from "react-native";
+import type { ImageProps } from "react-native";
 
-import { StyleSheet, View } from "react-native";
+import { stakes, type TStakeID } from "@/constants/Stakes";
 
-interface Props extends ViewProps {
+import { Image, StyleSheet } from "react-native";
+
+interface Props extends ImageProps {
   stakeId: TStakeID;
 }
 
 export default function BStake({ stakeId, style, ...rest }: Props) {
-  return <View style={[styles.stake, style]} {...rest} />;
+  return <Image source={stakes[stakeId].image} style={[styles.stake, style]} {...rest} />;
 }
 
 const styles = StyleSheet.create({
   stake: {
-    backgroundColor: "red",
-    borderRadius: "100%",
-    height: 28,
+    aspectRatio: 1,
     width: 28,
   },
 });
