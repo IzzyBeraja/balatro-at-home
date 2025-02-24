@@ -66,8 +66,8 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
       panStart.current = Date.now();
     })
     .onUpdate((e) => {
-      translationX.value = e.absoluteX - originX.value;
-      translationY.value = e.absoluteY - originY.value;
+      translationX.value = withSpring(e.absoluteX - originX.value, springiness);
+      translationY.value = withSpring(e.absoluteY - originY.value, springiness);
       if (!showTooltip && Date.now() - panStart.current >= tooltipDisplayDelay) {
         setShowTooltip(true);
       }
@@ -79,6 +79,7 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
     })
     .runOnJS(true);
 
+  // These operations are expensive. I should reduce to one gesture if possible
   const longPressAndPan = Gesture.Simultaneous(longPressGesture, panGesture);
   const composedGesture = Gesture.Exclusive(tapGesture, longPressAndPan);
 
@@ -88,7 +89,7 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
         style={[
           styles.card,
           animatedStyles,
-          showTooltip && { backgroundColor: Colors.green },
+          // showTooltip && { backgroundColor: Colors.green },
           style,
         ]}
         {...rest}
@@ -102,7 +103,6 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
 const styles = StyleSheet.create({
   card: {
     aspectRatio: 3 / 4,
-    backgroundColor: "white",
     borderRadius: 4,
     height: 80,
   },

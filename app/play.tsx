@@ -48,7 +48,9 @@ export default function PlayScreen() {
     }));
   };
 
-  const handlePlayHand = () => {};
+  const handlePlayHand = () => {
+    router.back();
+  };
 
   return (
     <View style={styles.screen}>
@@ -58,6 +60,7 @@ export default function PlayScreen() {
         stage="blind"
         stakeId={stake.id}
         style={{ width: 180 }}
+        onMainMenu={() => router.back()}
       />
       <View style={styles.playArea}>
         <TopSelection

@@ -26,9 +26,18 @@ interface Props extends ViewProps {
   handType: string;
   score: ScoreboardDetails;
   stakeId: TStakeID;
+  onMainMenu: () => void;
 }
 
-export default function Scoreboard({ handType, score, stage, stakeId, style, ...rest }: Props) {
+export default function Scoreboard({
+  handType,
+  score,
+  stage,
+  stakeId,
+  style,
+  onMainMenu,
+  ...rest
+}: Props) {
   const { chips, mult, hands, discards, money, ante, round, roundScore } = score;
 
   return (
@@ -43,7 +52,7 @@ export default function Scoreboard({ handType, score, stage, stakeId, style, ...
           <BButton style={{ flex: 1 }} onPress={() => {}}>
             {"Run\nInfo"}
           </BButton>
-          <BButton color={Colors.yellow} style={{ flex: 1 }} onPress={() => {}}>
+          <BButton color={Colors.yellow} style={{ flex: 1 }} onPress={() => onMainMenu()}>
             Options
           </BButton>
         </View>
