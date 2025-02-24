@@ -1,25 +1,24 @@
-import type { TDeckID} from "@/constants/Decks";
+import type { TDeckID } from "@/constants/Decks";
 import type { ViewProps } from "react-native";
 
-import DeckOfCards from "@/components/Deck/Deck";
 import DeckCounter from "@/components/Deck/DeckCounter";
 import DeckDescription from "@/components/Deck/DeckDescription";
+import BDeck from "@/components/ui/BDeck";
 import { Colors } from "@/constants/Colors";
 import { decks } from "@/constants/Decks";
-
 
 import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
-  deckID: TDeckID;
+  deckId: TDeckID;
   stakeIndex: number;
 }
 
-export default function DeckDisplay({ deckID, stakeIndex, style, ...rest }: Props) {
-  const { name, description, image, unlocked, stakeCompleted } = decks[deckID];
+export default function DeckDisplay({ deckId, stakeIndex, style, ...rest }: Props) {
+  const { name, description, unlocked, stakeCompleted } = decks[deckId];
   return (
     <View style={[styles.container, style]} {...rest}>
-      <DeckOfCards deckImage={unlocked ? image : "locked"} />
+      <BDeck deckId={deckId} />
       <DeckDescription description={description} name={name} />
       <DeckCounter numCompleted={stakeCompleted} selected={stakeIndex} />
     </View>

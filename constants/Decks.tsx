@@ -1,4 +1,5 @@
 import type { TCard } from "@/constants/Cards";
+import type { ImageSourcePropType } from "react-native";
 
 import BText from "@/components/ui/BText";
 import { all_cards } from "@/constants/Cards";
@@ -13,7 +14,7 @@ export type TDeckID = (typeof deckIds)[number];
 export type TDeck = {
   id: TDeckID;
   name: string;
-  image: string;
+  image: ImageSourcePropType;
   discards: number;
   hands: number;
   startingMoney: number;
@@ -36,7 +37,7 @@ const defaultDeck = {
   gainsInterest: true,
   hands: 4,
   id: "red",
-  image: "deck1",
+  image: require("@/assets/decks/red_deck.png"),
   jokerSlots: 1,
   name: "Default Deck",
   stakeCompleted: 8,
@@ -52,7 +53,7 @@ export const decks = {
     ),
     description: <BText color={Colors.black}>+1 consumable slot every round</BText>,
     id: "abandoned",
-    image: "abandoned_deck",
+    image: require("@/assets/decks/abandoned_deck.png"),
     name: "Abandoned Deck",
   },
   black: {
@@ -60,7 +61,7 @@ export const decks = {
     description: <BText color={Colors.black}>+1 joker slot -1 hand every round</BText>,
     hands: defaultDeck.hands - 1,
     id: "black",
-    image: "black_deck",
+    image: require("@/assets/decks/black_deck.png"),
     jokerSlots: defaultDeck.jokerSlots + 1,
     name: "Black Deck",
   },
@@ -69,14 +70,14 @@ export const decks = {
     description: <BText color={Colors.black}>+1 hand every round</BText>,
     hands: defaultDeck.hands + 1,
     id: "blue",
-    image: "blue_deck",
+    image: require("@/assets/decks/blue_deck.png"),
     name: "Blue Deck",
   },
   green: {
     ...defaultDeck,
     gainsInterest: false,
     id: "green",
-    image: "green_deck",
+    image: require("@/assets/decks/green_deck.png"),
     name: "Green Deck",
   },
   red: {
@@ -84,14 +85,14 @@ export const decks = {
     description: <BText color={Colors.black}>+1 discard every round</BText>,
     discards: defaultDeck.discards + 1,
     id: "red",
-    image: "red_deck",
+    image: require("@/assets/decks/red_deck.png"),
     name: "Red Deck",
   },
   yellow: {
     ...defaultDeck,
     description: <BText color={Colors.black}>Start with extra $10</BText>,
     id: "yellow",
-    image: "yellow_deck",
+    image: require("@/assets/decks/yellow_deck.png"),
     name: "Yellow Deck",
     startingMoney: defaultDeck.startingMoney + 10,
   },

@@ -68,7 +68,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
             showCounter
             style={{ marginBottom: 6 }}
           >
-            <DeckDisplay deckID={deckIds[deckIndex]} stakeIndex={stakeIndex} />
+            <DeckDisplay deckId={deckIds[deckIndex]} stakeIndex={stakeIndex} />
           </BHorizontalScroll>
           <BHorizontalScroll
             count={Math.min(decks[deckIds[deckIndex]].stakeCompleted + 1, stakeIds.length)}
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingTop: 2,
     rowGap: 4,
-    width: 360,
+    width: 400,
   },
   gameSelectButton: {
     flex: 1,
