@@ -15,7 +15,7 @@ interface Props extends ViewProps {
 }
 
 export default function DeckDisplay({ deckId, stakeIndex, style, ...rest }: Props) {
-  const { name, description, unlocked, stakeCompleted } = decks[deckId];
+  const { name, description, stakeCompleted } = decks[deckId];
   return (
     <View style={[styles.container, style]} {...rest}>
       <BDeck deckId={deckId} />

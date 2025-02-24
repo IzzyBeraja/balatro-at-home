@@ -2,12 +2,11 @@ import type { TCard } from "@/constants/Cards";
 import type { ViewProps } from "react-native";
 import type { SpringConfig } from "react-native-reanimated/lib/typescript/animation/springUtils";
 
-import { Colors } from "@/constants/Colors";
-
 import { useRef, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
+  clamp,
   ReduceMotion,
   useAnimatedStyle,
   useSharedValue,
@@ -36,12 +35,19 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
   const originY = useSharedValue(0);
   const translationX = useSharedValue(0);
   const translationY = useSharedValue(0);
+  const scale = useSharedValue(100);
+  const rotateZ = useSharedValue(0);
 
   const panStart = useRef(Date.now());
   const [showTooltip, setShowTooltip] = useState(false);
 
   const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: translationX.value }, { translateY: translationY.value }],
+    transform: [
+      { translateX: translationX.value },
+      { translateY: translationY.value },
+      { rotateZ: `${rotateZ.value}deg` },
+      { scale: scale.value / 100 },
+    ],
   }));
 
   const tapGesture = Gesture.Tap()
@@ -53,6 +59,10 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
     .minDuration(tooltipDisplayDelay)
     .onStart(() => {
       !showTooltip && setShowTooltip(true);
+      scale.value = withSpring(120, springiness);
+    })
+    .onEnd(() => {
+      scale.value = withSpring(100, springiness);
     })
     .runOnJS(true);
 
@@ -68,6 +78,8 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
     .onUpdate((e) => {
       translationX.value = withSpring(e.absoluteX - originX.value, springiness);
       translationY.value = withSpring(e.absoluteY - originY.value, springiness);
+      rotateZ.value = withSpring(clamp(e.velocityX / 25, -80, 80), springiness);
+      scale.value = withSpring(120, springiness);
       if (!showTooltip && Date.now() - panStart.current >= tooltipDisplayDelay) {
         setShowTooltip(true);
       }
@@ -75,6 +87,8 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
     .onEnd(() => {
       translationX.value = withSpring(0, springiness);
       translationY.value = withSpring(0, springiness);
+      rotateZ.value = withSpring(0, springiness);
+      scale.value = withSpring(100, springiness);
       showTooltip && setShowTooltip(false);
     })
     .runOnJS(true);

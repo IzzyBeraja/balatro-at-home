@@ -22,7 +22,13 @@ interface Props extends ModalProps {
 
 type GameType = "NewRun" | "Continue" | "Challenges";
 
-export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...rest }: Props) {
+export default function PlayModal({
+  onPlayPress,
+  onBackPress,
+  canContinue,
+  style,
+  ...rest
+}: Props) {
   const [gameType, setGameType] = useState<GameType>(canContinue ? "Continue" : "NewRun");
   const [deckIndex, setDeckIndex] = useState(0);
   const [stakeIndex, setStakeIndex] = useState(0);
@@ -41,7 +47,7 @@ export default function PlayModal({ onPlayPress, onBackPress, canContinue, ...re
       onRequestClose={onBackPress}
       {...rest}
     >
-      <View style={styles.modalContainer}>
+      <View style={[styles.modalContainer, style]}>
         <View style={styles.contentContainer}>
           <View style={styles.gameSelectionArrow}>
             <BArrow visible={gameType === "NewRun"} />
