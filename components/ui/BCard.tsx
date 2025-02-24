@@ -32,8 +32,11 @@ interface Props extends ViewProps {
 }
 
 export default function BCard({ card, isSelected, onClick, style, ...rest }: Props) {
+  const originX = useSharedValue(0);
+  const originY = useSharedValue(0);
   const translationX = useSharedValue(0);
   const translationY = useSharedValue(0);
+
   const panStart = useRef(Date.now());
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -54,12 +57,17 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
     .runOnJS(true);
 
   const panGesture = Gesture.Pan()
+    .minDistance(1)
+    .onBegin((e) => {
+      originX.value = e.absoluteX;
+      originY.value = e.absoluteY;
+    })
     .onStart(() => {
       panStart.current = Date.now();
     })
     .onUpdate((e) => {
-      translationX.value = e.translationX;
-      translationY.value = e.translationY;
+      translationX.value = e.absoluteX - originX.value;
+      translationY.value = e.absoluteY - originY.value;
       if (!showTooltip && Date.now() - panStart.current >= tooltipDisplayDelay) {
         setShowTooltip(true);
       }
