@@ -7,14 +7,17 @@ import BCardContainer from "@/components/ui/BCardContainer";
 import BText from "@/components/ui/BText";
 import { Colors } from "@/constants/Colors";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
+
+const totalScoringCards = 5;
 
 interface Props extends ViewProps {
   isSelecting: boolean;
   hand: TCard[];
   cardsLeft: number;
   totalCards: number;
+  /** Total cards that are in the players hand */
   maxHand: number;
   onDiscard: () => void;
   onPlayHand: () => void;
@@ -31,7 +34,25 @@ export default function HandSelection({
   onPlayHand,
   ...rest
 }: Props) {
-  const [selected, setSelected] = useState(false);
+  const selectedCards = useRef(new Set()).current;
+  const [totalSelected, setTotalSelected] = useState(0);
+
+  const handleCardSelect = (index: number) => {
+    const cardInSet = selectedCards.has(index);
+
+    if (!cardInSet && totalSelected >= totalScoringCards) {
+      return;
+    }
+
+    if (cardInSet) {
+      selectedCards.delete(index);
+      setTotalSelected(totalSelected - 1);
+    } else {
+      selectedCards.add(index);
+      setTotalSelected(totalSelected + 1);
+    }
+  };
+
   return (
     <View style={[styles.mainContainer, style]} {...rest}>
       <View style={styles.handContainer}>
@@ -55,8 +76,8 @@ export default function HandSelection({
             <BCard
               key={index}
               card={card}
-              isSelected={selected}
-              onClick={() => console.log("clicked")}
+              isSelected={selectedCards.has(index)}
+              onClick={() => handleCardSelect(index)}
             />
           ))}
         </BCardContainer>

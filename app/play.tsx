@@ -26,7 +26,7 @@ export default function PlayScreen() {
   const random = useRandom(seedParam);
   const stake = stakes[stakeParam];
   const deck = decks[deckParam];
-  const shuffledDeck = shuffleDeck(random, deck.cards);
+  const [cardDeck, setCardDeck] = useState(shuffleDeck(random, deck.cards));
 
   const handType = "Royal Flush";
   const [score, setScore] = useState<ScoreboardDetails>({
@@ -41,11 +41,7 @@ export default function PlayScreen() {
   });
 
   const handleDiscard = () => {
-    setScore((prev) => ({
-      ...prev,
-      discards: prev.discards - 1,
-      roundScore: prev.round + 1,
-    }));
+    setCardDeck(shuffleDeck(random, cardDeck));
   };
 
   const handlePlayHand = () => {
@@ -72,7 +68,7 @@ export default function PlayScreen() {
         />
         <HandSelection
           cardsLeft={34}
-          hand={shuffledDeck.slice(0, 6)}
+          hand={cardDeck.slice(0, 7)}
           isSelecting
           maxHand={8}
           style={{ flex: 1 }}
