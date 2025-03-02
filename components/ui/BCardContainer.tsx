@@ -12,12 +12,14 @@ interface Props extends ViewProps {
   value: number;
   maxValue: number;
   textAlign?: TextStyle["textAlign"];
+  containerStyle?: ViewProps["style"];
   children: BCardElement | BCardElement[];
 }
 
 export default function BCardContainer({
   value,
   maxValue,
+  containerStyle,
   textAlign = "auto",
   style,
   children,
@@ -25,7 +27,7 @@ export default function BCardContainer({
 }: Props) {
   return (
     <View style={style} {...rest}>
-      <View style={styles.innerContainer}>{children}</View>
+      <View style={[styles.innerContainer, containerStyle]}>{children}</View>
       <BText size="xsmall" style={{ textAlign }}>{`${value}/${maxValue}`}</BText>
     </View>
   );
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
   },
   mainContainer: {
     flexDirection: "row",

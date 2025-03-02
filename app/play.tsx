@@ -68,7 +68,7 @@ export default function PlayScreen() {
         />
         <HandSelection
           cardsLeft={34}
-          hand={cardDeck.slice(0, 7)}
+          hand={cardDeck.slice(0, 8)}
           isSelecting
           maxHand={8}
           style={{ flex: 1 }}

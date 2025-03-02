@@ -37,18 +37,18 @@ export default function HandSelection({
   const selectedCards = useRef(new Set()).current;
   const [totalSelected, setTotalSelected] = useState(0);
 
-  const handleCardSelect = (index: number) => {
-    const cardInSet = selectedCards.has(index);
+  const handleCardSelect = (id: string) => {
+    const cardInSet = selectedCards.has(id);
 
     if (!cardInSet && totalSelected >= totalScoringCards) {
       return;
     }
 
     if (cardInSet) {
-      selectedCards.delete(index);
+      selectedCards.delete(id);
       setTotalSelected(totalSelected - 1);
     } else {
-      selectedCards.add(index);
+      selectedCards.add(id);
       setTotalSelected(totalSelected + 1);
     }
   };
@@ -67,17 +67,18 @@ export default function HandSelection({
           <BText>Hand</BText>
         </View>
         <BCardContainer
+          containerStyle={{ paddingRight: 70 }}
           maxValue={maxHand}
           style={styles.cardContainer}
           textAlign="center"
           value={hand.length}
         >
-          {hand.map((card, index) => (
+          {hand.map((card) => (
             <BCard
-              key={index}
+              key={card.id}
               card={card}
-              isSelected={selectedCards.has(index)}
-              onClick={() => handleCardSelect(index)}
+              isSelected={selectedCards.has(card.id)}
+              onClick={() => handleCardSelect(card.id)}
             />
           ))}
         </BCardContainer>
