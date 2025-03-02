@@ -2,6 +2,7 @@ import type { TCard } from "@/constants/Cards";
 import type { ViewProps } from "react-native";
 import type { SpringConfig } from "react-native-reanimated/lib/typescript/animation/springUtils";
 
+import * as Haptics from "expo-haptics";
 import { useEffect, useRef, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -10,7 +11,6 @@ import Animated, {
   ReduceMotion,
   useAnimatedStyle,
   useSharedValue,
-  withDelay,
   withSequence,
   withSpring,
   withTiming,
@@ -74,24 +74,34 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
   }));
 
   const tapGesture = Gesture.Tap()
-    .maxDuration(tooltipDisplayDelay)
+    .maxDuration(tooltipDisplayDelay / 2)
     .onStart(() => {
-      scale.value = withSequence(
-        withTiming(11, { duration: 50 }),
-        withTiming(defaultCardScale, { duration: 50 })
-      );
       onClick();
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     })
     .runOnJS(true);
 
   const longPressGesture = Gesture.LongPress()
     .minDuration(tooltipDisplayDelay)
+    .onBegin(() => {
+      scale.value = withSpring(maxCardScale, cardSelectSpring);
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    })
     .onStart(() => {
       !showTooltip && setShowTooltip(true);
-      scale.value = withSpring(maxCardScale, defaultSpring);
+      rotateZ.value = withSequence(
+        withTiming(5, { duration: 20 }),
+        withTiming(-5, { duration: 20 }),
+        withTiming(0, { duration: 20 })
+      );
+      scale.value = withSequence(
+        withSpring(maxCardScale * 1.1, cardSelectSpring),
+        withSpring(maxCardScale, cardSelectSpring)
+      );
     })
-    .onEnd(() => {
+    .onFinalize(() => {
       scale.value = withSpring(defaultCardScale, defaultSpring);
+      setShowTooltip(false);
     })
     .runOnJS(true);
 
