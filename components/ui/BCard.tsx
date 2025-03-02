@@ -75,10 +75,7 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
 
   const tapGesture = Gesture.Tap()
     .maxDuration(tooltipDisplayDelay / 2)
-    .onStart(() => {
-      onClick();
-      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-    })
+    .onStart(() => onClick())
     .runOnJS(true);
 
   const longPressGesture = Gesture.LongPress()
@@ -98,6 +95,7 @@ export default function BCard({ card, isSelected, onClick, style, ...rest }: Pro
         withSpring(maxCardScale * 1.1, cardSelectSpring),
         withSpring(maxCardScale, cardSelectSpring)
       );
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     })
     .onFinalize(() => {
       scale.value = withSpring(defaultCardScale, defaultSpring);
