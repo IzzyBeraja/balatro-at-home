@@ -1,9 +1,9 @@
-import type { TCard } from "@/constants/Cards";
+import type { TPlayingCard } from "@/constants/PlayingCards";
 import type { ImageSourcePropType } from "react-native";
 
 import BText from "@/components/ui/BText";
-import { all_cards } from "@/constants/Cards";
 import { Colors } from "@/constants/Colors";
+import { playing_cards } from "@/constants/PlayingCards";
 
 import React from "react";
 
@@ -22,7 +22,7 @@ export type TDeck = {
   jokerSlots: number;
   consumableSlots: number;
   description: React.ReactNode;
-  cards: TCard[];
+  cards: TPlayingCard[];
   /** @deprecated get stake info from user data */
   stakeCompleted: number;
   /** @deprecated get unlocked info from user data */
@@ -30,7 +30,7 @@ export type TDeck = {
 };
 
 const defaultDeck = {
-  cards: all_cards,
+  cards: playing_cards,
   consumableSlots: 1,
   description: <BText color={Colors.black}>The default deck</BText>,
   discards: 3,

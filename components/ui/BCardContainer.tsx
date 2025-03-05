@@ -1,23 +1,26 @@
-import type BCard from "@/components/ui/BCard";
-import type { ReactElement } from "react";
+import type { TConsumable } from "@/constants/Consumables";
+import type { TJoker } from "@/constants/Jokers";
+import type { TPlayingCard } from "@/constants/PlayingCards";
 import type { TextStyle, ViewProps } from "react-native";
 
+import BCard from "@/components/ui/BCard";
 import BText from "@/components/ui/BText";
 
+import { useRef, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
-type BCardElement = ReactElement<typeof BCard>;
+const totalScoringCards = 5;
 
 interface Props extends ViewProps {
-  value: number;
+  cards: TPlayingCard[] | TJoker[] | TConsumable[];
   maxValue: number;
   textAlign?: TextStyle["textAlign"];
   containerStyle?: ViewProps["style"];
-  children: BCardElement | BCardElement[];
+  onChange: () => void;
 }
 
 export default function BCardContainer({
-  value,
+  cards,
   maxValue,
   containerStyle,
   textAlign = "auto",
@@ -25,10 +28,36 @@ export default function BCardContainer({
   children,
   ...rest
 }: Props) {
+  const selectedCards = useRef(new Set()).current;
+  const [totalSelected, setTotalSelected] = useState(0);
+
+  const handleCardSelect = (id: string) => {
+    const cardInSet = selectedCards.has(id);
+
+    if (!cardInSet && totalSelected >= totalScoringCards) return;
+
+    if (cardInSet) {
+      selectedCards.delete(id);
+      setTotalSelected(totalSelected - 1);
+    } else {
+      selectedCards.add(id);
+      setTotalSelected(totalSelected + 1);
+    }
+  };
+
   return (
     <View style={style} {...rest}>
-      <View style={[styles.innerContainer, containerStyle]}>{children}</View>
-      <BText size="xsmall" style={{ textAlign }}>{`${value}/${maxValue}`}</BText>
+      <View style={[styles.innerContainer, containerStyle]}>
+        {cards.map((card) => (
+          <BCard
+            key={card.id}
+            card={card}
+            isSelected={selectedCards.has(card.id)}
+            onClick={() => handleCardSelect(card.id)}
+          />
+        ))}
+      </View>
+      <BText size="xsmall" style={{ textAlign }}>{`${cards.length}/${maxValue}`}</BText>
     </View>
   );
 }

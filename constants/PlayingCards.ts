@@ -6,7 +6,7 @@ export const card_values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"] as c
 export type Suit = (typeof card_suits)[number];
 export type Rank = (typeof card_values)[number];
 
-export type TCard = {
+export type TPlayingCard = {
   id: string;
   suit: Suit;
   rank: Rank;
@@ -14,7 +14,7 @@ export type TCard = {
   image: ImageSourcePropType;
 };
 
-export const all_cards = [
+export const playing_cards = [
   {
     chips: 2,
     id: "2H",
@@ -379,4 +379,4 @@ export const all_cards = [
     rank: "A",
     suit: "spades",
   },
-] satisfies TCard[];
+] as const satisfies TPlayingCard[];

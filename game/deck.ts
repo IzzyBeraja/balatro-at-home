@@ -1,7 +1,7 @@
-import type { TCard } from "@/constants/Cards";
+import type { TPlayingCard } from "@/constants/PlayingCards";
 import type { TRandomGenerator } from "@/game/random";
 
-export function shuffleDeck(rng: TRandomGenerator, cards: TCard[]) {
+export function shuffleDeck(rng: TRandomGenerator, cards: TPlayingCard[]) {
   const shuffledDeck = [...cards];
 
   shuffledDeck.forEach((_, i) => {

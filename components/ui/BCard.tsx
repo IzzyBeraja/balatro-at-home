@@ -1,4 +1,6 @@
-import type { TCard } from "@/constants/Cards";
+import type { TConsumable } from "@/constants/Consumables";
+import type { TJoker } from "@/constants/Jokers";
+import type { TPlayingCard } from "@/constants/PlayingCards";
 import type { ViewProps } from "react-native";
 import type { SpringConfig } from "react-native-reanimated/lib/typescript/animation/springUtils";
 
@@ -40,7 +42,7 @@ const cardSelectSpring = {
 } as const satisfies SpringConfig;
 
 interface Props extends ViewProps {
-  card?: TCard;
+  card?: TPlayingCard | TJoker | TConsumable;
   isSelected?: boolean;
   onClick: () => void;
 }
