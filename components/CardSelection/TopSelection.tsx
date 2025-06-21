@@ -1,14 +1,15 @@
-import type { TConsumable } from "@/constants/Consumables";
+import type { TConsumableID } from "@/constants/Consumables";
 import type { TJoker } from "@/constants/Jokers";
 import type { ViewProps } from "react-native";
 
 import BCardContainer from "@/components/ui/BCardContainer";
+import { newConsumable } from "@/constants/Consumables";
 
 import { StyleSheet, View } from "react-native";
 
 interface Props extends ViewProps {
   jokers: TJoker[];
-  consumables: TConsumable[];
+  consumables: TConsumableID[];
   maxJokers: number;
   maxConsumables: number;
 }
@@ -30,7 +31,7 @@ export default function TopSelection({
         onChange={() => {}}
       />
       <BCardContainer
-        cards={consumables}
+        cards={consumables.map((id) => newConsumable[id])}
         maxValue={maxConsumables}
         style={styles.consumableContainer}
         textAlign="right"

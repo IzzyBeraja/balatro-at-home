@@ -1,5 +1,7 @@
 import type { ScoreboardDetails } from "@/components/Scoreboard/Scoreboard";
+import type { TConsumableID } from "@/constants/Consumables";
 import type { TDeckID } from "@/constants/Decks";
+import type { TJoker } from "@/constants/Jokers";
 import type { TStakeID } from "@/constants/Stakes";
 
 import HandSelection from "@/components/CardSelection/HandSelection";
@@ -27,9 +29,11 @@ export default function PlayScreen() {
   const stake = stakes[stakeParam];
   const deck = decks[deckParam];
   const [cardDeck, setCardDeck] = useState(shuffleDeck(random, deck.cards));
+  const [consumables] = useState<TConsumableID[]>([]);
+  const [jokers] = useState<TJoker[]>([]);
 
   const handType = "Royal Flush";
-  const [score, setScore] = useState<ScoreboardDetails>({
+  const [score] = useState<ScoreboardDetails>({
     ante: 1,
     chips: 0,
     discards: deck.discards,
@@ -60,8 +64,8 @@ export default function PlayScreen() {
       />
       <View style={styles.playArea}>
         <TopSelection
-          consumables={["steel"]}
-          jokers={["first"]}
+          consumables={consumables}
+          jokers={jokers}
           maxConsumables={2}
           maxJokers={5}
           style={{ height: 100 }}
